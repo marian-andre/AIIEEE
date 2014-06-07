@@ -12,7 +12,7 @@ function connection($host, $port, $team)
 			socket_strerror(socket_last_error($socket)).PHP_EOL);
 	$line = socket_read($socket, 1024, PHP_NORMAL_READ);
 	if ($line != "BIENVENUE\n")
-		exit("ERROR BIENVENUE");
+		exit("ERROR BIENVENUE".PHP_EOL);
 	socket_write($socket, $team."\n");
 	$line = socket_read($socket, 1024, PHP_NORMAL_READ);
 	$line = socket_read($socket, 1024, PHP_NORMAL_READ);

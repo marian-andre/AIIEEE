@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/06 18:29:28 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/08 13:36:45 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,18 @@ static int				create_server(t_game game)
 	return (game.sock);
 }
 
+static void				ft_init_cls(t_game *g)
+{
+	int					i;
+
+	i = 0;
+	while (i < MAX_CLI)
+	{
+		g->cls[i].cs = 0;
+		i++;
+	}
+}
+
 int						main(int argc, char **argv)
 {
 	t_game				game;
@@ -92,6 +104,7 @@ int						main(int argc, char **argv)
 	game = ft_init_map(game);
 	game = ft_resource(game);
 	game.sock = create_server(game);
+	ft_init_cls(&game);
 	ft_serveur(&game);
 	if (close(game.sock) == -1)
 		ft_error("ERROR close.");

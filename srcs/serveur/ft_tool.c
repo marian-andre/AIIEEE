@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_see.c                                           :+:      :+:    :+:   */
+/*   ft_tool.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/09 18:37:58 by mlemort          ###   ########.fr       */
+/*   Created: 2014/06/09 15:13:29 by mlemort           #+#    #+#             */
+/*   Updated: 2014/06/09 18:47:50 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
-#include "libft.h"
 
-void		ft_see(t_cmd *cmd)
+long	timevaldiff(t_time starttime, t_time finishtime)
 {
-	ft_putendl_fd(cmd->cmd, cmd->fd);
+  long		usec;
+
+  usec = (finishtime.tv_sec - starttime.tv_sec) * 1000000;
+  usec += (finishtime.tv_usec - starttime.tv_usec);
+  return (usec);
 }

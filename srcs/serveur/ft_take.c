@@ -6,15 +6,14 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/05 17:19:30 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/09 18:39:07 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
 #include "libft.h"
 
-void		ft_take(int i, t_game *g, t_fd *fd, char *cmd)
+void		ft_take(t_cmd *cmd)
 {
-	if (g->cls[i].cs && fd->max)
-		ft_putendl_fd(cmd, g->cls[i].cs);
+	ft_putendl_fd(cmd->cmd, cmd->fd);
 }

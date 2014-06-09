@@ -6,15 +6,26 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/05 17:17:56 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/09 18:55:52 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "serveur.h"
 #include "libft.h"
 
-void		ft_nb_connect(int i, t_game *g, t_fd *fd, char *cmd)
+void		ft_nb_connect(t_game *g, int i)
 {
-	if (g->cls[i].cs && fd->max)
-		ft_putendl_fd(cmd, g->cls[i].cs);
+	int		nb;
+	int		j;
+
+	j = 0 ;
+	nb = 0;
+	while (g->cls[j].cs)
+	{
+		if (g->cls[j].num_team == g->cls[i].num_team)
+			nb++;
+		j++;
+	}
+	dprintf(g->cls[i].cs, "%d\n", g->max_cli - nb);
 }

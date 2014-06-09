@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/08 13:36:45 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/09 18:59:30 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 static t_game			ft_init_game(t_game game)
 {
+	ft_init_tab(game.tab);
 	game.sock = 0;
 	game.port = 4242;
 	game.width = 20;
@@ -56,6 +57,7 @@ static t_game			ft_init_map(t_game game)
 			game.map[y][x].phiras = 0;
 			game.map[y][x].thystame = 0;
 			game.map[y][x].food = 0;
+			game.map[y][x].nb_player = 0;
 		}
 	}
 	return (game);

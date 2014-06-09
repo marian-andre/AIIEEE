@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/05 18:27:05 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/09 18:56:17 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,24 @@ static void		ft_save_fd_cli(t_client *cls, t_fd *fd)
 void			ft_serveur(t_game *game)
 {
 	t_fd		fd;
+	t_time		timeout;
 
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 100;
 	fd.max = game->sock;
 	fd.nb_cli = 0;
+	game->list = NULL;
 	while (1)
 	{
+		ft_exec_request(game);
 		FD_ZERO(&fd.rdfs);
 		FD_SET(game->sock, &fd.rdfs);
 		ft_save_fd_cli(game->cls, &fd);
-		if (select(fd.max + 1, &fd.rdfs, NULL, NULL, NULL) == -1)
+		if (select(fd.max + 1, &fd.rdfs, NULL, NULL, &timeout) == -1)
 			ft_error("ERROR select.");
 		if (FD_ISSET(game->sock, &fd.rdfs))
 			ft_new_connection(game, &fd);
 		else
-			ft_exec_request(game, &fd);
+			ft_save_request(game, &fd);
 	}
 }

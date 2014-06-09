@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/07 15:12:49 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/09 18:58:56 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ struct			s_cmd
 	char		*cmd;
 	t_time		time;
 	int			fd;
+	int			num_cli;
 	t_cmd		*next;
 };
 
@@ -42,6 +43,7 @@ typedef struct	s_map
 	int			phiras;
 	int			thystame;
 	int			food;
+	int			nb_player;
 }				t_map;
 
 typedef struct	s_client
@@ -72,8 +74,16 @@ typedef struct	s_fd
 	fd_set		rdfs;
 }				t_fd;
 
+typedef struct	s_tab
+{
+	char		*line;
+	int			t;
+}				t_tab;
+
 typedef struct	s_game
 {
+	t_tab		tab[11];
+	t_cmd		*list;
 	int			sock;
 	int			port;
 	int			width;
@@ -88,6 +98,11 @@ typedef struct	s_game
 
 void			test(t_map **map, t_game game);
 
+void			ft_add_node(t_game *g, t_cmd *cmd);
+void			ft_del_node(t_game *g, t_cmd *cmd);
+t_cmd			*ft_create_node(t_game *g, char *line, int i);
+void			ft_init_tab(t_tab tab[11]);
+long			timevaldiff(t_time starttime, t_time finishtime);
 int				ft_rand_food(int a);
 t_game			ft_resource(t_game game);
 t_game			ft_check_args(char **argv, t_game game);
@@ -96,19 +111,20 @@ void			ft_serveur(t_game *game);
 void			ft_new_client(t_game *g, t_fd *fd, char *line);
 void			ft_usage(char *str);
 void			ft_error(char *msg);
-void			ft_exec_request(t_game *g, t_fd *fd);
-void			ft_move(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_right(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_left(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_see(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_stock(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_take(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_put(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_expel(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_broadcast(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_spell(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_fork(int i, t_game *g, t_fd *fd, char *cmd);
-void			ft_nb_connect(int i, t_game *g, t_fd *fd, char *cmd);
+void			ft_exec_request(t_game *g);
+void			ft_save_request(t_game *g, t_fd *fd);
+void			ft_move(t_cmd *cmd);
+void			ft_right(t_cmd *cmd);
+void			ft_left(t_cmd *cmd);
+void			ft_see(t_cmd *cmd);
+void			ft_stock(t_cmd *cmd);
+void			ft_take(t_cmd *cmd);
+void			ft_put(t_cmd *cmd);
+void			ft_expel(t_cmd *cmd);
+void			ft_broadcast(t_cmd *cmd);
+void			ft_spell(t_cmd *cmd);
+void			ft_fork(t_cmd *cmd);
+void			ft_nb_connect(t_game *g, int i);
 
 void			ft_graph_msz(t_game *g, int i);
 void			ft_graph_sgt(t_game *g, int i);

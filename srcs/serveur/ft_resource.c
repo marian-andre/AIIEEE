@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 10:02:56 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/06 10:17:39 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/09 19:54:43 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,6 @@
 #include <stdio.h>
 #include "serveur.h"
 #include "libft.h"
-
-void			test(t_map **map, t_game game)
-{
-	int		x;
-	int		y;
-
-	x = -1;
-	y = -1;
-	while (++y < game.height)
-	{
-		x = -1;
-		while (++x < game.width)
-		{
-			ft_putstr("li = ");
-			ft_putnbr(map[y][x].linemate);
-			ft_putchar('\n');
-			ft_putstr("de = ");
-			ft_putnbr(map[y][x].deraumere);
-			ft_putchar('\n');
-			ft_putstr("si = ");
-			ft_putnbr(map[y][x].sibur);
-			ft_putchar('\n');
-			ft_putstr("me = ");
-			ft_putnbr(map[y][x].mendiane);
-			ft_putchar('\n');
-			ft_putstr("ph = ");
-			ft_putnbr(map[y][x].phiras);
-			ft_putchar('\n');
-			ft_putstr("th = ");
-			ft_putnbr(map[y][x].thystame);
-			ft_putchar('\n');
-			ft_putstr("food = ");
-			ft_putnbr(map[y][x].food);
-			ft_putchar('\n');
-		}
-	}
-}
 
 static int		ft_rand(int *q, int i, t_game game)
 {
@@ -104,8 +67,6 @@ t_game			ft_resource(t_game game)
 	t_map	**map;
 
 	y = -1;
-	ft_putendl("bug");
-	test(game.map, game);
 	map = game.map;
 	while (++y < game.height)
 	{
@@ -113,7 +74,5 @@ t_game			ft_resource(t_game game)
 		while (++x < game.width)
 			ft_distrib(map, x, y, game);
 	}
-	ft_putendl("bug2");
-	test(game.map, game);
 	return (game);
 }

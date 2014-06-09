@@ -6,7 +6,7 @@
 #    By: jgranet <jgranet@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/08 16:48:39 by jgranet           #+#    #+#              #
-#    Updated: 2014/06/08 17:16:40 by mlemort          ###   ########.fr        #
+#    Updated: 2014/06/09 19:01:32 by mlemort          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS_GFX = $(patsubst %,$(SRC_DIR_GFX)/%,$(UNITS_GFX))
 OBJS_GFX = $(patsubst %,$(OBJ_DIR_GFX)/%,$(UNITS_O_GFX))
 HEADS = $(patsubst %,$(INC_DIR)/%,$(UNITS_H))
 
-LIBFLAGS = -L$(LIBFT) -lft -L SDL2-2.0.3/build/.libs -l SDL2
+LIBFLAGS = -L$(LIBFT) -lft
 FLAGS = -Wall -Werror -Wextra -I libft/includes -I SDL2-2.0.3/include
 
 CC = gcc $(FLAGS)
@@ -59,7 +59,7 @@ $(OBJ_DIR_SER)/%.o: $(SRC_DIR_SER)/%.c $(HEADS)
 
 $(BIN_DIR)$(NAME_GFX): $(OBJS_GFX)
 	@echo "Objects [$(NAME_GFX)]:\033[1;33m DONE !\033[m"
-	@$(CC) -o $@ $^ $(LIBFLAGS)
+	@$(CC) -o $@ $^ $(LIBFLAGS) -L SDL2-2.0.3/build/.libs -l SDL2
 	@echo "Program [$(NAME_GFX)] :\033[1;33m DONE !\033[m"
 
 $(OBJ_DIR_GFX)/%.o: $(SRC_DIR_GFX)/%.c $(HEADS)

@@ -6,6 +6,7 @@ include(__DIR__.'/get_set_obj.php');
 include(__DIR__.'/broadcast.php');
 include(__DIR__.'/send_req.php');
 include(__DIR__.'/incantation.php');
+include(__DIR__.'/mort.php');
 include(__DIR__.'/ia.php');
 
 if (!($argc == 5 || $argc == 7))

@@ -20,7 +20,7 @@ function ia($socket, $team)
 	{
 		mort($socket);
 		$req = rand(0, 11);
-		if ($requetes[$req] == "prend" || ($requetes[$req] == "pose")
+		if ($requetes[$req] == "prend" || ($requetes[$req] == "pose"))
 			get_set_obj($requetes[$req], $socket);
 		else if ($requetes[$req] == "broadcast")
 			broadcast($socket);

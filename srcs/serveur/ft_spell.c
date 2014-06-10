@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 17:04:44 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/10 18:47:41 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 void		ft_spell(t_cmd *cmd, t_game *g)
 {
+	(void)g;
 	ft_putendl_fd(cmd->cmd, cmd->fd);
 }

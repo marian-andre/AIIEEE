@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 18:39:41 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/10 18:50:16 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		ft_expel(t_cmd *cmd, t_game *g)
 	else
 	{
 		i = -1;
-		while (++i < MAX_CLI && g->cls[i]->fd)
+		while (++i < MAX_CLI && g->cls[i].cs)
 		{
 			if (i != cmd->num_cli && g->cls[i].x == x && g->cls[i].y == y)
 			{

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 12:58:06 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/10 17:31:23 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void		ft_check_rand(t_game *g, int num_cli)
 	}
 	g->cls[num_cli].x = x;
 	g->cls[num_cli].y = y;
+	g->map[y][x].nb_player++;
 }
 
 static void		ft_send(t_game *g, t_fd *fd)

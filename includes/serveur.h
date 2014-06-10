@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 13:16:14 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/10 17:05:37 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,14 @@ void			ft_save_request(t_game *g, t_fd *fd);
 void			ft_move(t_cmd *cmd, t_game *g);
 void			ft_right(t_cmd *cmd, t_game *g);
 void			ft_left(t_cmd *cmd, t_game *g);
-void			ft_see(t_cmd *cmd);
+void			ft_see(t_cmd *cmd, t_game *g);
 void			ft_stock(t_cmd *cmd, t_game *g);
 void			ft_take(t_cmd *cmd, t_game *g);
-void			ft_put(t_cmd *cmd);
-void			ft_expel(t_cmd *cmd);
-void			ft_broadcast(t_cmd *cmd);
-void			ft_spell(t_cmd *cmd);
-void			ft_fork(t_cmd *cmd);
+void			ft_put(t_cmd *cmd, t_game *g);
+void			ft_expel(t_cmd *cmd, t_game *g);
+void			ft_broadcast(t_cmd *cmd, t_game *g);
+void			ft_spell(t_cmd *cmd, t_game *g);
+void			ft_fork(t_cmd *cmd, t_game *g);
 void			ft_nb_connect(t_game *g, int i);
 
 void			ft_graph_msz(t_game *g, int i);

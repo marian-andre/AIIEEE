@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 18:39:58 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/10 19:33:15 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,11 @@ void			ft_left(t_cmd *cmd, t_game *g);
 void			ft_see(t_cmd *cmd, t_game *g);
 void			ft_stock(t_cmd *cmd, t_game *g);
 void			ft_take(t_cmd *cmd, t_game *g);
+void			ft_take_linemate(t_cmd *cmd, t_game *g);
+void			ft_take_deraumere(t_cmd *cmd, t_game *g);
+void			ft_take_sibur(t_cmd *cmd, t_game *g);
+void			ft_take_mendiane(t_cmd *cmd, t_game *g);
+void			ft_take_phiras(t_cmd *cmd, t_game *g);
 void			ft_put(t_cmd *cmd, t_game *g);
 void			ft_expel(t_cmd *cmd, t_game *g);
 void			ft_broadcast(t_cmd *cmd, t_game *g);

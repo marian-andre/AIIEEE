@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 18:39:58 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/10 22:02:09 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ struct			s_cmd
 	int			num_cli;
 	t_cmd		*next;
 };
+
+typedef struct	s_var
+{
+	int			i;
+	int			j;
+	int			x;
+	int			y;
+	int			new_x;
+	int			new_y;
+	int			lvl;
+}				t_var;
 
 typedef struct	s_map
 {

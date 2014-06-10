@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:01:35 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/09 19:41:38 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/10 13:16:05 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 #include "serveur.h"
 #include "libft.h"
 
-static void		ft_check_cmd(t_cmd *cmd)
+static void		ft_check_cmd(t_cmd *cmd, t_game *g)
 {
 	if (ft_strcmp(cmd->cmd, "avance") == 0)
-		ft_move(cmd);
+		ft_move(cmd, g);
 	else if (ft_strcmp(cmd->cmd, "droite") == 0)
-		ft_right(cmd);
+		ft_right(cmd, g);
 	else if (ft_strcmp(cmd->cmd, "gauche") == 0)
-		ft_left(cmd);
+		ft_left(cmd, g);
 	else if (ft_strcmp(cmd->cmd, "voir") == 0)
 		ft_see(cmd);
 	else if (ft_strcmp(cmd->cmd, "inventaire") == 0)
-		ft_stock(cmd);
+		ft_stock(cmd, g);
 	else if (ft_strncmp(cmd->cmd, "prend", 5) == 0)
-		ft_take(cmd);
+		ft_take(cmd, g);
 	else if (ft_strncmp(cmd->cmd, "pose", 4) == 0)
 		ft_put(cmd);
 	else if (ft_strcmp(cmd->cmd, "expulse") == 0)
@@ -51,7 +51,7 @@ void			ft_exec_request(t_game *g)
 		gettimeofday(&now, NULL);
 		if (timevaldiff(now, tmp->time) <= 0)
 		{
-			ft_check_cmd(tmp);
+			ft_check_cmd(tmp, g);
 			ft_del_node(g, tmp);
 		}
 		tmp = tmp->next;

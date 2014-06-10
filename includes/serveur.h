@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/09 18:58:56 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/10 13:16:14 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,12 @@ void			ft_usage(char *str);
 void			ft_error(char *msg);
 void			ft_exec_request(t_game *g);
 void			ft_save_request(t_game *g, t_fd *fd);
-void			ft_move(t_cmd *cmd);
-void			ft_right(t_cmd *cmd);
-void			ft_left(t_cmd *cmd);
+void			ft_move(t_cmd *cmd, t_game *g);
+void			ft_right(t_cmd *cmd, t_game *g);
+void			ft_left(t_cmd *cmd, t_game *g);
 void			ft_see(t_cmd *cmd);
-void			ft_stock(t_cmd *cmd);
-void			ft_take(t_cmd *cmd);
+void			ft_stock(t_cmd *cmd, t_game *g);
+void			ft_take(t_cmd *cmd, t_game *g);
 void			ft_put(t_cmd *cmd);
 void			ft_expel(t_cmd *cmd);
 void			ft_broadcast(t_cmd *cmd);
@@ -132,7 +132,7 @@ void			ft_graph_mct(t_game *g, int i);
 void			ft_graph_tna(t_game *g, int i);
 void			ft_graph_pnw(t_game *g, int num_cli);
 void			ft_graph_plv(t_game *g, int i, int num_cli);
-void			ft_graph_ppo(t_game *g, int i, int num_cli);
+void			ft_graph_ppo(t_game *g, int num_cli);
 void			ft_graph_pin(t_game *g, int i, int num_cli);
 void			ft_graph_pex(t_game *g, int i, int num_cli);
 void			ft_graph_pbc(t_game *g, int i, int num_cli, char *msg);

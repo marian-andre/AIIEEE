@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/07 12:15:41 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/10 12:58:06 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,16 @@ void			ft_new_client(t_game *g, t_fd *fd, char *line)
 	}
 	else
 	{
+		g->cls[fd->nb_cli].lvl = 1;
 		g->cls[fd->nb_cli].graph = 0;
 		g->cls[fd->nb_cli].dir = (rand() % 4) + 1;
+		g->cls[fd->nb_cli].resource.linemate = 0;
+		g->cls[fd->nb_cli].resource.deraumere = 0;
+		g->cls[fd->nb_cli].resource.sibur = 0;
+		g->cls[fd->nb_cli].resource.mendiane = 0;
+		g->cls[fd->nb_cli].resource.phiras = 0;
+		g->cls[fd->nb_cli].resource.thystame = 0;
+		g->cls[fd->nb_cli].resource.food = 10;
 		ft_check_rand(g, fd->nb_cli);
 		ft_send(g, fd);
 	}

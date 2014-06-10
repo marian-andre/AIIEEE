@@ -437,8 +437,8 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/nfs/zfs-student-3/users/2013/mlemort/zappy/SDL2-2.0.3'
-srcdir='/nfs/zfs-student-3/users/2013/mlemort/zappy/SDL2-2.0.3'
+ac_pwd='/nfs/zfs-student-4/users/2013/rkorimba/AIIEEE/SDL2-2.0.3'
+srcdir='/nfs/zfs-student-4/users/2013/rkorimba/AIIEEE/SDL2-2.0.3'
 INSTALL='/usr/bin/install -c'
 AWK='awk'
 test -n "$AWK" || AWK=awk
@@ -598,7 +598,7 @@ old_postuninstall_cmds=''
 old_archive_cmds='$AR $AR_FLAGS $oldlib$oldobjs~$RANLIB $tool_oldlib'
 lock_old_archive_extraction='yes'
 CC='clang'
-CFLAGS='-g -O2 -Iinclude -I/nfs/zfs-student-3/users/2013/mlemort/zappy/SDL2-2.0.3/include   -I/usr/X11R6/include'
+CFLAGS='-g -O2 -Iinclude -I/nfs/zfs-student-4/users/2013/rkorimba/AIIEEE/SDL2-2.0.3/include   -I/usr/X11R6/include'
 compiler='g++'
 GCC='yes'
 lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[	 ]\([BCDEGRST][BCDEGRST]*\)[	 ][	 ]*_\([_A-Za-z][_A-Za-z0-9]*\)$/\1 _\2 \2/p'\'' | sed '\''/ __gnu_lto/d'\'''
@@ -874,8 +874,8 @@ S["LTLIBOBJS"]=""
 S["EXTRA_LDFLAGS"]=" -lm -liconv -Wl,-framework,OpenGL  -Wl,-framework,ForceFeedback -lobjc -Wl,-framework,Cocoa -Wl,-framework,Carbon -Wl,-framework,IOKit -Wl,-framewo"\
 "rk,CoreAudio -Wl,-framework,AudioToolbox -Wl,-framework,AudioUnit"
 S["BUILD_LDFLAGS"]=""
-S["EXTRA_CFLAGS"]="-Iinclude -I/nfs/zfs-student-3/users/2013/mlemort/zappy/SDL2-2.0.3/include  -mmmx -msse -msse2 -DTARGET_API_MAC_CARBON -DTARGET_API_MAC_OSX -fvisibi"\
-"lity=hidden  -I/usr/X11R6/include -D_THREAD_SAFE -fpascal-strings -Wall"
+S["EXTRA_CFLAGS"]="-Iinclude -I/nfs/zfs-student-4/users/2013/rkorimba/AIIEEE/SDL2-2.0.3/include  -mmmx -msse -msse2 -DTARGET_API_MAC_CARBON -DTARGET_API_MAC_OSX -fvisi"\
+"bility=hidden  -I/usr/X11R6/include -D_THREAD_SAFE -fpascal-strings -Wall"
 S["BUILD_CFLAGS"]="-g -O3 -DUSING_GENERATED_CONFIG_H"
 S["SDLTEST_OBJECTS"]="$(objects)/SDL_test_assert.o $(objects)/SDL_test_common.o $(objects)/SDL_test_compare.o $(objects)/SDL_test_crc32.o $(objects)/SDL_test_font.o $(obj"\
 "ects)/SDL_test_fuzzer.o $(objects)/SDL_test_harness.o $(objects)/SDL_test_imageBlit.o $(objects)/SDL_test_imageBlitBlend.o $(objects)/SDL_test_image"\
@@ -908,7 +908,7 @@ S["OBJECTS"]="$(objects)/SDL.lo $(objects)/SDL_assert.lo $(objects)/SDL_error.lo
 "$(objects)/imKStoUCS.lo $(objects)/SDL_systhread.lo $(objects)/SDL_syssem.lo $(objects)/SDL_sysmutex.lo $(objects)/SDL_syscond.lo $(objects)/SDL_sys"\
 "tls.lo $(objects)/SDL_coreaudio.lo $(objects)/SDL_sysjoystick.lo $(objects)/SDL_syshaptic.lo $(objects)/SDL_syspower.lo $(objects)/SDL_sysfilesystem"\
 ".lo $(objects)/SDL_systimer.lo $(objects)/SDL_rwopsbundlesupport.lo"
-S["INCLUDE"]="-Iinclude -I/nfs/zfs-student-3/users/2013/mlemort/zappy/SDL2-2.0.3/include"
+S["INCLUDE"]="-Iinclude -I/nfs/zfs-student-4/users/2013/rkorimba/AIIEEE/SDL2-2.0.3/include"
 S["ac_aux_dir"]="build-scripts"
 S["ENABLE_STATIC_FALSE"]="#"
 S["ENABLE_STATIC_TRUE"]=""
@@ -972,9 +972,9 @@ S["SED"]="/usr/bin/sed"
 S["OBJEXT"]="o"
 S["EXEEXT"]=""
 S["ac_ct_CC"]="clang"
-S["CPPFLAGS"]=" -Iinclude -I/nfs/zfs-student-3/users/2013/mlemort/zappy/SDL2-2.0.3/include "
+S["CPPFLAGS"]=" -Iinclude -I/nfs/zfs-student-4/users/2013/rkorimba/AIIEEE/SDL2-2.0.3/include "
 S["LDFLAGS"]="   -L/usr/X11R6/lib"
-S["CFLAGS"]="-g -O2 -Iinclude -I/nfs/zfs-student-3/users/2013/mlemort/zappy/SDL2-2.0.3/include   -I/usr/X11R6/include"
+S["CFLAGS"]="-g -O2 -Iinclude -I/nfs/zfs-student-4/users/2013/rkorimba/AIIEEE/SDL2-2.0.3/include   -I/usr/X11R6/include"
 S["CC"]="clang"
 S["host_os"]="darwin13.2.0"
 S["host_vendor"]="apple"

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 18:13:57 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 19:09:16 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,10 +173,8 @@ void			ft_see(t_cmd *cmd, t_game *g)
 		while (var.j <= var.i)
 		{
 			get_true_pos(g, cmd, &var);
-			printf("i = %d\nj = %d\nx = %d\ny = %d\nnew_x = %d\nnew_y = %d\n",
-					var.i, var.j, var.x, var.y, var.new_x, var.new_y);
 			msg = check_case(g, var, msg, 0);
-			if (var.j != var.i)
+			if (var.j != var.i || var.i != var.lvl)
 			{
 				del = msg;
 				msg = ft_strjoin(msg, ",");

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 15:58:11 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/11 18:51:01 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		ft_send(t_game *g, t_fd *fd)
 {
 	char		*line;
 
-	g->cls[fd->nb_cli].lvl = 1;
+	g->cls[fd->nb_cli].lvl = 3;
 	g->cls[fd->nb_cli].graph = 0;
 	g->cls[fd->nb_cli].dir = (rand() % 4) + 1;
 	g->cls[fd->nb_cli].resource.linemate = 0;

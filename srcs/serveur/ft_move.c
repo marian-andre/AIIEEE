@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 17:37:08 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/11 14:44:03 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			ft_move(t_cmd *cmd, t_game *g)
 {
 	if (g->cls[cmd->num_cli].cs == cmd->fd)
 	{
-		g->map[g->cls[cmd->num_cli].x][g->cls[cmd->num_cli].y].nb_player--;
+		g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].nb_player--;
 		ft_north_south(cmd, g);
 		if (g->cls[cmd->num_cli].dir == EAST)
 		{
@@ -51,7 +51,7 @@ void			ft_move(t_cmd *cmd, t_game *g)
 			else
 				g->cls[cmd->num_cli].x--;
 		}
-		g->map[g->cls[cmd->num_cli].x][g->cls[cmd->num_cli].y].nb_player++;
+		g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].nb_player++;
 		ft_putendl_fd("ok", cmd->fd);
 		ft_graph_ppo(g, cmd->num_cli);
 	}

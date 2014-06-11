@@ -6,13 +6,15 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 16:58:22 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 18:13:57 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
 #include "libft.h"
 #include <stdlib.h>
+
+#include <stdio.h>
 
 static char		*check_case(t_game *g, t_var var, char *msg, int k)
 {
@@ -120,12 +122,12 @@ static void		get_true_pos(t_game *g, t_cmd *cmd, t_var *var)
 	}
 	else if (g->cls[cmd->num_cli].dir == EAST)
 	{
-		if ((var->y - var->j) >= g->height)
-			var->new_y = var->y - var->j - g->height;
-		else if ((var->y - var->j) < 0)
+		if ((var->y + var->j) >= g->height)
+			var->new_y = var->y + var->j - g->height;
+		else if ((var->y + var->j) < 0)
 			var->new_y = g->height - (var->y - var->j);
 		else
-			var->new_y = var->y - var->j;
+			var->new_y = var->y + var->j;
 		if ((var->x + var->i) >= g->width)
 			var->new_x = var->x + var->i - g->width;
 		else
@@ -133,12 +135,12 @@ static void		get_true_pos(t_game *g, t_cmd *cmd, t_var *var)
 	}
 	else if (g->cls[cmd->num_cli].dir == WEST)
 	{
-		if ((var->y + var->j) >= g->width)
-			var->new_y = var->y + var->j - g->width;
-		else if ((var->y + var->j) < 0)
-			var->new_y = g->width - (var->y + var->j);
+		if ((var->y - var->j) >= g->height)
+			var->new_y = var->y - var->j - g->height;
+		else if ((var->y - var->j) < 0)
+			var->new_y = g->height - (var->y + var->j);
 		else
-			var->new_y = var->y + var->j;
+			var->new_y = var->y - var->j;
 		if ((var->x - var->i) < 0)
 			var->new_x = var->x - var->i + g->width;
 		else
@@ -171,6 +173,8 @@ void			ft_see(t_cmd *cmd, t_game *g)
 		while (var.j <= var.i)
 		{
 			get_true_pos(g, cmd, &var);
+			printf("i = %d\nj = %d\nx = %d\ny = %d\nnew_x = %d\nnew_y = %d\n",
+					var.i, var.j, var.x, var.y, var.new_x, var.new_y);
 			msg = check_case(g, var, msg, 0);
 			if (var.j != var.i)
 			{

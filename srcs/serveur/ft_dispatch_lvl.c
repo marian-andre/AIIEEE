@@ -6,13 +6,13 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 17:43:52 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/11 18:18:05 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/11 18:31:06 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
 
-void		ft_disp_lvl_7(int *q, t_game *game, int lvl, int num_cli)
+void		ft_disp_lvl_7(int *q, t_game *game, int num_cli)
 {
 	q[0] = 2;
 	q[1] = 2;
@@ -29,7 +29,7 @@ void		ft_disp_lvl_7(int *q, t_game *game, int lvl, int num_cli)
 	game->cls[num_cli].resource.thystame -= 1;
 }
 
-void		ft_disp_lvl_6_(int *q, t_game *game, int lvl, int num_cli)
+void		ft_disp_lvl_6(int *q, t_game *game, int num_cli)
 {
 	q[0] = 1;
 	q[1] = 2;

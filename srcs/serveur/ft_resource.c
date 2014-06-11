@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 10:02:56 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/11 12:09:01 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/11 16:53:26 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int				ft_rand_stone(int *q, int i, t_game game)
 	{
 		chance += 20 / (game.height * game.width);
 		q[i] -= 1;
-		return (ft_rand(2) + 1);
+		if (q[i] > 2)
+			return (ft_rand(2) + 1);
+		else
+			return (1);
 	}
 	return (0);
 }

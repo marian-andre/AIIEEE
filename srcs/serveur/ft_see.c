@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 19:09:16 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 19:53:02 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ static void		get_true_pos(t_game *g, t_cmd *cmd, t_var *var)
 	}
 }
 
-void			ft_see(t_cmd *cmd, t_game *g)
+void		ft_see(t_cmd *cmd, t_game *g)
 {
 	t_var	var;
 	char	*msg;

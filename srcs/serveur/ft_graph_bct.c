@@ -6,14 +6,14 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 19:18:39 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/05 19:48:57 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/11 16:24:10 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
 #include "libft.h"
 
-void		ft_graph_bct(t_game *g, int i, int x, int y)
+static void	ft_send_bct(t_game *g, int i, int x, int y)
 {
 	ft_putstr_fd("bct ", g->cls[i].cs);
 	ft_putnbr_fd(x, g->cls[i].cs);
@@ -34,4 +34,20 @@ void		ft_graph_bct(t_game *g, int i, int x, int y)
 	ft_putchar_fd(' ', g->cls[i].cs);
 	ft_putnbr_fd(g->map[y][x].food, g->cls[i].cs);
 	ft_putchar_fd('\n', g->cls[i].cs);
+
+}
+
+void		ft_graph_bct(t_game *g, int i, int x, int y)
+{
+	if (i == 0)
+	{
+		while (g->cls[i].cs)
+		{
+			if (g->cls[i].graph == 1)
+				ft_send_bct(g, i, x, y);
+			i++;
+		}
+	}
+	else
+		ft_send_bct(g, i, x, y);
 }

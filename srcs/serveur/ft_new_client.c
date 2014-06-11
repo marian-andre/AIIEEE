@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 17:31:23 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/11 15:58:11 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,17 @@ static void		ft_send(t_game *g, t_fd *fd)
 {
 	char		*line;
 
+	g->cls[fd->nb_cli].lvl = 1;
+	g->cls[fd->nb_cli].graph = 0;
+	g->cls[fd->nb_cli].dir = (rand() % 4) + 1;
+	g->cls[fd->nb_cli].resource.linemate = 0;
+	g->cls[fd->nb_cli].resource.deraumere = 0;
+	g->cls[fd->nb_cli].resource.sibur = 0;
+	g->cls[fd->nb_cli].resource.mendiane = 0;
+	g->cls[fd->nb_cli].resource.phiras = 0;
+	g->cls[fd->nb_cli].resource.thystame = 0;
+	g->cls[fd->nb_cli].resource.food = 10;
+	ft_check_rand(g, fd->nb_cli);
 	ft_graph_pnw(g, fd->nb_cli);
 	line = ft_itoa(g->cls[fd->nb_cli].x);
 	line = ft_strjoin(line, " ");
@@ -86,6 +97,8 @@ static void		ft_init_graph(t_game *g, t_fd *fd)
 
 void			ft_new_client(t_game *g, t_fd *fd, char *line)
 {
+	t_cmd		*cmd;
+
 	if (ft_strcmp(line, "GRAPHIC") == 0)
 		ft_init_graph(g, fd);
 	else if ((g->cls[fd->nb_cli].num_team = ft_check_team(g, line)) == -1)
@@ -95,18 +108,9 @@ void			ft_new_client(t_game *g, t_fd *fd, char *line)
 		g->cls[fd->nb_cli].cs = 0;
 	}
 	else
-	{
-		g->cls[fd->nb_cli].lvl = 1;
-		g->cls[fd->nb_cli].graph = 0;
-		g->cls[fd->nb_cli].dir = (rand() % 4) + 1;
-		g->cls[fd->nb_cli].resource.linemate = 0;
-		g->cls[fd->nb_cli].resource.deraumere = 0;
-		g->cls[fd->nb_cli].resource.sibur = 0;
-		g->cls[fd->nb_cli].resource.mendiane = 0;
-		g->cls[fd->nb_cli].resource.phiras = 0;
-		g->cls[fd->nb_cli].resource.thystame = 0;
-		g->cls[fd->nb_cli].resource.food = 10;
-		ft_check_rand(g, fd->nb_cli);
+	{	
+		cmd = ft_create_node(g, "life", fd->nb_cli);
+		ft_add_node(g, cmd);
 		ft_send(g, fd);
 	}
 }

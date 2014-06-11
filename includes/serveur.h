@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 12:10:41 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/11 15:35:03 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct	s_tab
 
 typedef struct	s_game
 {
-	t_tab		tab[11];
+	t_tab		tab[12];
 	t_cmd		*list;
 	int			sock;
 	int			port;
@@ -119,7 +119,7 @@ void			test(t_map **map, t_game game);
 void			ft_add_node(t_game *g, t_cmd *cmd);
 void			ft_del_node(t_game *g, t_cmd *cmd);
 t_cmd			*ft_create_node(t_game *g, char *line, int i);
-void			ft_init_tab(t_tab tab[11]);
+void			ft_init_tab(t_tab tab[12]);
 long			timevaldiff(t_time starttime, t_time finishtime);
 int				ft_rand(int a);
 int				ft_rand_stone(int *q, int i, t_game game);
@@ -130,7 +130,7 @@ void			ft_serveur(t_game *game);
 void			ft_new_client(t_game *g, t_fd *fd, char *line);
 void			ft_usage(char *str);
 void			ft_error(char *msg);
-void			ft_exec_request(t_game *g);
+void			ft_exec_request(t_game *g, t_fd *fd);
 void			ft_save_request(t_game *g, t_fd *fd);
 void			ft_move(t_cmd *cmd, t_game *g);
 void			ft_right(t_cmd *cmd, t_game *g);
@@ -154,6 +154,7 @@ void			ft_broadcast(t_cmd *cmd, t_game *g);
 void			ft_spell(t_cmd *cmd, t_game *g);
 void			ft_fork(t_cmd *cmd, t_game *g);
 void			ft_nb_connect(t_game *g, int i);
+void			ft_life(t_cmd *cmd, t_game *g, t_fd *fd);
 
 void			ft_graph_msz(t_game *g, int i);
 void			ft_graph_sgt(t_game *g, int i);

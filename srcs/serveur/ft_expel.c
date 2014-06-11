@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 18:50:16 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 16:58:07 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		ft_expel(t_cmd *cmd, t_game *g)
 	avance.fd = open("/dev/null", O_WRONLY);
 	x = g->cls[cmd->num_cli].x;
 	y = g->cls[cmd->num_cli].y;
-	if (g->map[x][y].nb_player == 1)
+	if (g->map[y][x].nb_player == 1)
 		ft_putendl_fd("ko", cmd->fd);
 	else
 	{

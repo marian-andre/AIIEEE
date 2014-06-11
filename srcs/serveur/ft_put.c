@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 09:51:52 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/11 14:30:02 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,7 @@ static void	ft_put_food(t_cmd *cmd, t_game *g)
 void		ft_put(t_cmd *cmd, t_game *g)
 {
 	char	**split;
-	int		x;
-	int		y;
 
-	x = g->cls[cmd->num_cli].x;
-	y = g->cls[cmd->num_cli].y;
 	if (g->cls[cmd->num_cli].cs == cmd->fd)
 	{
 		split = ft_strsplit(cmd->cmd, ' ');
@@ -62,7 +58,9 @@ void		ft_put(t_cmd *cmd, t_game *g)
 			ft_put_thystame(cmd, g);
 		else if (ft_strcmp("food", split[1]) == 0)
 			ft_put_food(cmd, g);
-		ft_graph_bct(g, 0, x, y);
+		else
+			ft_putendl_fd("ko", cmd->fd);
+		ft_graph_bct(g, 0, g->cls[cmd->num_cli].x, g->cls[cmd->num_cli].y);
 		ft_strdel2(&split);
 	}
 }

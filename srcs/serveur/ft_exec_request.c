@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:01:35 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/10 17:02:27 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 15:26:08 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "serveur.h"
 #include "libft.h"
 
-static void		ft_check_cmd(t_cmd *cmd, t_game *g)
+static void		ft_check_cmd(t_cmd *cmd, t_game *g, t_fd *fd)
 {
 	if (ft_strcmp(cmd->cmd, "avance") == 0)
 		ft_move(cmd, g);
@@ -38,9 +38,11 @@ static void		ft_check_cmd(t_cmd *cmd, t_game *g)
 		ft_spell(cmd, g);
 	else if (ft_strcmp(cmd->cmd, "fork") == 0)
 		ft_fork(cmd, g);
+	else if (ft_strcmp(cmd->cmd, "life") == 0)
+		ft_life(cmd, g, fd);
 }
 
-void			ft_exec_request(t_game *g)
+void			ft_exec_request(t_game *g, t_fd *fd)
 {
 	t_cmd		*tmp;
 	t_time		now;
@@ -51,7 +53,7 @@ void			ft_exec_request(t_game *g)
 		gettimeofday(&now, NULL);
 		if (timevaldiff(now, tmp->time) <= 0)
 		{
-			ft_check_cmd(tmp, g);
+			ft_check_cmd(tmp, g, fd);
 			ft_del_node(g, tmp);
 		}
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/09 18:56:17 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 15:25:42 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			ft_serveur(t_game *game)
 	game->list = NULL;
 	while (1)
 	{
-		ft_exec_request(game);
+		ft_exec_request(game, &fd);
 		FD_ZERO(&fd.rdfs);
 		FD_SET(game->sock, &fd.rdfs);
 		ft_save_fd_cli(game->cls, &fd);

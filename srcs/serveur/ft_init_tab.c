@@ -6,14 +6,14 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 16:24:28 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/09 18:59:10 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 15:12:01 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
 #include "libft.h"
 
-void	ft_init_tab(t_tab tab[11])
+void	ft_init_tab(t_tab tab[12])
 {
 	tab[0].line = ft_strdup("voir");
 	tab[0].t = 7;
@@ -37,4 +37,6 @@ void	ft_init_tab(t_tab tab[11])
 	tab[9].t = 300;
 	tab[10].line = ft_strdup("fork");
 	tab[10].t = 42;
+	tab[11].line = ft_strdup("life");
+	tab[11].t = 126;
 }

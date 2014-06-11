@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 09:47:24 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/11 12:10:41 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # define EAST 2
 # define SOUTH 3
 # define WEST 4
+# define Q_LI 50
+# define Q_DE 50
+# define Q_SI 50
+# define Q_PH 20
+# define Q_ME 20
+# define Q_TH 10
+# define Q_FO 200
 
 typedef struct timeval	t_time;
 typedef struct s_cmd	t_cmd;
@@ -114,7 +121,8 @@ void			ft_del_node(t_game *g, t_cmd *cmd);
 t_cmd			*ft_create_node(t_game *g, char *line, int i);
 void			ft_init_tab(t_tab tab[11]);
 long			timevaldiff(t_time starttime, t_time finishtime);
-int				ft_rand_food(int a);
+int				ft_rand(int a);
+int				ft_rand_stone(int *q, int i, t_game game);
 t_game			ft_resource(t_game game);
 t_game			ft_check_args(char **argv, t_game game);
 void			ft_up_food(t_game *game);

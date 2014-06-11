@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:04:10 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 12:10:41 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/11 14:39:44 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define Q_PH 20
 # define Q_ME 20
 # define Q_TH 10
-# define Q_FO 200
+# define Q_FO 3
 
 typedef struct timeval	t_time;
 typedef struct s_cmd	t_cmd;

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 22:46:34 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/11 16:35:54 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,60 +20,56 @@ static char		*check_case(t_game *g, t_var var, char *msg, int k)
 	char	*del;
 
 	i = -1;
-	while (++i < g->map[var.new_x][var.new_y].linemate)
+	while (++i < g->map[var.new_y][var.new_x].linemate)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " linemate");
 		free(del);
 	}
 	i = -1;
-	while (++i < g->map[var.new_x][var.new_y].deraumere)
+	while (++i < g->map[var.new_y][var.new_x].deraumere)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " deraumere");
 		free(del);
 	}
 	i = -1;
-	while (++i < g->map[var.new_x][var.new_y].sibur)
+	while (++i < g->map[var.new_y][var.new_x].sibur)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " sibur");
 		free(del);
 	}
 	i = -1;
-	while (++i < g->map[var.new_x][var.new_y].mendiane)
+	while (++i < g->map[var.new_y][var.new_x].mendiane)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " mendiane");
 		free(del);
 	}
 	i = -1;
-	while (++i < g->map[var.new_x][var.new_y].phiras)
+	while (++i < g->map[var.new_y][var.new_x].phiras)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " phiras");
 		free(del);
 	}
 	i = -1;
-	while (++i < g->map[var.new_x][var.new_y].thystame)
+	while (++i < g->map[var.new_y][var.new_x].thystame)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " thystame");
 		free(del);
 	}
 	i = -1;
-	while (++i < g->map[var.new_x][var.new_y].food)
+	while (++i < g->map[var.new_y][var.new_x].food)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " nourriture");
 		free(del);
 	}
 	i = -1;
-	if (k == 1)
-	{
-		g->map[var.new_x][var.new_y].nb_player--;
-	}
-	while (++i < g->map[var.new_x][var.new_y].nb_player)
+	while (++i < g->map[var.new_y][var.new_x].nb_player - k)
 	{
 		del = msg;
 		msg = ft_strjoin(msg, " joueur");
@@ -84,7 +80,8 @@ static char		*check_case(t_game *g, t_var var, char *msg, int k)
 
 static t_var	init_var(t_game *g, t_cmd *cmd, t_var var)
 {
-	var.i = 1;
+	var.i = 0;
+	var.j = 0;
 	var.x = g->cls[cmd->num_cli].x;
 	var.y = g->cls[cmd->num_cli].y;
 	var.new_x = g->cls[cmd->num_cli].x;
@@ -103,10 +100,10 @@ static void		get_true_pos(t_game *g, t_cmd *cmd, t_var *var)
 			var->new_x = g->width - (var->x + var->j);
 		else
 			var->new_x = var->x + var->j;
-		if ((var->y - var->i) <= 0)
+		if ((var->y - var->i) < 0)
 			var->new_y = var->y - var->i + g->height;
 		else
-			var->new_y -= var->i;
+			var->new_y = var->y - var->i;
 	}
 	else if (g->cls[cmd->num_cli].dir == SOUTH)
 	{
@@ -116,23 +113,23 @@ static void		get_true_pos(t_game *g, t_cmd *cmd, t_var *var)
 			var->new_x = g->width - (var->x - var->j);
 		else
 			var->new_x = var->x - var->j;
-		if ((var->y + var->i) <= 0)
-			var->new_y = var->y + var->i + g->height;
+		if ((var->y + var->i) >= g->height)
+			var->new_y = var->y + var->i - g->height;
 		else
-			var->new_y += var->i;
+			var->new_y = var->y + var->i;
 	}
 	else if (g->cls[cmd->num_cli].dir == EAST)
 	{
-		if ((var->y - var->j) >= g->width)
-			var->new_y = var->y - var->j - g->width;
+		if ((var->y - var->j) >= g->height)
+			var->new_y = var->y - var->j - g->height;
 		else if ((var->y - var->j) < 0)
-			var->new_y = g->width - (var->y - var->j);
+			var->new_y = g->height - (var->y - var->j);
 		else
 			var->new_y = var->y - var->j;
-		if ((var->y + var->i) <= 0)
-			var->new_x = var->x + var->i + g->height;
+		if ((var->x + var->i) >= g->width)
+			var->new_x = var->x + var->i - g->width;
 		else
-			var->new_x += var->i;
+			var->new_x = var->x + var->i;
 	}
 	else if (g->cls[cmd->num_cli].dir == WEST)
 	{
@@ -142,10 +139,10 @@ static void		get_true_pos(t_game *g, t_cmd *cmd, t_var *var)
 			var->new_y = g->width - (var->y + var->j);
 		else
 			var->new_y = var->y + var->j;
-		if ((var->x - var->i) <= 0)
-			var->new_x = var->x - var->i + g->height;
+		if ((var->x - var->i) < 0)
+			var->new_x = var->x - var->i + g->width;
 		else
-			var->new_x -= var->i;
+			var->new_x = var->x - var->i;
 	}
 }
 
@@ -158,6 +155,7 @@ void			ft_see(t_cmd *cmd, t_game *g)
 	msg = NULL;
 	var = init_var(g, cmd, var);
 	msg = check_case(g, var, msg, 1);
+	var.i = 1;
 	del = msg;
 	msg = ft_strtrim(msg);
 	free(del);

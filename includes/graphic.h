@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/10 19:42:26 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/11 16:07:09 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@
 
 # define SCREEN_WIDTH 1600
 # define SCREEN_HEIGHT 1200
+
+typedef struct		s_map
+{
+	int				linemate;
+	int				deraumere;
+	int				sibur;
+	int				mendiane;
+	int				phiras;
+	int				thystame;
+	int				food;
+	int				nb_player;
+}					t_map;
+
 
 typedef struct		s_action
 {
@@ -38,6 +51,8 @@ typedef struct		s_game
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;
+	int				width;
+	int				height;
 	t_action		*action;
 }					t_game;
 

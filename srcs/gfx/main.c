@@ -6,12 +6,18 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/10 19:38:57 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/11 19:27:03 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "libft.h"
 #include "graphic.h"
 
 void				init(t_game *game, char *title)
@@ -94,26 +100,76 @@ int loadResources(t_game *game)
 	return (EXIT_SUCCESS);
 }
 
+
+
+static int				ft_connect(char *addr, int port)
+{
+	int					sock;
+	struct protoent		*proto;
+	struct sockaddr_in	sin;
+
+	sock = 0;
+	if ((proto = getprotobyname("tcp")) == 0)
+		exit(0);
+	if ((sock = socket(PF_INET, SOCK_STREAM, proto->p_proto)) == -1)
+		exit(0);
+	sin.sin_family = AF_INET;
+	sin.sin_port = htons(port);
+	sin.sin_addr.s_addr = inet_addr(addr);
+	if (connect(sock, (const struct sockaddr*)&sin, sizeof(sin)))
+		exit(0);
+	return (sock);
+}
+
 int					main(int argc, char **argv)
 {
-	unsigned int	frameLimit;
-	t_game			*game;
-	SDL_Event		event;
+//	unsigned int	frameLimit;
+//	t_game			*game;
+//	SDL_Event		event;
+	int				sock;
+	char			*line;
+	int				first;
 
+	line = NULL;
 	argc = argc + 0;
 	argv = argv + 0;
-	frameLimit = SDL_GetTicks() + 16;
-	if ((game = (t_game*)malloc(sizeof(t_game))) == NULL)
-		exit(EXIT_FAILURE);
-	init(game, "Zappy");
-	loadResources(game);
+	first = 0;
+//	frameLimit = SDL_GetTicks() + 16;
+//	if ((game = (t_game*)malloc(sizeof(t_game))) == NULL)
+//		exit(EXIT_FAILURE);
+	//ft_check_exchange();
+
+
+
+
+//	init(game, "Zappy");
+//	loadResources(game);
+
+	sock = ft_connect(argv[1], ft_atoi(argv[2]));
+	get_next_line(sock, &line);
+	ft_putendl(line);
+	ft_putendl_fd("GRAPHIC", sock);
+	while (get_next_line(sock, &line))
+	{
+		if (first == 0)
+		{
+			while (get_next_line(sock, &line))
+				ft_putendl(line);
+			first = 1;
+		}
+	}
+	sock = sock + 0;
+
+
+
+/*
 	while (42)
 	{
-		if (SDL_PollEvent(&event))
-		{
-			if(event.type == SDL_QUIT)
+		SDL_PollEvent(&event);
+		if (event.type == SDL_QUIT)
 				break ;
-		}
+
+
 		SDL_RenderCopy(game->renderer, game->texture, NULL, NULL);
 		SDL_RenderPresent(game->renderer);
 		//draw(game);
@@ -123,5 +179,6 @@ int					main(int argc, char **argv)
 		break ;
 	}
 	cleanup(game);
+*/
 	return (EXIT_SUCCESS);
 }

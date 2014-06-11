@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:37:50 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/11 17:43:00 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/11 18:18:39 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void			ft_dispatch_stone(t_game *g, int cli)
 	static int		q[6] = {0};
 
 	if (g.cls[cli].lvl == 1 || g.cls[cli].lvl == 2 || g.cls[cli].lvl == 3)
-		ft_disp_lvl_1_to_3(q, &g, g.cls[cli].lvl);
+		ft_disp_lvl_1_to_3(q, &g, g.cls[cli].lvl, cli);
 	if (g.cls[cli].lvl == 4 || g.cls[cli].lvl == 5)
-		ft_disp_lvl_4_to_5(q, &g, g.cls[cli].lvl);
+		ft_disp_lvl_4_to_5(q, &g, g.cls[cli].lvl, cli);
 	if (g.cls[cli].lvl == 6)
-		ft_disp_lvl_6(q, &g, g.cls[cli].lvl);
+		ft_disp_lvl_6(q, &g, g.cls[cli].lvl, cli);
 	if (g.cls[cli].lvl == 7)
-		ft_disp_lvl_7(q, &g, g.cls[cli].lvl);
+		ft_disp_lvl_7(q, &g, g.cls[cli].lvl, cli);
 	ft_dispatch(g, q);
 }

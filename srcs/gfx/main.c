@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/11 19:27:03 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/12 14:57:28 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,19 +124,19 @@ static int				ft_connect(char *addr, int port)
 int					main(int argc, char **argv)
 {
 //	unsigned int	frameLimit;
-//	t_game			*game;
+	t_game			*game;
 //	SDL_Event		event;
 	int				sock;
 	char			*line;
-	int				first;
+	int				nb_case;
 
+	nb_case = 0;
 	line = NULL;
 	argc = argc + 0;
 	argv = argv + 0;
-	first = 0;
 //	frameLimit = SDL_GetTicks() + 16;
-//	if ((game = (t_game*)malloc(sizeof(t_game))) == NULL)
-//		exit(EXIT_FAILURE);
+	if ((game = (t_game*)malloc(sizeof(t_game))) == NULL)
+		exit(EXIT_FAILURE);
 	//ft_check_exchange();
 
 
@@ -149,15 +149,14 @@ int					main(int argc, char **argv)
 	get_next_line(sock, &line);
 	ft_putendl(line);
 	ft_putendl_fd("GRAPHIC", sock);
-	while (get_next_line(sock, &line))
-	{
-		if (first == 0)
-		{
-			while (get_next_line(sock, &line))
-				ft_putendl(line);
-			first = 1;
-		}
-	}
+	get_next_line(sock, &line);
+	init_map(game, line);
+	get_next_line(sock, &line);
+	nb_case = game->width * game->height;
+	init_time(game, line);
+	while (get_next_line(sock, &line) && nb_case--)
+		init_case(game, line);
+	display(game);
 	sock = sock + 0;
 
 

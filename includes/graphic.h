@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/11 16:07:09 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/12 14:05:47 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 
 typedef struct		s_map
 {
+	int				food;
 	int				linemate;
 	int				deraumere;
 	int				sibur;
 	int				mendiane;
 	int				phiras;
 	int				thystame;
-	int				food;
 	int				nb_player;
 }					t_map;
 
@@ -51,8 +51,10 @@ typedef struct		s_game
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;
+	t_map			**map;
 	int				width;
 	int				height;
+	int				time;
 	t_action		*action;
 }					t_game;
 
@@ -61,5 +63,9 @@ void				init(t_game *game, char *title);
 void				cleanup(t_game *game);
 void				draw(t_game *game);
 void				delay(unsigned int frameLimit);
+void				init_map(t_game *game, char *line);
+void				init_time(t_game *game, char *line);
+void				init_case(t_game *game, char *line);
+void				display(t_game *game);
 
 #endif

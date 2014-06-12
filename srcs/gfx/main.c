@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 14:57:28 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/12 17:31:47 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,12 @@ int					main(int argc, char **argv)
 	init_time(game, line);
 	while (get_next_line(sock, &line) && nb_case--)
 		init_case(game, line);
-	display(game);
+	while (42)
+	{
+		display(game);
+		if (get_next_line(sock, &line) > 0)
+			ft_check_msg(game, line);
+	}
 	sock = sock + 0;
 
 

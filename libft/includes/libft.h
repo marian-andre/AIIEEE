@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/08 21:47:15 by jgranet           #+#    #+#             */
-/*   Updated: 2014/05/17 20:18:29 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 18:25:49 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_free(char *s1, char *s2, int opt);
 char				*ft_str_multi_join(int ac, ...);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 11:07:24 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 17:14:04 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void		ft_nb_connect(t_game *g, int i)
 			nb++;
 		j++;
 	}
-	dprintf(g->cls[i].cs, "%d\n", g->max_cli - nb);
+	dprintf(g->cls[i].cs, "%d\n", g->max_cli[g->cls[i].num_team] - nb);
 }

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 15:48:22 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 17:23:09 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ static t_game			ft_init_game(t_game game)
 	game.port = 4242;
 	game.width = 20;
 	game.height = 20;
-	game.max_cli = 2;
+	i = 0;
+	while (i < MAX_NB_TEAM)
+	{
+		game.max_cli[i] = 2;
+		i++;
+	}
 	game.time = 100;
 	return (game);
 }
@@ -88,7 +93,7 @@ static int				create_server(t_game game)
 	sin.sin_addr.s_addr = htonl(INADDR_ANY);
 	if (bind(game.sock, (const struct sockaddr*)&sin, sizeof(sin)) == -1)
 		ft_error("ERROR bind.");
-	if (listen(game.sock, game.max_cli) == -1)
+	if (listen(game.sock, MAX_CLI) == -1)
 		ft_error("ERROR listen.");
 	return (game.sock);
 }

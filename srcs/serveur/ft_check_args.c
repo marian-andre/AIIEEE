@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/02 15:17:49 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/06 10:16:16 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 17:12:21 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void		ft_check_team_name(char **argv, int j)
 		}
 		j++;
 	}
+	if ((j - 2) > MAX_NB_TEAM)
+		ft_error("ERROR maximum team : 10");
 }
 
 static int		ft_fill_team(char **argv, t_game *game, int j)
@@ -59,6 +61,18 @@ static int		ft_fill_team(char **argv, t_game *game, int j)
 	return (j - 2);
 }
 
+static void		ft_fill_max_cli(int nb, t_game *g)
+{
+	int		i;
+
+	i = 0;
+	while (i < MAX_NB_TEAM)
+	{
+		g->max_cli[i] = nb;
+		i++;
+	}
+}
+
 static int		ft_fill_game(char **argv, int i, t_game *game)
 {
 	if (ft_strcmp(argv[i], "-p") == 0 && ft_isdigit_str(argv[i + 1]) == 1)
@@ -68,7 +82,7 @@ static int		ft_fill_game(char **argv, int i, t_game *game)
 	else if (ft_strcmp(argv[i], "-y") == 0 && ft_isdigit_str(argv[i + 1]) == 1)
 		game->height = ft_atoi(argv[i + 1]);
 	else if (ft_strcmp(argv[i], "-c") == 0 && ft_isdigit_str(argv[i + 1]) == 1)
-		game->max_cli = ft_atoi(argv[i + 1]);
+		ft_fill_max_cli(ft_atoi(argv[i + 1]), game);
 	else if (ft_strcmp(argv[i], "-t") == 0 && ft_isdigit_str(argv[i + 1]) == 1)
 		game->time = ft_atoi(argv[i + 1]);
 	else if (ft_strcmp(argv[i], "-n") == 0 && argv[i + 1])

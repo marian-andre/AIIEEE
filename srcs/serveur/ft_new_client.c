@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 14:04:01 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 18:41:38 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,23 @@ static void		ft_check_rand(t_game *g, int num_cli)
 	g->map[y][x].nb_player++;
 }
 
+#include <stdio.h>
+
 static void		ft_send(t_game *g, t_fd *fd)
 {
 	char		*line;
+	char		*tmp;
 
-	g->cls[fd->nb_cli].lvl = 1;
-	g->cls[fd->nb_cli].graph = 0;
 	g->cls[fd->nb_cli].dir = (rand() % 4) + 1;
-	g->cls[fd->nb_cli].resource.linemate = 0;
-	g->cls[fd->nb_cli].resource.deraumere = 0;
-	g->cls[fd->nb_cli].resource.sibur = 0;
-	g->cls[fd->nb_cli].resource.mendiane = 0;
-	g->cls[fd->nb_cli].resource.phiras = 0;
-	g->cls[fd->nb_cli].resource.thystame = 0;
-	g->cls[fd->nb_cli].resource.food = 10;
 	ft_check_rand(g, fd->nb_cli);
 	ft_graph_pnw(g, fd->nb_cli);
 	line = ft_itoa(g->width);
-	line = ft_strjoin(line, " ");
-	line = ft_strjoin(line, ft_itoa(g->height));
-	ft_putendl_fd(ft_itoa(g->max_cli), g->cls[fd->nb_cli].cs);
+	line = ft_strjoin_free(line, " ", 1);
+	line = ft_strjoin_free(line, ft_itoa(g->height), 3);
+	tmp = ft_itoa(g->max_cli[g->cls[fd->nb_cli].num_team]);
+	ft_putendl_fd(tmp, g->cls[fd->nb_cli].cs);
 	ft_putendl_fd(line, g->cls[fd->nb_cli].cs);
+	free(tmp);
 	free(line);
 	if (g->cls[fd->nb_cli].cs > fd->max)
 		fd->max = g->cls[fd->nb_cli].cs;
@@ -120,6 +116,15 @@ void			ft_new_client(t_game *g, t_fd *fd, char *line)
 	{
 		cmd = ft_create_node(g, "life", fd->nb_cli);
 		ft_add_node(g, cmd);
+		g->cls[fd->nb_cli].lvl = 1;
+		g->cls[fd->nb_cli].graph = 0;
+		g->cls[fd->nb_cli].resource.linemate = 0;
+		g->cls[fd->nb_cli].resource.deraumere = 0;
+		g->cls[fd->nb_cli].resource.sibur = 0;
+		g->cls[fd->nb_cli].resource.mendiane = 0;
+		g->cls[fd->nb_cli].resource.phiras = 0;
+		g->cls[fd->nb_cli].resource.thystame = 0;
+		g->cls[fd->nb_cli].resource.food = 10;
 		ft_send(g, fd);
 	}
 }

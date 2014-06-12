@@ -6,7 +6,7 @@
 #    By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/08 21:47:03 by jgranet           #+#    #+#              #
-#    Updated: 2014/05/17 20:17:28 by jgranet          ###   ########.fr        #
+#    Updated: 2014/06/12 18:03:54 by jgranet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SOURCES = ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c\
 		  ft_strsub.c ft_strtrim.c ft_strdel2.c ft_pow.c ft_swap.c\
 		  ft_isdigit_char.c ft_isdigit_str.c ft_atoi_double.c ft_check_if_int.c\
 		  ft_str_multi_join.c ft_swap_double.c ft_realloc_scd_array.c\
-		  get_next_line.c
+		  get_next_line.c ft_strjoin_free.c
 
 HEADERS = includes/libft.h
 

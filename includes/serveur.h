@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/12 17:06:42 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 19:35:43 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ void			ft_broadcast(t_cmd *cmd, t_game *g);
 void			ft_spell(t_cmd *cmd, t_game *g);
 void			ft_fork(t_cmd *cmd, t_game *g);
 void			ft_nb_connect(t_game *g, int i);
+int				ft_count_nb_co(t_game *g, int i);
 void			ft_life(t_cmd *cmd, t_game *g, t_fd *fd);
 void			ft_birth(t_cmd *cmd, t_game *g);
 

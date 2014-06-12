@@ -6,18 +6,15 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/27 21:03:03 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 18:43:25 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 19:38:29 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 #include <stdlib.h>
 #include "libft.h"
 
 static char		*ft_free(char *res, char *s1, char *s2, int opt)
 {
-	printf("adresse s1= %p, s2 =%p\n", s1, s2);
 	if (opt == 1)
 		free(s1);
 	else if (opt == 2)

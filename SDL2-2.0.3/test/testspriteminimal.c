@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "SDL.h"
 
@@ -161,6 +162,7 @@ main(int argc, char *argv[])
                 done = 1;
             }
         }
+        usleep(5000);
         MoveSprites(renderer, sprite);
     }
 

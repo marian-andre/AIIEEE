@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "SDL_test.h"
 #include "SDL_test_common.h"
@@ -360,6 +361,7 @@ main(int argc, char *argv[])
         for (i = 0; i < state->num_windows; ++i) {
             if (state->windows[i] == NULL)
                 continue;
+            usleep(5000);
             MoveSprites(state->renderers[i], sprites[i]);
         }
     }

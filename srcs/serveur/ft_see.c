@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 16:08:18 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/12 19:43:58 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static void		get_true_pos(t_game *g, t_cmd *cmd, t_var *var)
 
 static void		ft_while(t_game *g, t_cmd *cmd, t_var var, char **msg)
 {
-	char	*del;
-
 	while (var.i <= var.lvl)
 	{
 		var.j = 0 - var.i;
@@ -59,11 +57,7 @@ static void		ft_while(t_game *g, t_cmd *cmd, t_var var, char **msg)
 			get_true_pos(g, cmd, &var);
 			*msg = check_case(g, var, *msg, 0);
 			if (var.j != var.i || var.i != var.lvl)
-			{
-				del = *msg;
-				*msg = ft_strjoin(*msg, ",");
-				free(del);
-			}
+				*msg = ft_strjoin_free(*msg, ",", 1);
 			var.j++;
 		}
 		var.i++;
@@ -83,15 +77,9 @@ void			ft_see(t_cmd *cmd, t_game *g)
 	del = msg;
 	msg = ft_strtrim(msg);
 	free(del);
-	del = msg;
-	msg = ft_strjoin("{", msg);
-	free(del);
-	del = msg;
-	msg = ft_strjoin(msg, ",");
-	free(del);
+	msg = ft_strjoin_free("{", msg, 2);
+	msg = ft_strjoin_free(msg, ",", 1);
 	ft_while(g, cmd, var, &msg);
-	del = msg;
-	msg = ft_strjoin(msg, "}");
-	free(del);
+	msg = ft_strjoin_free(msg, "}", 1);
 	ft_putendl_fd(msg, cmd->fd);
 }

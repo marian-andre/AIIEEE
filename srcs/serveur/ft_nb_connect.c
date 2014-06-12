@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/09 18:55:52 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/12 11:07:24 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		ft_nb_connect(t_game *g, int i)
 	int		nb;
 	int		j;
 
-	j = 0 ;
+	j = 0;
 	nb = 0;
 	while (g->cls[j].cs)
 	{

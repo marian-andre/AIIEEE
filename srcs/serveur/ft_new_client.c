@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 19:10:21 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/12 11:07:41 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void			ft_new_client(t_game *g, t_fd *fd, char *line)
 		g->cls[fd->nb_cli].cs = 0;
 	}
 	else
-	{	
+	{
 		cmd = ft_create_node(g, "life", fd->nb_cli);
 		ft_add_node(g, cmd);
 		ft_send(g, fd);

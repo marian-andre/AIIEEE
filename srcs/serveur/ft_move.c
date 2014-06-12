@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 14:44:03 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 11:05:55 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		ft_north_south(t_cmd *cmd, t_game *g)
 	}
 	else if (g->cls[cmd->num_cli].dir == SOUTH)
 	{
-		if (g->cls[cmd->num_cli].y == g->height -1)
+		if (g->cls[cmd->num_cli].y == g->height - 1)
 			g->cls[cmd->num_cli].y = 0;
 		else
 			g->cls[cmd->num_cli].y++;

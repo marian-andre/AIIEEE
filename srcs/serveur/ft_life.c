@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 16:47:14 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 11:06:19 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_death(t_cmd *cmd, t_game *g, t_fd *fd)
 	ft_putendl_fd("mort", cmd->fd);
 	close(g->cls[cmd->num_cli].cs);
 	ft_memmove(g->cls + cmd->num_cli, g->cls + cmd->num_cli + 1,
-			   (fd->nb_cli - cmd->num_cli - 1) * sizeof(t_client));
+				(fd->nb_cli - cmd->num_cli - 1) * sizeof(t_client));
 	fd->nb_cli--;
 }
 

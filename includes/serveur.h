@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/12 13:18:31 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 16:55:42 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <sys/time.h>
 
 # define MAX_CLI 42
+# define MAX_NB_TEAM 10
 # define NORTH 1
 # define EAST 2
 # define SOUTH 3
@@ -99,13 +100,13 @@ typedef struct	s_tab
 
 typedef struct	s_game
 {
-	t_tab		tab[12];
+	t_tab		tab[13];
 	t_cmd		*list;
 	int			sock;
 	int			port;
 	int			width;
 	int			height;
-	int			max_cli;
+	int			max_cli[MAX_NB_TEAM];
 	int			time;
 	char		**team;
 	t_egg		eggs[MAX_CLI];
@@ -161,6 +162,7 @@ void			ft_spell(t_cmd *cmd, t_game *g);
 void			ft_fork(t_cmd *cmd, t_game *g);
 void			ft_nb_connect(t_game *g, int i);
 void			ft_life(t_cmd *cmd, t_game *g, t_fd *fd);
+void			ft_birth(t_cmd *cmd, t_game *g);
 
 void			ft_graph_msz(t_game *g, int i);
 void			ft_graph_sgt(t_game *g, int i);
@@ -174,7 +176,7 @@ void			ft_graph_pex(t_game *g, int num_cli);
 void			ft_graph_pbc(t_game *g, int i, int num_cli, char *msg);
 void			ft_graph_pic(t_game *g, int i, int num_cli);
 void			ft_graph_pie(t_game *g, int i, int num_cli, int res);
-void			ft_graph_pfk(t_game *g, int i, int num_cli);
+void			ft_graph_pfk(t_game *g, int num_cli);
 void			ft_graph_pdr(t_game *g, int num_cli, int resource);
 void			ft_graph_pgt(t_game *g, int num_cli, int resource);
 void			ft_graph_pdi(t_game *g, int i, int num_cli);

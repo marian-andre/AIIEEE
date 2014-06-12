@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/11 18:19:25 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/12 13:18:31 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,12 +142,14 @@ void			ft_left(t_cmd *cmd, t_game *g);
 void			ft_see(t_cmd *cmd, t_game *g);
 void			ft_stock(t_cmd *cmd, t_game *g);
 void			ft_take(t_cmd *cmd, t_game *g);
+void			ft_send_take_graph(t_cmd *cmd, t_game *g, int resource);
 void			ft_take_linemate(t_cmd *cmd, t_game *g);
 void			ft_take_deraumere(t_cmd *cmd, t_game *g);
 void			ft_take_sibur(t_cmd *cmd, t_game *g);
 void			ft_take_mendiane(t_cmd *cmd, t_game *g);
 void			ft_take_phiras(t_cmd *cmd, t_game *g);
 void			ft_put(t_cmd *cmd, t_game *g);
+void			ft_send_put_graph(t_cmd *cmd, t_game *g, int resource);
 void			ft_put_linemate(t_cmd *cmd, t_game *g);
 void			ft_put_deraumere(t_cmd *cmd, t_game *g);
 void			ft_put_sibur(t_cmd *cmd, t_game *g);
@@ -167,14 +169,14 @@ void			ft_graph_tna(t_game *g, int i);
 void			ft_graph_pnw(t_game *g, int num_cli);
 void			ft_graph_plv(t_game *g, int i, int num_cli);
 void			ft_graph_ppo(t_game *g, int num_cli);
-void			ft_graph_pin(t_game *g, int i, int num_cli);
+void			ft_graph_pin(t_game *g, int num_cli);
 void			ft_graph_pex(t_game *g, int num_cli);
 void			ft_graph_pbc(t_game *g, int i, int num_cli, char *msg);
 void			ft_graph_pic(t_game *g, int i, int num_cli);
 void			ft_graph_pie(t_game *g, int i, int num_cli, int res);
 void			ft_graph_pfk(t_game *g, int i, int num_cli);
-void			ft_graph_pdr(t_game *g, int i, int num_cli, int resource);
-void			ft_graph_pgt(t_game *g, int i, int num_cli, int resource);
+void			ft_graph_pdr(t_game *g, int num_cli, int resource);
+void			ft_graph_pgt(t_game *g, int num_cli, int resource);
 void			ft_graph_pdi(t_game *g, int i, int num_cli);
 void			ft_graph_seg(t_game *g, int i, char *team);
 void			ft_graph_smg(t_game *g, int i, char *msg);

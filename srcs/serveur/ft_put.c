@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 14:30:02 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 13:19:01 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	ft_put_thystame(t_cmd *cmd, t_game *g)
 		g->cls[cmd->num_cli].resource.thystame--;
 		g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].thystame++;
 		ft_putendl_fd("ok", cmd->fd);
+		ft_send_put_graph(cmd, g, 6);
 	}
 	else
 		ft_putendl_fd("ko", cmd->fd);
@@ -32,9 +33,17 @@ static void	ft_put_food(t_cmd *cmd, t_game *g)
 		g->cls[cmd->num_cli].resource.food--;
 		g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].food++;
 		ft_putendl_fd("ok", cmd->fd);
+		ft_send_put_graph(cmd, g, 0);
 	}
 	else
 		ft_putendl_fd("ko", cmd->fd);
+}
+
+void		ft_send_put_graph(t_cmd *cmd, t_game *g, int resource)
+{
+	ft_graph_pdr(g, cmd->num_cli, resource);
+	ft_graph_pin(g, cmd->num_cli);
+	ft_graph_bct(g, 0, g->cls[cmd->num_cli].x, g->cls[cmd->num_cli].y);
 }
 
 void		ft_put(t_cmd *cmd, t_game *g)
@@ -60,7 +69,6 @@ void		ft_put(t_cmd *cmd, t_game *g)
 			ft_put_food(cmd, g);
 		else
 			ft_putendl_fd("ko", cmd->fd);
-		ft_graph_bct(g, 0, g->cls[cmd->num_cli].x, g->cls[cmd->num_cli].y);
 		ft_strdel2(&split);
 	}
 }

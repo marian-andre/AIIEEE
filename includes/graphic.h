@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 17:59:53 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/12 20:06:07 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct		s_client
 	int				num_team;
 	int				lvl;
 	int				dir;
+	int				invok;
 	t_map			resource;
 }					t_client;
 
@@ -116,6 +117,35 @@ void				ft_graph_pnw(t_game *game, char *line)
 ** ft_graph_ppo.c
 */
 
+void				ft_graph_ppo(t_game *game, char *line);
+
+/*
+** ft_graph_plv.c
+*/
+
+void				ft_graph_plv(t_game *game, char *line);
+
+/*
+** ft_graph_pin.c
+*/
+
+void				ft_graph_pin(t_game *game, char *line);
+
+/*
+** ft_graph_pex.c
+*/
+
+void				ft_graph_pex(t_game *game, char *line);
+
+/*
+** ft_graph_pic.c
+*/
+
+void				ft_graphic_pic(t_game *game, char *line);
+
+/*
+** ft_graph_ppo.c
+*/
 
 
 

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:50 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 17:59:55 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/12 20:02:05 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		init_client(t_game *game)
 		game->client[i].num_team = -1;
 		game->client[i].lvl = 0;
 		game->client[i].dir = 0;
+		game->client[i].invok = 0;
 		game->client[i].resource.food = 0;
 		game->client[i].resource.linemate = 0;
 		game->client[i].resource.deraumere = 0;

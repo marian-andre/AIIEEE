@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:55:36 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/11 16:13:12 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 15:56:28 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_time		ft_get_cd(t_game *g, char *line)
 	res.tv_sec = 0;
 	res.tv_usec = 0;
 	i = 0;
-	while (i < 12)
+	while (i < 13)
 	{
 		if (ft_strncmp(line, g->tab[i].line, ft_strlen(g->tab[i].line)) == 0)
 		{

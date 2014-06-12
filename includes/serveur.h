@@ -116,6 +116,14 @@ typedef struct	s_game
 
 void			test(t_map **map, t_game game);
 
+void			linemate_deraumere(t_game *g, char **msg, t_var var);
+void			sibur_mendiane(t_game *g, char **msg, t_var var);
+void			phiras_thystame(t_game *g, char **msg, t_var var);
+void			nourriture_joueur(t_game *g, char **msg, t_var var, int k);
+void			ft_north(t_game *g, t_var *var);
+void			ft_south(t_game *g, t_var *var);
+void			ft_east(t_game *g, t_var *var);
+void			ft_west(t_game *g, t_var *var);
 void			ft_add_node(t_game *g, t_cmd *cmd);
 void			ft_del_node(t_game *g, t_cmd *cmd);
 t_cmd			*ft_create_node(t_game *g, char *line, int i);

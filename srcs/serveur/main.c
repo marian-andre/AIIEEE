@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/09 18:59:30 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/12 15:48:22 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,18 @@
 
 static t_game			ft_init_game(t_game game)
 {
+	int		i;
+
+	i = 0;
+	while (i < MAX_CLI)
+	{
+		ft_bzero(&game.eggs[i], sizeof(t_egg));
+		ft_bzero(&game.cls[i], sizeof(t_client));
+		i++;
+	}
 	ft_init_tab(game.tab);
+	game.tab[12].line = ft_strdup("birth");
+	game.tab[12].t = 600;
 	game.sock = 0;
 	game.port = 4242;
 	game.width = 20;

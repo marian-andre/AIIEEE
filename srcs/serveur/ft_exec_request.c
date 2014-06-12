@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:01:35 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/11 15:26:08 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 16:02:05 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void		ft_check_cmd(t_cmd *cmd, t_game *g, t_fd *fd)
 		ft_fork(cmd, g);
 	else if (ft_strcmp(cmd->cmd, "life") == 0)
 		ft_life(cmd, g, fd);
+	else if (ft_strcmp(cmd->cmd, "birth") == 0)
+		ft_birth(cmd, g);
 }
 
 void			ft_exec_request(t_game *g, t_fd *fd)

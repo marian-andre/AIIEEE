@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 11:07:41 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/12 14:04:01 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static void		ft_send(t_game *g, t_fd *fd)
 	g->cls[fd->nb_cli].resource.food = 10;
 	ft_check_rand(g, fd->nb_cli);
 	ft_graph_pnw(g, fd->nb_cli);
-	line = ft_itoa(g->cls[fd->nb_cli].x);
+	line = ft_itoa(g->width);
 	line = ft_strjoin(line, " ");
-	line = ft_strjoin(line, ft_itoa(g->cls[fd->nb_cli].y));
+	line = ft_strjoin(line, ft_itoa(g->height));
 	ft_putendl_fd(ft_itoa(g->max_cli), g->cls[fd->nb_cli].cs);
 	ft_putendl_fd(line, g->cls[fd->nb_cli].cs);
 	free(line);
@@ -84,11 +84,20 @@ static void		ft_send(t_game *g, t_fd *fd)
 
 static void		ft_init_graph(t_game *g, t_fd *fd)
 {
+	int		i;
+
+	i = 0;
 	g->cls[fd->nb_cli].graph = 1;
 	ft_graph_msz(g, fd->nb_cli);
 	ft_graph_sgt(g, fd->nb_cli);
 	ft_graph_mct(g, fd->nb_cli);
 	ft_graph_tna(g, fd->nb_cli);
+	while (g->cls[i].cs)
+	{
+		if (g->cls[i].graph == 0)
+			ft_graph_pnw(g, i);
+		i++;
+	}
 	if (g->cls[fd->nb_cli].cs > fd->max)
 		fd->max = g->cls[fd->nb_cli].cs;
 	FD_SET(g->cls[fd->nb_cli].cs, &fd->rdfs);

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 15:55:30 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 11:17:39 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 16:13:26 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	ft_recep_message(int i, t_game *g)
 		{
 			cmd = ft_create_node(g, line, i);
 			ft_add_node(g, cmd);
+			if (ft_strcmp(line, "incantation") == 0)
+				ft_putendl_fd("elevation en cours", g->cls[i].cs);
 		}
 		free(line);
 	}

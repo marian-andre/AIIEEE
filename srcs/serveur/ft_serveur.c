@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 11:16:39 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 16:48:10 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void			ft_serveur(t_game *game)
 			ft_new_connection(game, &fd);
 		else
 			ft_save_request(game, &fd);
+		ft_up_food(game);
 	}
 }

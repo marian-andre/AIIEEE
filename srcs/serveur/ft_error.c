@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:09:25 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/03 16:23:48 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 17:22:50 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_usage(char *str)
 {
 	ft_putstr("Usage: ");
 	ft_putstr(str);
-	ft_putstr(" -p <port> -x <width> -y <height>");
+	ft_putstr(" -p <port> -x <width >= 10> -y <height >= 10>");
 	ft_putendl(" -n <team> [<team>] [<team>] ... -c <nb> -t <t>");
 	ft_putendl("	-p numero de port (par defaut : 4242)");
 	ft_putendl("	-x largeur du Monde (par defaut : 20)");

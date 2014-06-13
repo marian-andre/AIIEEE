@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 20:23:35 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/13 20:25:43 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static int		ft_get_k(t_game *g, int num_cli, int i)
 			return (ft_dir(g, i, SOUTH));
 		else
 			return (ft_dir(g, i, NORTH));
-	}
 	}
 	else
 	{

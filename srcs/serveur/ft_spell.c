@@ -6,14 +6,14 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 11:25:20 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/13 12:17:19 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
 #include "libft.h"
 
-static int	ft_check_co_wizards(t_cmd *cmd, t_game *g)
+static int	ft_co_wizards(t_cmd *cmd, t_game *g, int lvl_up)
 {
 	int		nb;
 	int		i;
@@ -25,17 +25,45 @@ static int	ft_check_co_wizards(t_cmd *cmd, t_game *g)
 		if (g->cls[i].x == g->cls[cmd->num_cli].x
 			&& g->cls[i].y == g->cls[cmd->num_cli].y
 			&& g->cls[i].lvl == g->cls[cmd->num_cli].lvl)
+		{
 			nb++;
+			if (lvl_up == 1)
+				g->cls[cmd->num_cli].lvl++;
+		}
 		i++;
 	}
+	if (lvl_up == 1)
+		g->cls[i].lvl++;
 	return (nb);
+}
+
+static void	ft_end_of_spell(t_game *g, t_cmd *cmd, int nb)
+{
+	int		i;
+
+	i = 0;
+	if (nb != -1)
+	{
+		ft_co_wizards(cmd, g, 1);
+		ft_graph_pie(g, cmd->num_cli, g->cls[cmd->num_cli].lvl);
+		while (g->cls[i].cs)
+		{
+			if (g->cls[i].x == g->cls[cmd->num_cli].x
+				&& g->cls[i].y == g->cls[cmd->num_cli].y
+				&& g->cls[i].lvl == g->cls[cmd->num_cli].lvl)
+				ft_graph_plv(g, i);
+			i++;
+		}
+		ft_dispatch_stone(g, cmd->num_cli);
+	}
 }
 
 void		ft_spell(t_cmd *cmd, t_game *g)
 {
 	int		nb;
 
-	nb = ft_check_co_wizards(cmd, g);
+	nb = ft_co_wizards(cmd, g, 0);
+	ft_graph_pic(g, cmd->num_cli);
 	if (g->cls[cmd->num_cli].lvl == 1)
 		ft_putendl_fd("ok", cmd->fd);
 	if (g->cls[cmd->num_cli].lvl == 2 && nb >= 2)
@@ -55,6 +83,5 @@ void		ft_spell(t_cmd *cmd, t_game *g)
 		ft_putendl_fd("ko", cmd->fd);
 		nb = -1;
 	}
-	if (nb != -1)
-		ft_dispatch_stone(g, cmd->num_cli);
+	ft_end_of_spell(g, cmd, nb);
 }

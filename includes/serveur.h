@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/13 12:09:29 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/13 16:35:35 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void			ft_disp_lvl_7(int *q, t_game *game, int num_cli);
 void			ft_up_food(t_game *game);
 void			ft_serveur(t_game *game);
 void			ft_new_client(t_game *g, t_fd *fd, char *line);
+void			ft_init_graph(t_game *g, t_fd *fd);
 void			ft_usage(char *str);
 void			ft_error(char *msg);
 void			ft_exec_request(t_game *g);

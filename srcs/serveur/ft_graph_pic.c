@@ -6,18 +6,15 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 14:04:31 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/06 14:15:03 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 11:38:09 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "serveur.h"
 #include "libft.h"
 
-void		ft_graph_pic(t_game *g, int i, int num_cli)
+static void	ft_send_pic(t_game *g, int i, int num_cli)
 {
-	int		j;
-
-	j = 0;
 	ft_putstr_fd("pic ", g->cls[i].cs);
 	ft_putnbr_fd(g->cls[num_cli].x, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);
@@ -26,15 +23,32 @@ void		ft_graph_pic(t_game *g, int i, int num_cli)
 	ft_putnbr_fd(g->cls[num_cli].lvl, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);
 	ft_putnbr_fd(num_cli, g->cls[i].cs);
-	while (g->cls[j].cs)
+}
+
+void		ft_graph_pic(t_game *g, int num_cli)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (g->cls[i].cs)
 	{
-		if (j != num_cli && g->cls[j].x == g->cls[num_cli].x
-			&& g->cls[j].y == g->cls[num_cli].y)
+		if (g->cls[i].graph == 1)
 		{
-			ft_putchar_fd(' ', g->cls[i].cs);
-			ft_putnbr_fd(j, g->cls[i].cs);
+			j = 0;
+			ft_send_pic(g, i, num_cli);
+			while (g->cls[j].cs)
+			{
+				if (j != num_cli && g->cls[j].x == g->cls[num_cli].x
+					&& g->cls[j].y == g->cls[num_cli].y)
+				{
+					ft_putchar_fd(' ', g->cls[i].cs);
+					ft_putnbr_fd(j, g->cls[i].cs);
+				}
+				j++;
+			}
+			ft_putchar_fd('\n', g->cls[i].cs);
 		}
-		j++;
+		i++;
 	}
-	ft_putchar_fd('\n', g->cls[i].cs);
 }

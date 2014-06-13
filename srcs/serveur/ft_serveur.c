@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 16:48:10 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/13 19:50:51 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@
 
 static void		ft_new_connection(t_game *g, t_fd *fd)
 {
+	int					cs;
 	char				*line;
 	unsigned int		cslen;
 	struct sockaddr_in	*csin;
 
 	line = NULL;
-	g->cls[fd->nb_cli].cs = accept(g->sock, (struct sockaddr*)&csin, &cslen);
-	if (g->cls[fd->nb_cli].cs < 0)
+	cs = accept(g->sock, (struct sockaddr*)&csin, &cslen);
+	if (cs < 0)
 		ft_error("ERROR socket.");
-	ft_putendl_fd("BIENVENUE", g->cls[fd->nb_cli].cs);
-	get_next_line(g->cls[fd->nb_cli].cs, &line);
-	ft_new_client(g, fd, line);
+	ft_putendl_fd("BIENVENUE", cs);
+	get_next_line(cs, &line);
+	ft_new_client(g, fd, line, cs);
 	free(line);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 19:30:07 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 20:16:23 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void		ft_fork(t_cmd *cmd, t_game *g)
 	ft_putendl_fd("ok", cmd->fd);
 	ft_add_node(g, ft_create_node(g, "birth", cmd->num_cli));
 	ft_graph_pfk(g, cmd->num_cli);
-	g->max_cli[g->cls[cmd->num_cli].num_team]++;
 }

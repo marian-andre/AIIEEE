@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 20:18:03 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 11:14:59 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "serveur.h"
 #include "libft.h"
 
-static void	ft_death(t_cmd *cmd, t_game *g, t_fd *fd)
+static void	ft_death(t_cmd *cmd, t_game *g)
 {
 	g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].nb_player--;
 	ft_putstr("Client ");
@@ -22,14 +22,11 @@ static void	ft_death(t_cmd *cmd, t_game *g, t_fd *fd)
 	ft_putendl(" died.");
 	ft_putendl_fd("mort", cmd->fd);
 	close(g->cls[cmd->num_cli].cs);
-//	ft_memmove(g->cls + cmd->num_cli, g->cls + cmd->num_cli + 1,
-//				(fd->nb_cli - cmd->num_cli - 1) * sizeof(t_client));
-	g->cls[cmd->num_cli].cs = -1;
-	g->cls[cmd->num_cli].num_team = -1;
-	fd->nb_cli--;
+	g->cls[cmd->num_cli].cs = 50;
+	g->cls[cmd->num_cli].num_team = 50;
 }
 
-void		ft_life(t_cmd *cmd, t_game *g, t_fd *fd)
+void		ft_life(t_cmd *cmd, t_game *g)
 {
 	t_cmd	*tmp;
 
@@ -42,7 +39,7 @@ void		ft_life(t_cmd *cmd, t_game *g, t_fd *fd)
 		ft_putchar('\n');
 		g->cls[cmd->num_cli].resource.food--;
 		if (g->cls[cmd->num_cli].resource.food == 0)
-			ft_death(cmd, g, fd);
+			ft_death(cmd, g);
 		else
 		{
 			tmp = ft_create_node(g, "life", cmd->num_cli);

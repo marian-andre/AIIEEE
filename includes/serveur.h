@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/12 19:35:43 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 11:16:47 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void			ft_serveur(t_game *game);
 void			ft_new_client(t_game *g, t_fd *fd, char *line);
 void			ft_usage(char *str);
 void			ft_error(char *msg);
-void			ft_exec_request(t_game *g, t_fd *fd);
+void			ft_exec_request(t_game *g);
 void			ft_save_request(t_game *g, t_fd *fd);
 void			ft_move(t_cmd *cmd, t_game *g);
 void			ft_right(t_cmd *cmd, t_game *g);
@@ -170,7 +170,7 @@ void			ft_spell(t_cmd *cmd, t_game *g);
 void			ft_fork(t_cmd *cmd, t_game *g);
 void			ft_nb_connect(t_game *g, int i);
 int				ft_count_nb_co(t_game *g, int i);
-void			ft_life(t_cmd *cmd, t_game *g, t_fd *fd);
+void			ft_life(t_cmd *cmd, t_game *g);
 void			ft_birth(t_cmd *cmd, t_game *g);
 
 void			ft_graph_msz(t_game *g, int i);

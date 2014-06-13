@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:01:35 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/12 16:02:05 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 11:16:34 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "serveur.h"
 #include "libft.h"
 
-static void		ft_check_cmd(t_cmd *cmd, t_game *g, t_fd *fd)
+static void		ft_check_cmd(t_cmd *cmd, t_game *g)
 {
 	if (ft_strcmp(cmd->cmd, "avance") == 0)
 		ft_move(cmd, g);
@@ -39,12 +39,12 @@ static void		ft_check_cmd(t_cmd *cmd, t_game *g, t_fd *fd)
 	else if (ft_strcmp(cmd->cmd, "fork") == 0)
 		ft_fork(cmd, g);
 	else if (ft_strcmp(cmd->cmd, "life") == 0)
-		ft_life(cmd, g, fd);
+		ft_life(cmd, g);
 	else if (ft_strcmp(cmd->cmd, "birth") == 0)
 		ft_birth(cmd, g);
 }
 
-void			ft_exec_request(t_game *g, t_fd *fd)
+void			ft_exec_request(t_game *g)
 {
 	t_cmd		*tmp;
 	t_time		now;
@@ -55,7 +55,7 @@ void			ft_exec_request(t_game *g, t_fd *fd)
 		gettimeofday(&now, NULL);
 		if (timevaldiff(now, tmp->time) <= 0)
 		{
-			ft_check_cmd(tmp, g, fd);
+			ft_check_cmd(tmp, g);
 			ft_del_node(g, tmp);
 		}
 		tmp = tmp->next;

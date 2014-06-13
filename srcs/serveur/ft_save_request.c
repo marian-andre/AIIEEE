@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 15:55:30 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 20:14:15 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 11:17:39 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_print_command(char *line, int i)
 	ft_putendl(".");
 }
 
-static void	ft_recep_message(int i, t_game *g, t_fd *fd)
+static void	ft_recep_message(int i, t_game *g)
 {
 	char	*line;
 	t_cmd	*cmd;
@@ -46,11 +46,8 @@ static void	ft_recep_message(int i, t_game *g, t_fd *fd)
 	else
 	{
 		close(g->cls[i].cs);
-//		ft_memmove(g->cls + i, g->cls + i + 1,
-//					(fd->nb_cli - i - 1) * sizeof(t_client));
-		g->cls[i].cs = -1;
-		g->cls[i].num_team = -1;
-		fd->nb_cli--;
+		g->cls[i].cs = 50;
+		g->cls[i].num_team = 50;
 	}
 }
 
@@ -63,7 +60,7 @@ void		ft_save_request(t_game *g, t_fd *fd)
 	{
 		if (FD_ISSET(g->cls[i].cs, &fd->rdfs))
 		{
-			ft_recep_message(i, g, fd);
+			ft_recep_message(i, g);
 			break ;
 		}
 		i++;

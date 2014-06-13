@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 14:04:31 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 11:38:09 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 12:06:36 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void		ft_graph_pic(t_game *g, int num_cli)
 			while (g->cls[j].cs)
 			{
 				if (j != num_cli && g->cls[j].x == g->cls[num_cli].x
-					&& g->cls[j].y == g->cls[num_cli].y)
+					&& g->cls[j].y == g->cls[num_cli].y
+					&& g->cls[i].lvl == g->cls[num_cli].lvl)
 				{
 					ft_putchar_fd(' ', g->cls[i].cs);
 					ft_putnbr_fd(j, g->cls[i].cs);

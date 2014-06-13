@@ -6,13 +6,13 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:08:40 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/13 12:15:16 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 12:16:33 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-
-
+#include "graphic.h"
+/*
 void		ft_check_msg(t_game *game, char *line)
 {
 	if (ft_strncmp("bct", line, 3) == 0)
@@ -62,3 +62,4 @@ void		ft_check_msg(t_game *game, char *line)
 	if (ft_strncmp("sbp", line, 3) == 0)
 		ft_graph_sbp(game, line);
 }
+*/

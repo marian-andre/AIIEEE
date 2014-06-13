@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 14:22:29 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 11:43:57 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/13 12:09:14 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		ft_graph_pie(t_game *g, int num_cli, int res)
 {
 	int		i;
 
+	i = 0;
 	while (g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 1)

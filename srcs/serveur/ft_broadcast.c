@@ -6,16 +6,20 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 18:44:22 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/13 19:35:02 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "serveur.h"
 #include "libft.h"
 
 static int		ft_get_k(t_game *g, int num_cli, int i)
 {
-	
+	(void)g;
+	(void)num_cli;
+	(void)i;
+	return (0);
 }
 
 void			ft_broadcast(t_cmd *cmd, t_game *g)

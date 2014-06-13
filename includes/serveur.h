@@ -17,6 +17,7 @@
 
 # define MAX_CLI 42
 # define MAX_NB_TEAM 10
+# define MORT 1000
 # define NORTH 1
 # define EAST 2
 # define SOUTH 3

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 11:14:59 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 18:08:57 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	ft_death(t_cmd *cmd, t_game *g)
 	ft_putendl(" died.");
 	ft_putendl_fd("mort", cmd->fd);
 	close(g->cls[cmd->num_cli].cs);
-	g->cls[cmd->num_cli].cs = 50;
-	g->cls[cmd->num_cli].num_team = 50;
+	g->cls[cmd->num_cli].cs = MORT;
+	g->cls[cmd->num_cli].num_team = MORT;
 }
 
 void		ft_life(t_cmd *cmd, t_game *g)

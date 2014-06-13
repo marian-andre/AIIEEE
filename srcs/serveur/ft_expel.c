@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 16:32:30 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/13 18:07:36 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		ft_expel(t_cmd *cmd, t_game *g)
 	t_var	var;
 	t_cmd	avance;
 
-	if (g->cls[cmd->num_cli].cs == 50)
+	if (g->cls[cmd->num_cli].cs == MORT)
 		return ;
 	avance.fd = open("/dev/null", O_WRONLY);
 	var.x = g->cls[cmd->num_cli].x;

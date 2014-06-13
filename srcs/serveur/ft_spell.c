@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 12:17:19 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/13 16:20:21 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ static int	ft_co_wizards(t_cmd *cmd, t_game *g, int lvl_up)
 		{
 			nb++;
 			if (lvl_up == 1)
-				g->cls[cmd->num_cli].lvl++;
+				g->cls[i].lvl++;
 		}
 		i++;
 	}
 	if (lvl_up == 1)
-		g->cls[i].lvl++;
+	{
+		g->cls[cmd->num_cli].lvl++;
+		ft_putnbr_fd(g->cls[cmd->num_cli].lvl, cmd->fd);
+		ft_putchar_fd('\n', cmd->fd);
+	}
 	return (nb);
 }
 
@@ -65,23 +69,22 @@ void		ft_spell(t_cmd *cmd, t_game *g)
 	nb = ft_co_wizards(cmd, g, 0);
 	ft_graph_pic(g, cmd->num_cli);
 	if (g->cls[cmd->num_cli].lvl == 1)
-		ft_putendl_fd("ok", cmd->fd);
+		ft_end_of_spell(g, cmd, nb);
 	if (g->cls[cmd->num_cli].lvl == 2 && nb >= 2)
-		ft_putendl_fd("ok", cmd->fd);
+		ft_end_of_spell(g, cmd, nb);
 	if (g->cls[cmd->num_cli].lvl == 3 && nb >= 2)
-		ft_putendl_fd("ok", cmd->fd);
+		ft_end_of_spell(g, cmd, nb);
 	if (g->cls[cmd->num_cli].lvl == 4 && nb >= 4)
-		ft_putendl_fd("ok", cmd->fd);
+		ft_end_of_spell(g, cmd, nb);
 	if (g->cls[cmd->num_cli].lvl == 5 && nb >= 4)
-		ft_putendl_fd("ok", cmd->fd);
+		ft_end_of_spell(g, cmd, nb);
 	if (g->cls[cmd->num_cli].lvl == 6 && nb >= 6)
-		ft_putendl_fd("ok", cmd->fd);
+		ft_end_of_spell(g, cmd, nb);
 	if (g->cls[cmd->num_cli].lvl == 7 && nb >= 6)
-		ft_putendl_fd("ok", cmd->fd);
+		ft_end_of_spell(g, cmd, nb);
 	else
 	{
-		ft_putendl_fd("ko", cmd->fd);
-		nb = -1;
+		ft_putnbr_fd(g->cls[cmd->num_cli].lvl, cmd->fd);
+		ft_putchar_fd('\n', cmd->fd);
 	}
-	ft_end_of_spell(g, cmd, nb);
 }

@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/13 16:35:35 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/13 18:31:43 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ void			ft_graph_plv(t_game *g, int num_cli);
 void			ft_graph_ppo(t_game *g, int num_cli);
 void			ft_graph_pin(t_game *g, int num_cli);
 void			ft_graph_pex(t_game *g, int num_cli);
-void			ft_graph_pbc(t_game *g, int i, int num_cli, char *msg);
+void			ft_graph_pbc(t_game *g, int num_cli, char *msg);
 void			ft_graph_pic(t_game *g, int num_cli);
 void			ft_graph_pie(t_game *g, int num_cli, int res);
 void			ft_graph_pfk(t_game *g, int num_cli);

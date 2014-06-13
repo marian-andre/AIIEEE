@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 19:36:28 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/13 19:37:15 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void			ft_broadcast(t_cmd *cmd, t_game *g)
 			ft_putnbr_fd(k, g->cls[i].cs);
 			ft_putstr_fd(",", g->cls[i].cs);
 			ft_putendl_fd(&cmd->cmd[10], g->cls[i].cs);
-			free(del);
 		}
 		i++;
 	}

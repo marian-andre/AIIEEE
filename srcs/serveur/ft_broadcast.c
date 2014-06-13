@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 20:25:43 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/13 20:32:15 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static int		ft_get_k(t_game *g, int num_cli, int i)
 {
 	t_var	var;
 
+	if (g->cls[num_cli].x == g->cls[i].x && g->cls[num_cli].y == g->cls[i].y)
+		return (0);
 	var.new_x = g->cls[num_cli].x - g->cls[i].x;
 	var.new_y = g->cls[num_cli].y - g->cls[i].y;
 	if (abs(var.new_x) < abs(var.new_y))

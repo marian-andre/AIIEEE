@@ -6,38 +6,39 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/11 16:58:07 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/13 13:22:08 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <unistd.h>
 #include "serveur.h"
 #include "libft.h"
 
 void		ft_expel(t_cmd *cmd, t_game *g)
 {
-	int		i;
-	int		x;
-	int		y;
+	t_var	var;
 	t_cmd	avance;
 
+	if (g->cls[cmd->num_cli].cs == 50)
+		return ;
 	avance.fd = open("/dev/null", O_WRONLY);
-	x = g->cls[cmd->num_cli].x;
-	y = g->cls[cmd->num_cli].y;
-	if (g->map[y][x].nb_player == 1)
-		ft_putendl_fd("ko", cmd->fd);
+	var.x = g->cls[cmd->num_cli].x;
+	var.y = g->cls[cmd->num_cli].y;
 	else
 	{
-		i = -1;
-		while (++i < MAX_CLI && g->cls[i].cs)
+		var.i = -1;
+		while (++var.i < MAX_CLI && g->cls[var.i].cs)
 		{
-			if (i != cmd->num_cli && g->cls[i].x == x && g->cls[i].y == y)
+			if (var.i != cmd->num_cli && g->cls[var.i].x == var.x
+				&& g->cls[var.i].y == var.y)
 			{
-				avance.num_cli = i;
+				avance.num_cli = var.i;
 				ft_move(&avance, g);
 			}
 		}
 		ft_putendl_fd("ok", cmd->fd);
 	}
 	ft_graph_pex(g, cmd->num_cli);
+	close(avance.fd);
 }

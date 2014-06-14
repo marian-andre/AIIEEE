@@ -6,10 +6,11 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:13:29 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/14 16:26:33 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/14 16:33:23 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include "serveur.h"
 
@@ -49,5 +50,5 @@ void		ft_quit(void)
 	while (game->team[++i])
 		free(game->team[i]);
 	free(game->team);
-	close(game.sock);
+	close(game->sock);
 }

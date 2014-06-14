@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:14 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 17:22:09 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 18:44:53 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,8 @@ char			**ft_realloc(t_game *game, char **tab, char *team)
 	while (tab[++i])
 		new[i] = ft_strdup(tab[i]);
 	new[i++] = ft_strdup(team);
-	new[i] = '\0';
+	new[i] = NULL;
 	return (new);
-}
-
-int				ft_check_in_team(char **team, char *name)
-{
-	int			i;
-
-	i = -1;
-	while (team[++i])
-	{
-		if (ft_strcmp(team[i], name) == 0)
-			return (1);
-	}
-	return (0);
 }
 
 void			ft_graph_tna(t_game *game, char *line)
@@ -61,13 +48,12 @@ void			ft_graph_tna(t_game *game, char *line)
 	if (first == 1)
 	{
 		game->team = (char**)malloc(sizeof(char*));
-		game->team[0] = ft_memalloc(1);
+		game->team[0] = NULL;
 		first = 0;
 	}
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("parse error -> tab in ft_graph_tna");
-	if (!ft_check_in_team(game->team, tab[1]))
-		game->team = ft_realloc(game, game->team, tab[1]);
+	game->team = ft_realloc(game, game->team, tab[1]);
 	ft_putendl("pna end");
 	ft_strdel2(&tab);
 }

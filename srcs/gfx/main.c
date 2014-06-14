@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 17:17:28 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 18:44:28 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ static int				ft_connect(char *addr, int port)
 
 int					main(int argc, char **argv)
 {
-	unsigned int	frameLimit;
+//	unsigned int	frameLimit;
 	t_game			*game;
-	SDL_Event		event;
+//	SDL_Event		event;
 	int				sock;
 	char			*line;
 	int				nb_case;
@@ -134,7 +134,7 @@ int					main(int argc, char **argv)
 	line = NULL;
 	argc = argc + 0;
 	argv = argv + 0;
-	frameLimit = SDL_GetTicks() + 16;
+//	frameLimit = SDL_GetTicks() + 16;
 	if ((game = (t_game*)malloc(sizeof(t_game))) == NULL)
 		exit(EXIT_FAILURE);
 	//ft_check_exchange();
@@ -142,8 +142,8 @@ int					main(int argc, char **argv)
 
 
 
-	init(game, "Zappy");
-	loadResources(game);
+//	init(game, "Zappy");
+//	loadResources(game);
 
 	sock = ft_connect(argv[1], ft_atoi(argv[2]));
 	get_next_line(sock, &line);
@@ -154,7 +154,7 @@ int					main(int argc, char **argv)
 	get_next_line(sock, &line);
 	nb_case = game->width * game->height;
 	init_time(game, line);
-	while (get_next_line(sock, &line) && nb_case--)
+	while (nb_case-- && get_next_line(sock, &line))
 		init_case(game, line);
 	display(game);
 	while (42)
@@ -167,7 +167,7 @@ int					main(int argc, char **argv)
 
 
 
-
+/*
 	while (42)
 	{
 		SDL_PollEvent(&event);
@@ -184,7 +184,7 @@ int					main(int argc, char **argv)
 		break ;
 	}
 	cleanup(game);
-
+*/
 	return (EXIT_SUCCESS);
 }
 

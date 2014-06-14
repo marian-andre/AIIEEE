@@ -3,92 +3,110 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: plieb <plieb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/02 14:52:23 by jgranet           #+#    #+#             */
-/*   Updated: 2014/05/17 20:16:30 by jgranet          ###   ########.fr       */
+/*   Created: 2014/01/08 21:46:56 by plieb             #+#    #+#             */
+/*   Updated: 2014/06/14 17:04:21 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/uio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "libft.h"
 
-static size_t	get_len(char *str)
+static char		*set_rest(char *str)
 {
-	int				i;
-	int				j;
-
-	i = 0;
-	j = 0;
-	while (str[i] != '\0' && j == 0)
-	{
-		if (str[i] != '\n')
-			i++;
-		else
-			j = 1;
-	}
-	return (i);
+	while (*str != '\n' && *str != '\0')
+		str++;
+	if (*str == '\n' && str[1] != '\0')
+		return (ft_strdup(++str));
+	else
+		return (NULL);
 }
 
-static int		compare(char **tmp, char ***line)
+static void		add_str(char **line, char *str)
 {
-	if (*tmp)
+	size_t	i;
+	size_t	len;
+	char	*tmp;
+
+	i = 0;
+	if (*line)
 	{
-		*tmp = ft_strsub(*tmp, (get_len(*tmp) + 1),
-						((ft_strlen(*tmp) - get_len(*tmp) + 1)));
-		if (get_len(*tmp) != ft_strlen(*tmp))
-		{
-			**line = ft_strjoin(**line, (ft_strsub(*tmp, 0, get_len(*tmp))));
-			ft_strdel(tmp);
-			return (1);
-		}
-		else
-			**line = ft_strjoin(**line, *tmp);
+		tmp = ft_strdup(*line);
+		free(*line);
+		len = ft_strlen(tmp) + ft_strlen(str);
+		*line = (char *)malloc(sizeof(char) * (len + 1));
+		ft_strcpy(*line, tmp);
+		free(tmp);
+		while ((*line)[i])
+			i++;
+	}
+	else
+	{
+		len = ft_strlen(str);
+		*line = (char *)malloc(sizeof(char) * (len + 1));
+	}
+	while (*str != '\0' && *str != '\n')
+		(*line)[i++] = *str++;
+	(*line)[i] = '\0';
+}
+
+static int		init_with_rest(char **line, char **rest)
+{
+	char	*del;
+
+	if (*rest && ft_strchr(*rest, '\n'))
+	{
+		add_str(line, *rest);
+		del = *rest;
+		*rest = set_rest(del);
+		free(del);
+		return (1);
+	}
+	else if (*rest && !ft_strchr(*rest, '\n'))
+	{
+		*line = ft_strdup(*rest);
+		free(*rest);
+		*rest = NULL;
 	}
 	return (0);
 }
 
-static int		return_value(int ret)
+static int		start(char **line, char **rest, int const fd)
 {
-	static int		i = 0;
-
-	if (ret == 0)
-	{
-		if (i == 0)
-		{
-			i++;
-			return (1);
-		}
-	}
-	else if (ret == -1)
+	*line = NULL;
+	if (BUFF_SIZE <= 0 || fd < 0)
 		return (-1);
+	if (init_with_rest(line, rest))
+		return (1);
 	return (0);
 }
 
 int				get_next_line(int const fd, char **line)
 {
-	char			buf[BUF_SIZE + 1];
-	int				ret;
-	static char		*tmp;
+	int				check;
+	size_t			ret;
+	char			*str;
+	static char		*rest = NULL;
 
-	*line = NULL;
-	if (compare(&tmp, &line) == 1)
-		return (1);
-	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
+	check = start(line, &rest, fd);
+	if (check != 0)
+		return (check);
+	str = ft_strnew(BUFF_SIZE);
+	while ((ret = read(fd, str, BUFF_SIZE)) > 0 && !ft_strchr(str, '\n'))
 	{
-		buf[ret] = '\0';
-		ft_strdel(&tmp);
-		tmp = ft_strdup(buf);
-		if (get_len(buf) != ft_strlen(tmp))
-		{
-			*line = ft_strjoin(*line, (ft_strsub(buf, 0, get_len(buf))));
-			return (1);
-		}
-		else
-			*line = ft_strjoin(*line, buf);
+		add_str(line, str);
+		ft_bzero(str, BUFF_SIZE + 1);
 	}
-	ft_strdel(&tmp);
-	return (return_value(ret));
+	if (ret > 0)
+	{
+		str[ret] = '\0';
+		add_str(line, str);
+		rest = set_rest(str);
+	}
+	free(str);
+	if (ret > 1)
+		ret = 1;
+	return (ret);
 }

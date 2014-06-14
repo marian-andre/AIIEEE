@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/08 21:47:15 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 18:25:49 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/14 16:59:26 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <string.h>
 
-# define BUF_SIZE 1
+# define BUFF_SIZE 64
 
 typedef struct		s_list
 {

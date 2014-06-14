@@ -6,13 +6,14 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:13:29 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/14 16:39:46 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/14 17:24:42 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "serveur.h"
+#include "libft.h"
 
 long		timevaldiff(t_time starttime, t_time finishtime)
 {
@@ -42,7 +43,7 @@ void		ft_quit(void)
 	while (++i < 13)
 		free(game->tab[i].line);
 	i = -1;
-	while (i < game->height)
+	while (++i < game->height)
 		free(game->map[i]);
 	free(game->map);
 	i = -1;

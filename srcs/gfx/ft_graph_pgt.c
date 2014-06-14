@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:13 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 15:38:28 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:49:14 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static void		ft_core_pgt(t_game *game, int i, char **tab)
 	}
 }
 
-void		ft_graph_pgt(t_game *game, char *line)
+void			ft_graph_pgt(t_game *game, char *line)
 {
-	int		i;
-	char	**tab;
+	int			i;
+	char		**tab;
 
-	i = ft_atoi(tab[1]);;
+	i = ft_atoi(tab[1]);
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_pgt");
 	if (game->client[i].lvl > 0)

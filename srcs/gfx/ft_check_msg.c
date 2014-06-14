@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:08:40 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 15:47:29 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:49:29 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void		ft_core_msg(t_game *game, char *line)
 		ft_graph_pgt(game, line);
 }
 
-void		ft_check_msg(t_game *game, char *line)
+void			ft_check_msg(t_game *game, char *line)
 {
 	ft_core_msg(game, line);
 	if (ft_strncmp("pdi", line, 3) == 0)

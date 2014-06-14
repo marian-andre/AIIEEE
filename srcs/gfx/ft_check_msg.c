@@ -6,14 +6,14 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:08:40 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 14:59:50 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:49:29 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "graphic.h"
 
-void		ft_check_msg(t_game *game, char *line)
+static void		ft_core_msg(t_game *game, char *line)
 {
 	if (ft_strncmp("tna", line, 3) == 0)
 		ft_graph_tna(game, line);
@@ -39,6 +39,11 @@ void		ft_check_msg(t_game *game, char *line)
 		ft_graph_pdr(game, line);
 	if (ft_strncmp("pgt", line, 3) == 0)
 		ft_graph_pgt(game, line);
+}
+
+void			ft_check_msg(t_game *game, char *line)
+{
+	ft_core_msg(game, line);
 	if (ft_strncmp("pdi", line, 3) == 0)
 		ft_graph_pdi(game, line);
 	if (ft_strncmp("enw", line, 3) == 0)

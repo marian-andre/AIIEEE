@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:50 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 15:08:42 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:50:13 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_add_player(t_game *game, char **tab)
 {
 	int		i;
 
-	i = ft_atoi(tab[1]);;
+	i = ft_atoi(tab[1]);
 	if (game->client[i].lvl > 0)
 	{
 		game->client[i].x = ft_atoi(tab[2]);

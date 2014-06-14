@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 19:50:51 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/14 18:56:21 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,31 @@ static void		ft_save_fd_cli(t_client *cls, t_fd *fd)
 	}
 }
 
+static int		ft_win(t_game *g)
+{
+	int			i;
+	int			j;
+	int			nb;
+
+	i = 0;
+	nb = 0;
+	while (g->team[i])
+	{
+		j = 0;
+		nb = 0;
+		while (g->cls[j].cs)
+		{
+			if (g->cls[j].num_team == i && g->cls[j].lvl == 8)
+				nb++;
+			j++;
+		}
+		if (nb >= 6)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void			ft_serveur(t_game *game)
 {
 	t_fd		fd;
@@ -56,7 +81,7 @@ void			ft_serveur(t_game *game)
 	fd.max = game->sock;
 	fd.nb_cli = 0;
 	game->list = NULL;
-	while (1)
+	while (!ft_win(game))
 	{
 		ft_exec_request(game);
 		FD_ZERO(&fd.rdfs);

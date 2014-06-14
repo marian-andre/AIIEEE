@@ -115,8 +115,8 @@ typedef struct	s_game
 	t_map		**map;
 }				t_game;
 
-void			test(t_map **map, t_game game);
-
+void			ft_quit(void);
+t_game			*singleton(t_game *game);
 void			linemate_deraumere(t_game *g, char **msg, t_var var);
 void			sibur_mendiane(t_game *g, char **msg, t_var var);
 void			phiras_thystame(t_game *g, char **msg, t_var var);

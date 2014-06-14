@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/14 16:27:44 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/14 16:37:57 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <time.h>
+#include <signal.h>
 #include "serveur.h"
 #include "libft.h"
 
@@ -115,6 +116,7 @@ int						main(int argc, char **argv)
 	t_game				game;
 
 	singleton(&game);
+	signal(SIGINT, exit);
 	atexit(ft_quit);
 	srand(time(NULL));
 	if (argc == 1)

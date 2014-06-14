@@ -6,53 +6,15 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 20:15:12 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/14 15:23:37 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/socket.h>
-#include <stdlib.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "serveur.h"
 #include "libft.h"
-
-static int		ft_check_team(t_game *g, char *line)
-{
-	int			i;
-
-	i = 0;
-	while (g->team[i])
-	{
-		if (ft_strcmp(g->team[i], line) == 0)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-static void		ft_check_rand(t_game *g, int num_cli)
-{
-	int		i;
-	int		x;
-	int		y;
-
-	i = 0;
-	x = rand() % g->width;
-	y = rand() % g->height;
-	while (g->cls[i].cs)
-	{
-		if (g->cls[i].x == x && g->cls[i].y == y)
-		{
-			x = rand() % g->width;
-			y = rand() % g->height;
-		}
-		else
-			i++;
-	}
-	g->cls[num_cli].x = x;
-	g->cls[num_cli].y = y;
-	g->map[y][x].nb_player++;
-}
 
 static void		ft_send(t_game *g, t_fd *fd)
 {
@@ -94,21 +56,6 @@ static void		ft_init_cli(t_game *g, t_fd *fd, int cs)
 	g->cls[fd->nb_cli].resource.food = 10;
 	g->cls[fd->nb_cli].dir = (rand() % 4) + 1;
 	ft_send(g, fd);
-}
-
-static int		ft_check_eggs(t_game *g, char *line)
-{
-	int			i;
-
-	i = 0;
-	while (i < MAX_CLI)
-	{
-		if (g->eggs[i].cl.num_team == ft_check_team(g, line)
-			&& g->eggs[i].active == 1)
-			return (i);
-		i++;
-	}
-	return (-1);
 }
 
 static void		ft_init_egg(t_game *g, t_fd *fd, int i, int cs)

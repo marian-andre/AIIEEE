@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:24 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 19:45:33 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/14 15:07:18 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void		ft_birth(t_cmd *cmd, t_game *g)
 	g->cls[i].resource.phiras = 0;
 	g->cls[i].resource.thystame = 0;
 	g->cls[i].resource.food = 10;
-	g->cls[i].dir = (rand() %4) + 1;
+	g->cls[i].dir = (rand() % 4) + 1;
 }

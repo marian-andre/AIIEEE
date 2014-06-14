@@ -6,24 +6,23 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:20 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 18:47:52 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:00:50 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "graphic.h"
 
-void		ft_graph_pex(t_game *game, char *line)
+void		ft_graph_pdi(t_game *game, char *line)
 {
 	int		i;
 	char	**tab;
 
-	i = 0;
+	i = ft_atoi(tab[1]);
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		ft_graphic_error("malloc failed -> tab in ft_graph_pex");
-	while (game->client[i] && game-client[i].num_team != ft_atoi(tab[1]))
-		i++;
-	if (game->client[i])
+		ft_graphic_error("malloc failed -> tab in ft_graph_pdi");
+	game->map[game->client[i].y][game->client[i].x].nb_player--;
+	if (game->client[i].lvl > 0)
 	{
 		game->client[i].x = 0;
 		game->client[i].y = 0;
@@ -38,4 +37,5 @@ void		ft_graph_pex(t_game *game, char *line)
 		game->client[i].resource.phiras = 0;
 		game->client[i].resource.thystame = 0;
 	}
+	ft_strdel2(&tab);
 }

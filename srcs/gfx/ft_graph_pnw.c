@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:50 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 20:02:05 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:08:42 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@ void		ft_add_player(t_game *game, char **tab)
 {
 	int		i;
 
-	i = 0;
-	while (game->client[i] && game->client[i].num_team != -1)
-		i++;
-	if (game->client[i])
+	i = ft_atoi(tab[1]);;
+	if (game->client[i].lvl > 0)
 	{
 		game->client[i].x = ft_atoi(tab[2]);
 		game->client[i].y = ft_atoi(tab[3]);
 		game->client[i].num_team = ft_atoi(tab[1]);
 		game->client[i].lvl = ft_atoi(tab[5]);
-		game->client[i].dir = ft_atoi(array[4]);
+		game->client[i].dir = ft_atoi(tab[4]);
 	}
 }
 
@@ -59,7 +57,7 @@ void		ft_graph_pnw(t_game *game, char *line)
 	static int	first = 1;
 	char		**tab;
 
-	if ((tab = ft_strsplit(tab, ' ')) == NULL)
+	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_pnw");
 	if (first)
 	{
@@ -69,4 +67,5 @@ void		ft_graph_pnw(t_game *game, char *line)
 	}
 	else
 		ft_add_player(game, tab);
+	ft_strdel2(&tab);
 }

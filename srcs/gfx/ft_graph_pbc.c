@@ -6,8 +6,14 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:01:13 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 16:01:14 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 14:49:00 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "graphic.h"
 
+void		ft_graph_pbc(t_game *game, char *line)
+{
+	game = game + 0;
+	line = line + 0;
+}

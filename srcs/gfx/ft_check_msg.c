@@ -6,17 +6,15 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:08:40 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/13 12:16:33 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/14 14:59:50 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "libft.h"
 #include "graphic.h"
-/*
+
 void		ft_check_msg(t_game *game, char *line)
 {
-	if (ft_strncmp("bct", line, 3) == 0)
-		ft_graph_bct(game, line);
 	if (ft_strncmp("tna", line, 3) == 0)
 		ft_graph_tna(game, line);
 	if (ft_strncmp("pnw", line, 3) == 0)
@@ -52,7 +50,7 @@ void		ft_check_msg(t_game *game, char *line)
 	if (ft_strncmp("edi", line, 3) == 0)
 		ft_graph_edi(game, line);
 	if (ft_strncmp("sgt", line, 3) == 0)
-		ft_raph_sgt(game, line);
+		ft_graph_sgt(game, line);
 	if (ft_strncmp("seg", line, 3) == 0)
 		ft_graph_seg(game, line);
 	if (ft_strncmp("smg", line, 3) == 0)
@@ -62,4 +60,3 @@ void		ft_check_msg(t_game *game, char *line)
 	if (ft_strncmp("sbp", line, 3) == 0)
 		ft_graph_sbp(game, line);
 }
-*/

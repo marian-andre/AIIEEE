@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 20:06:07 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:12:12 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,17 @@ void				init_case(t_game *game, char *line);
 void				display(t_game *game);
 
 /*
+** ft_check_msg.c
+*/
+
+void				ft_check_msg(t_game *game, char *line);
+
+/*
 ** ft_graph_tna.c
 */
 
 int					nb_line(char **tab);
-char				**ft_realloc(char **tab, char *team);
+char				**ft_realloc(t_game *game, char **tab, char *team);
 int					ft_check_in_team(char **team, char *name);
 void				ft_graph_tna(t_game *game, char *line);
 
@@ -109,9 +115,9 @@ void				ft_graph_tna(t_game *game, char *line);
 ** ft_graph_pnw.c
 */
 
-int					ft_add_player(t_game *game, char **tab);
+void				ft_add_player(t_game *game, char **tab);
 void				init_client(t_game *game);
-void				ft_graph_pnw(t_game *game, char *line)
+void				ft_graph_pnw(t_game *game, char *line);
 
 /*
 ** ft_graph_ppo.c
@@ -141,17 +147,97 @@ void				ft_graph_pex(t_game *game, char *line);
 ** ft_graph_pic.c
 */
 
-void				ft_graphic_pic(t_game *game, char *line);
+void				ft_graph_pic(t_game *game, char *line);
 
 /*
-** ft_graph_ppo.c
+** ft_graph_pbc.c
 */
 
+void				ft_graph_pbc(t_game *game, char *line);
+
+/*
+** ft_graph_pie.c
+*/
+
+void				ft_graph_pie(t_game *game, char *line);
+
+/*
+** ft_graph_pfk.c
+*/
+
+void				ft_graph_pfk(t_game *game, char *line);
+/*
+** ft_graph_pdr.c
+*/
+
+void				ft_graph_pdr(t_game *game, char *line);
+
+/*
+** ft_graph_pgt.c
+*/
+
+void				ft_graph_pgt(t_game *game, char *line);
 
 
+/*
+** ft_graph_pdi.c
+*/
+
+void				ft_graph_pdi(t_game *game, char *line);
+
+/*
+** ft_graph_enw.c
+*/
+
+void				ft_graph_enw(t_game *game, char *line);
+
+/*
+** ft_graph_eht.c
+*/
+
+void				ft_graph_eht(t_game *game, char *line);
+
+/*
+** ft_graph_ebo.c
+*/
+
+void				ft_graph_ebo(t_game *game, char *line);
+
+/*
+** ft_graph_edi.c
+*/
+
+void				ft_graph_edi(t_game *game, char *line);
+
+/*
+** ft_graph_sgt.c
+*/
+
+void				ft_graph_sgt(t_game *game, char *line);
 
 
+/*
+** ft_graph_seg.c
+*/
 
+void				ft_graph_seg(t_game *game, char *line);
 
+/*
+** ft_graph_pdi.c
+*/
+
+void				ft_graph_smg(t_game *game, char *line);
+
+/*
+** ft_graph_suc.c
+*/
+
+void				ft_graph_suc(t_game *game, char *line);
+
+/*
+** ft_graph_sbp.c
+*/
+
+void				ft_graph_sbp(t_game *game, char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 18:43:54 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:01:29 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,12 @@ void		ft_graph_pdr(t_game *game, char *line)
 	int		i;
 	char	**tab;
 
-	i = 0;
+	i = ft_atoi(tab[1]);
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_pdr");
-	while (game->client[i] && game-client[i].num_team != ft_atoi(tab[1]))
-		i++;
-	if (game->client[i])
+	if (game->client[i].lvl > 0)
 	{
-		if (ft_atoi(tab[2]) == 0 && game->client[i].resource.food > 0)
-			game->client[i].resource.food--;
-		else if (ft_atoi(tab[2]) == 1 && game->client[i].resource.linemate > 0)
+		if (ft_atoi(tab[2]) == 1 && game->client[i].resource.linemate > 0)
 			game->client[i].resource.linemate--;
 		else if (ft_atoi(tab[2]) == 2 && game->client[i].resource.deraumere > 0)
 			game->client[i].resource.deraumere--;
@@ -40,4 +36,5 @@ void		ft_graph_pdr(t_game *game, char *line)
 		else if (ft_atoi(tab[2]) == 6 && game->client[i].resource.thystame > 0)
 			game->client[i].resource.thystame--;
 	}
+	ft_strdel2(&tab);
 }

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:59 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 19:43:51 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:04:31 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ void		ft_graph_ppo(t_game *game, char *line)
 	int		i;
 	char	**tab;
 
-	i = 0;
+	i = ft_atoi(tab[1]);
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_ppo");
-	while (game->client[i] && game-client[i].num_team != ft_atoi(tab[1]))
-		i++;
-	if (game->client[i])
+	if (game->client[i].lvl > 0)
 	{
 		game->client[i].x = ft_atoi(tab[2]);
 		game->client[i].y = ft_atoi(tab[3]);
 		game->client[i].dir = ft_atoi(tab[4]);
 	}
+	ft_strdel2(&tab);
+	ft_putstr("ppo ");
+	ft_putnbr(ft_atoi(tab[1]));
+	ft_putchar('\n');
 }

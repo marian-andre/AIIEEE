@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:00:10 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 19:44:29 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:03:57 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void		ft_graph_plv(t_game *game, char *line)
 	int		i;
 	char	**tab;
 
-	i = 0;
+	i = ft_atoi(tab[1]);;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_plv");
-	while (game->client[i] && game-client[i].num_team != ft_atoi(tab[1]))
-		i++;
-	if (game->client[i])
-		game->client[i].lvl = ft_atoi(tab[2]);
+	game->client[i].lvl = ft_atoi(tab[2]);
+	ft_strdel2(&tab);
 }

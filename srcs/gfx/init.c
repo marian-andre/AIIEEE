@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 15:08:24 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 13:18:25 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		init_map(t_game *game, char *line)
 
 	i = -1;
 	if ((array = ft_strsplit(line, ' ')) == NULL)
-		ft_graphic_error("parse error -> array in init_map_and_time");
+		ft_graphic_error("parse error -> array in init_map");
 	game->width = ft_atoi(array[1]);
 	game->height = ft_atoi(array[2]);
 	game->map = (t_map**)malloc(sizeof(t_map*) * ft_atoi(array[2]));
@@ -35,7 +35,7 @@ void		init_time(t_game *game, char *line)
 	char	**array;
 
 	if ((array = ft_strsplit(line, ' ')) == NULL)
-		ft_graphic_error("parse error -> array in init_map_and_time");
+		ft_graphic_error("parse error -> array in init_time");
 	game->time = ft_atoi(array[1]);
 	ft_strdel2(&array);
 }
@@ -53,6 +53,7 @@ void		init_case(t_game *game, char *line)
 	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].mendiane = ft_atoi(tab[7]);
 	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].phiras = ft_atoi(tab[8]);
 	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].thystame = ft_atoi(tab[9]);
+	ft_strdel2(&tab);
 }
 
 void		display(t_game *game)

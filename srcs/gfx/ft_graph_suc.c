@@ -5,9 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/06/12 16:04:14 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 16:04:15 by rkorimba         ###   ########.fr       */
+/*   Created: 2014/06/14 14:14:27 by rkorimba          #+#    #+#             */
+/*   Updated: 2014/06/14 14:14:39 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "graphic.h"
 
+void		ft_graph_suc(t_game *game, char *line)
+{
+	game = game + 0;
+	line = line + 0;
+}

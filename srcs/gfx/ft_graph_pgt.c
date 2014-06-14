@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:13 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 18:43:44 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:06:32 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,67 @@ void		ft_graph_pgt(t_game *game, char *line)
 	int		i;
 	char	**tab;
 
-	i = 0;
+	i = ft_atoi(tab[1]);;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_pgt");
-	while (game->client[i] && game-client[i].num_team != ft_atoi(tab[1]))
-		i++;
-	if (game->client[i])
+	if (game->client[i].lvl > 0)
 	{
 		if (ft_atoi(tab[2]) == 0)
-			game->client[i].resource.food++;
+		{
+			if (game->map[game->client[i].x][game->client[i].y].food > 0)
+			{
+				game->map[game->client[i].x][game->client[i].y].food--;
+				game->client[i].resource.food++;
+			}
+		}
 		else if (ft_atoi(tab[2]) == 1)
-			game->client[i].resource.linemate++;
+		{
+			if (game->map[game->client[i].x][game->client[i].y].linemate > 0)
+			{
+				game->map[game->client[i].x][game->client[i].y].linemate--;
+				game->client[i].resource.linemate++;
+			}
+		}
 		else if (ft_atoi(tab[2]) == 2)
-			game->client[i].resource.deraumere++;
+		{
+			if (game->map[game->client[i].x][game->client[i].y].deraumere > 0)
+			{
+				game->map[game->client[i].x][game->client[i].y].deraumere--;
+				game->client[i].resource.food++;
+			}
+		}
 		else if (ft_atoi(tab[2]) == 3)
-			game->client[i].resource.sibur++;
+		{
+			if (game->map[game->client[i].x][game->client[i].y].sibur > 0)
+			{
+				game->map[game->client[i].x][game->client[i].y].sibur--;
+				game->client[i].resource.food++;
+			}
+		}
 		else if (ft_atoi(tab[2]) == 4)
-			game->client[i].resource.mendiane++;
+		{
+			if (game->map[game->client[i].x][game->client[i].y].mendiane > 0)
+			{
+				game->map[game->client[i].x][game->client[i].y].mendiane--;
+				game->client[i].resource.mendiane++;
+			}
+		}
 		else if (ft_atoi(tab[2]) == 5)
-			game->client[i].resource.phiras++;
+		{
+			if (game->map[game->client[i].x][game->client[i].y].phiras > 0)
+			{
+				game->map[game->client[i].x][game->client[i].y].phiras--;
+				game->client[i].resource.phiras++;
+			}
+		}
 		else if (ft_atoi(tab[2]) == 6)
-			game->client[i].resource.thystame++;
+		{
+			if (game->map[game->client[i].x][game->client[i].y].thystame > 0)
+			{
+				game->map[game->client[i].x][game->client[i].y].thystame--;
+				game->client[i].resource.food++;
+			}
+		}
 	}
+	ft_strdel2(&tab);
 }

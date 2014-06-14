@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:00:25 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 19:45:50 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:03:09 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ void		ft_graph_pin(t_game *game, char *line)
 	int		i;
 	char	**tab;
 
-	i = 0;
+	i = ft_atoi(tab[1]);
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_pin");
-	while (game->client[i] && game-client[i].num_team != ft_atoi(tab[1]))
-		i++;
-	if (game->client[i])
+	if (game->client[i].lvl > 0)
 	{
 		game->client[i].x = ft_atoi(tab[2]);
 		game->client[i].y = ft_atoi(tab[3]);
@@ -35,4 +33,5 @@ void		ft_graph_pin(t_game *game, char *line)
 		game->client[i].resource.phiras = ft_atoi(tab[9]);
 		game->client[i].resource.thystame = ft_atoi(tab[10]);
 	}
+	ft_strdel2(&tab);
 }

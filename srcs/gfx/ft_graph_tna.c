@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:14 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/12 20:00:54 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 15:13:50 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				nb_line(char **tab)
 	return (i);
 }
 
-char			**ft_realloc(char **tab, char *team)
+char			**ft_realloc(t_game *game, char **tab, char *team)
 {
 	int			i;
 	int			length;
@@ -31,12 +31,13 @@ char			**ft_realloc(char **tab, char *team)
 
 	i = -1;
 	length = nb_line(game->team);
-	if (new = (char**)malloc(sizeof(char*) * length + 2))
+	if ((new = (char**)malloc(sizeof(char*) * length + 2)) == NULL)
 		ft_graphic_error("malloc failed -> new in ft_realloc");
 	while (tab[++i])
 		new[i] = ft_strdup(tab[i]);
 	new[i++] = ft_strdup(team);
 	new[i] = '\0';
+	return (new);
 }
 
 int				ft_check_in_team(char **team, char *name)
@@ -55,18 +56,17 @@ int				ft_check_in_team(char **team, char *name)
 void			ft_graph_tna(t_game *game, char *line)
 {
 	static int	first = 1;
-	int			i;
 	char		**tab;
 
 	if (first == 1)
 	{
 		game->team = (char**)malloc(sizeof(char*));
-		i = -1;
 		game->team[0] = ft_memalloc(1);
 		first = 0;
 	}
-	if (tab = ft_strsplit(line, ' ') == NULL)
-		ft_graphic_error("parse error -> tab in ft_graph tna");
+	if ((tab = ft_strsplit(line, ' ')) == NULL)
+		ft_graphic_error("parse error -> tab in ft_graph_tna");
 	if (!ft_check_in_team(game->team, tab[1]))
-		game->team = ft_realloc(game->team, tab[1]);
+		game->team = ft_realloc(game, game->team, tab[1]);
+	ft_strdel2(&tab);
 }

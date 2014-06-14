@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 15:12:12 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 16:58:00 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include "SDL.h"
 
-# define SCREEN_WIDTH 1600
-# define SCREEN_HEIGHT 1200
+# define SCREEN_WIDTH 10
+# define SCREEN_HEIGHT 10
 # define MAX_CLI 42
 
 typedef struct		s_map

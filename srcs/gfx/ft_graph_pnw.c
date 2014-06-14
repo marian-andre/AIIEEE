@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:50 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 15:50:13 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 17:21:05 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void		ft_graph_pnw(t_game *game, char *line)
 	}
 	else
 		ft_add_player(game, tab);
+	ft_putendl("pnw end");
 	ft_strdel2(&tab);
 }

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 15:37:35 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/14 17:19:26 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void			ft_graph_pdr(t_game *game, char *line)
 	int			i;
 	char		**tab;
 
-	i = ft_atoi(tab[1]);
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_pdr");
+	i = ft_atoi(tab[1]);
 	if (game->client[i].lvl > 0)
 	{
 		if (ft_atoi(tab[2]) == 1 && game->client[i].resource.linemate > 0)
@@ -59,5 +59,6 @@ void			ft_graph_pdr(t_game *game, char *line)
 		}
 		ft_core_pdr(game, i, tab);
 	}
+	ft_putendl("pdr end");
 	ft_strdel2(&tab);
 }

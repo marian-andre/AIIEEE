@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/15 16:57:56 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 17:59:13 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "SDL.h"
 
-# define TILES_SIZE_W 32
-# define TILES_SIZE_H 32
+# define TILES_SIZE_W 64
+# define TILES_SIZE_H 64
 # define NB_TEXTURES 13
 # define MAX_CLI 42
 
@@ -65,10 +65,10 @@ void				ft_graphic_error(char *msg);
 void				ft_graphic_usage(void);
 
 /*
-** main.c
+** display.c
 */
 
-void				draw(t_game *game);
+void				draw_render(t_game *game);
 
 /*
 ** tool.c

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 15:50:52 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/15 16:14:27 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 #include "graphic.h"
 #include "libft.h"
 
-void		init_map(t_game *game, char *line)
+void		init_map(t_game *game)
 {
 	int		i;
 	char	**array;
+	char	*line;
 
+	line = NULL;
+	get_next_line(sock, &line);
+	ft_putendl(line);
+	free(line);
+	ft_putendl_fd("GRAPHIC", sock);
+	get_next_line(sock, &line);
 	i = -1;
 	if ((array = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("parse error -> array in init_map");
+	free(line);
 	game->width = ft_atoi(array[1]);
 	game->height = ft_atoi(array[2]);
 	game->map = (t_map**)malloc(sizeof(t_map*) * ft_atoi(array[2]));
@@ -30,14 +38,52 @@ void		init_map(t_game *game, char *line)
 	ft_strdel2(&array);
 }
 
-void		init_time(t_game *game, char *line)
+void		init_time(t_game *game)
 {
 	char	**array;
+	char	*line;
 
+	line = NULL;
+	get_next_line(sock, &line);
 	if ((array = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("parse error -> array in init_time");
 	game->time = ft_atoi(array[1]);
+	free(line);
 	ft_strdel2(&array);
+}
+
+void				init_textures(t_game *game)
+{
+	game->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*) * NB_TEXTURES);
+	game->textures[0] = loadImage(game, "srcs/gfx/image/food.bmp");
+	game->textures[1] = loadImage(game, "srcs/gfx/image/linemate.bmp");
+	game->textures[2] = loadImage(game, "srcs/gfx/image/deraumere.bmp");
+	game->textures[3] = loadImage(game, "srcs/gfx/image/sibur.bmp");
+	game->textures[4] = loadImage(game, "srcs/gfx/image/mendiane.bmp");
+	game->textures[5] = loadImage(game, "srcs/gfx/image/phiras.bmp");
+	game->textures[6] = loadImage(game, "srcs/gfx/image/thystame.bmp");
+	game->textures[7] = loadImage(game, "srcs/gfx/image/goron_N.bmp");
+	game->textures[8] = loadImage(game, "srcs/gfx/image/goron_S.bmp");
+	game->textures[9] = loadImage(game, "srcs/gfx/image/goron_E.bmp");
+	game->textures[10] = loadImage(game, "srcs/gfx/image/goron_W.bmp");
+	game->textures[11] = loadImage(game, "srcs/gfx/image/map.bmp");
+	game->textures[12] = loadImage(game, "srcs/gfx/image/egg.bmp");
+}
+
+void				init_sdl(t_game *game)
+{
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+		ft_graphic_error("SDL initialization has failed.");
+	game->window = SDL_CreateWindow("Zappy", SDL_WINDOWPOS_CENTERED,
+									SDL_WINDOWPOS_CENTERED,
+									game->width * TILES_SIZE_W,
+									game->height * TILES_SIZE_H,
+									SDL_WINDOW_SHOWN);
+	game->renderer = SDL_CreateRenderer(game->window, -1,
+										SDL_RENDERER_PRESENTVSYNC);
+	if (game->window == NULL || game->renderer == NULL)
+		ft_graphic_error("screen mode initialization is impossible.");
+	game->textures = init_textures(game);
 }
 
 void		init_case(t_game *game, char *line)
@@ -54,35 +100,5 @@ void		init_case(t_game *game, char *line)
 	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].phiras = ft_atoi(tab[8]);
 	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].thystame = ft_atoi(tab[9]);
 	ft_strdel2(&tab);
-}
-
-void		display(t_game *game)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while (++i < game->height)
-	{
-		j = -1;
-		while (++j < game->width)
-		{
-			ft_putnbr(game->map[i][j].food);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].linemate);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].deraumere);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].sibur);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].mendiane);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].phiras);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].thystame);
-			ft_putchar(' ');
-			ft_putchar('\n');
-		}
-		ft_putchar('\n');
-	}
+	free(line);
 }

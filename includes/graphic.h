@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 16:58:00 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/15 16:21:09 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <math.h>
 # include "SDL.h"
 
-# define SCREEN_WIDTH 10
-# define SCREEN_HEIGHT 10
+# define TILES_SIZE_W 32
+# define TILES_SIZE_H 32
+# define NB_TEXTURES 13
 # define MAX_CLI 42
 
 typedef struct		s_map
@@ -46,31 +47,19 @@ typedef struct		s_client
 	t_map			resource;
 }					t_client;
 
-typedef struct		s_action
-{
-	int				left;
-	int				right;
-	int				up;
-	int				down;
-	int				enter;
-	int				erase;
-	int				pause;
-}					t_action;
-
 typedef struct		s_game
 {
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
-	SDL_Texture		*texture;
+	SDL_Texture		**textures;
 	t_map			**map;
 	int				width;
 	int				height;
 	int				time;
 	char			**team;
 	t_client		client[MAX_CLI];
-	t_action		*action;
+	int				sock;
 }					t_game;
-
 
 /*
 ** ft_graphic_error.c
@@ -82,19 +71,26 @@ void				ft_graphic_error(char *msg);
 ** main.c
 */
 
-void				init(t_game *game, char *title);
-void				cleanup(t_game *game);
 void				draw(t_game *game);
-void				delay(unsigned int frameLimit);
+
+/*
+** tool.c
+*/
+
+t_game				*singleton(t_game *game);
+void				cleanup(t_game *game);
+SDL_Texture			*loadImage(t_game *game, char *path);
+void				display(t_game *game);
 
 /*
 ** init.c
 */
 
-void				init_map(t_game *game, char *line);
-void				init_time(t_game *game, char *line);
+void				init_map(t_game *game);
+void				init_time(t_game *game);
+void				init_sdl(t_game *game);
 void				init_case(t_game *game, char *line);
-void				display(t_game *game);
+void				init_textures(t_game *game);
 
 /*
 ** ft_check_msg.c
@@ -106,17 +102,12 @@ void				ft_check_msg(t_game *game, char *line);
 ** ft_graph_tna.c
 */
 
-int					nb_line(char **tab);
-char				**ft_realloc(t_game *game, char **tab, char *team);
-int					ft_check_in_team(char **team, char *name);
 void				ft_graph_tna(t_game *game, char *line);
 
 /*
 ** ft_graph_pnw.c
 */
 
-void				ft_add_player(t_game *game, char **tab);
-void				init_client(t_game *game);
 void				ft_graph_pnw(t_game *game, char *line);
 
 /*

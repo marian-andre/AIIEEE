@@ -6,10 +6,11 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 15:34:08 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/15 16:59:19 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 22:16:07 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "graphic.h"
 #include "libft.h"
 
@@ -42,14 +43,19 @@ void				cleanup(void)
     SDL_Quit();
 }
 
-SDL_Texture			*loadImage(t_game *game, char *path)
+SDL_Texture			*loadImage(t_game *game, char *path, int rgb)
 {
 	SDL_Surface		*img;
 	SDL_Texture		*texture;
+	Uint32			color;
 
 	img = SDL_LoadBMP(path);
+	if (rgb != -1)
+		color = SDL_MapRGB(img->format, rgb, rgb >> 8, rgb >> 16);
 	if (img != NULL)
 	{
+		if (rgb != -1)
+			SDL_SetColorKey(img, SDL_TRUE, color);
 		texture = SDL_CreateTextureFromSurface(game->renderer, img);
 		SDL_FreeSurface(img);
 		return (texture);

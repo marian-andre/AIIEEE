@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/15 17:59:13 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 20:23:34 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 # include "SDL.h"
 
-# define TILES_SIZE_W 64
-# define TILES_SIZE_H 64
+# define MAP_SIZE_W 64
+# define MAP_SIZE_H 64
+# define TILES_SIZE_H 16
+# define TILES_SIZE_W 16
 # define NB_TEXTURES 13
 # define MAX_CLI 42
 
@@ -76,7 +78,7 @@ void				draw_render(t_game *game);
 
 t_game				*singleton(t_game *game);
 void				cleanup(void);
-SDL_Texture			*loadImage(t_game *game, char *path);
+SDL_Texture			*loadImage(t_game *game, char *path, int rgb);
 void				display(t_game *game);
 
 /*

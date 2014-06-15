@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/15 20:03:45 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/15 20:09:59 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,7 @@ static void		ft_init_egg(t_game *g, t_fd *fd, int i, int cs)
 
 	g->eggs[i].cl.cs = cs;
 	g->cls[fd->nb_cli] = g->eggs[i].cl;
-
-
-//	g->cls[fd->nb_cli].cs = cs;
 	ft_add_node(g, ft_create_node(g, "life", fd->nb_cli));
-//	g->cls[fd->nb_cli].x = g->eggs[i].x;
-//	g->cls[fd->nb_cli].y = g->eggs[i].y;
 	g->eggs[i].active = 0;
 	ft_graph_pnw(g, fd->nb_cli);
 	line = ft_itoa(g->width);

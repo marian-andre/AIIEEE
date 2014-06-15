@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/14 15:19:09 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/14 15:27:53 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/15 20:15:28 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_check_rand(t_game *g, int num_cli)
 	i = 0;
 	x = rand() % g->width;
 	y = rand() % g->height;
-	while (g->cls[i].cs)
+	while (i < MAX_CLI)
 	{
 		if (g->cls[i].x == x && g->cls[i].y == y)
 		{

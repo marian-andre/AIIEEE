@@ -6,11 +6,12 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 15:34:08 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/15 16:21:07 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 16:59:19 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphic.h"
+#include "libft.h"
 
 t_game				*singleton(t_game *game)
 {
@@ -27,7 +28,7 @@ void				cleanup(void)
 	int			i;
 
 	game = singleton(NULL);
-	ft_strdel2(game->team);
+	ft_strdel2(&game->team);
 	i = -1;
 	while (++i < game->height)
 		free(game->map[i]);

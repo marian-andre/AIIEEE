@@ -6,17 +6,13 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/15 16:21:09 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 16:57:56 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHIC_H
 # define GRAPHIC_H
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <math.h>
 # include "SDL.h"
 
 # define TILES_SIZE_W 32
@@ -66,6 +62,7 @@ typedef struct		s_game
 */
 
 void				ft_graphic_error(char *msg);
+void				ft_graphic_usage(void);
 
 /*
 ** main.c
@@ -78,7 +75,7 @@ void				draw(t_game *game);
 */
 
 t_game				*singleton(t_game *game);
-void				cleanup(t_game *game);
+void				cleanup(void);
 SDL_Texture			*loadImage(t_game *game, char *path);
 void				display(t_game *game);
 

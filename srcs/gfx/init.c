@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/15 16:14:27 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 16:52:30 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void		init_map(t_game *game)
 	char	*line;
 
 	line = NULL;
-	get_next_line(sock, &line);
+	get_next_line(game->sock, &line);
 	ft_putendl(line);
 	free(line);
-	ft_putendl_fd("GRAPHIC", sock);
-	get_next_line(sock, &line);
+	ft_putendl_fd("GRAPHIC", game->sock);
+	get_next_line(game->sock, &line);
 	i = -1;
 	if ((array = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("parse error -> array in init_map");
@@ -44,7 +44,7 @@ void		init_time(t_game *game)
 	char	*line;
 
 	line = NULL;
-	get_next_line(sock, &line);
+	get_next_line(game->sock, &line);
 	if ((array = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("parse error -> array in init_time");
 	game->time = ft_atoi(array[1]);
@@ -83,7 +83,7 @@ void				init_sdl(t_game *game)
 										SDL_RENDERER_PRESENTVSYNC);
 	if (game->window == NULL || game->renderer == NULL)
 		ft_graphic_error("screen mode initialization is impossible.");
-	game->textures = init_textures(game);
+	init_textures(game);
 }
 
 void		init_case(t_game *game, char *line)

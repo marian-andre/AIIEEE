@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/15 16:21:06 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 16:55:14 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int					main(int argc, char **argv)
 	char			*line;
 	int				nb_case;
 
+	if (argc != 3)
+		ft_graphic_usage();
 	singleton(&game);
 	game.sock = ft_connect(argv[1], ft_atoi(argv[2]));
 	init_map(&game);
@@ -61,13 +63,13 @@ int					main(int argc, char **argv)
 	atexit(cleanup);
 	signal(SIGINT, exit);
 	nb_case = game.width * game.height;
-	while (nb_case-- && get_next_line(sock, &line))
-		init_case(game, line);
+	while (nb_case-- && get_next_line(game.sock, &line))
+		init_case(&game, line);
 	while (42)
 	{
-		display(game);
-		get_next_line(sock, &line);
-		ft_check_msg(game, line);
+		display(&game);
+		get_next_line(game.sock, &line);
+		ft_check_msg(&game, line);
 	}
 
 

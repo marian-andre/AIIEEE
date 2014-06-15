@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/14 17:24:10 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 17:39:38 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,13 @@ int						main(int argc, char **argv)
 	t_game				game;
 
 	singleton(&game);
-	atexit(ft_quit);
 	signal(SIGINT, exit);
 	srand(time(NULL));
 	if (argc == 1)
 		ft_usage(argv[0]);
 	game = ft_init_game(game);
 	game = ft_check_args(argv, game);
+	atexit(ft_quit);
 	game = ft_init_map(game);
 	game = ft_resource(game);
 	game.sock = create_server(game);

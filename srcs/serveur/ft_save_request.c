@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 15:55:30 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 16:13:26 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/15 18:40:22 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_recep_message(int i, t_game *g)
 	else
 	{
 		close(g->cls[i].cs);
-		g->cls[i].cs = 50;
+		g->cls[i].cs = MORT;
 		g->cls[i].num_team = 50;
 	}
 }

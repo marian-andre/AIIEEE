@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/14 18:56:21 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/15 18:39:42 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		ft_save_fd_cli(t_client *cls, t_fd *fd)
 	i = 0;
 	while (i < fd->nb_cli)
 	{
-		if (cls[i].cs < 50)
+		if (cls[i].cs != MORT)
 			FD_SET(cls[i].cs, &fd->rdfs);
 		i++;
 	}

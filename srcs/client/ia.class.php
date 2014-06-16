@@ -49,7 +49,7 @@ class			ia
 		{
 			if ($map[$i] == "nourriture")
 			{
-				$this->serveur->send_msg("prend food");
+				$this->serveur->send_msg("prend nourriture");
 				$receive = $this->serveur->receive_msg();
 			}
 			if ($map[$i] == "joueur")
@@ -136,8 +136,6 @@ class			ia
 				if ($this->get_nb_player_on_my_case() >= 6)
 					return (true);
 		}
-		else
-			echo "ERREUR DE LEVEL";
 		return (false);
 	}
 
@@ -286,7 +284,7 @@ class			ia
 				$tab_search[] = "player";
 		}
 		else
-			echo "ERREUR DE LEVEL";
+			$tab_search[] = "nourriture";
 		$this->serveur->send_msg("voir");
 		$receive = $this->serveur->receive_msg();
 		return ($this->vision($receive, $tab_search));

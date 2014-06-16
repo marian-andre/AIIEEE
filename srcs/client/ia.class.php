@@ -34,22 +34,7 @@ class			ia
 		}
 	}
 
-	function		fork_client($file, $argv)
-	{
-		array_shift($argv);
-		$pid = pcntl_fork();
-		if ($pid == -1)
-		{
-			echo "Duplication impossible\n";
-			exit (1);
-		}
-		else if ($pid)
-			pcntl_wait($status);
-		else if (pcntl_exec($file, $argv) !== FALSE)
-			$this->connect_nbr--;
-	}
-
-	function		getNbPlayerOnMyCase()
+	function		get_nb_player_on_my_case()
 	{
 		$this->serveur->send_msg("voir");
 		$receive = $this->serveur->receive_msg();
@@ -64,22 +49,37 @@ class			ia
 		{
 			if ($map[$i] == "nourriture")
 			{
-				$this->serveur->send_msg("prend nourriture");
+				$this->serveur->send_msg("prend food");
 				$receive = $this->serveur->receive_msg();
 			}
-			else if ($map[$i] == "joueur")
+			if ($map[$i] == "joueur")
 				$nb++;
 			$i++;
 		}
 		return ($nb);
 	}
 
-	function		canlevelUp()
+	function		client_fork($file, $argv)
+	{
+		array_shift($argv);
+		$pid = pcntl_fork();
+		if ($pid == -1)
+		{
+			echo "Duplication impossible\n";
+			exit (1);
+		}
+		else if ($pid)
+			pcntl_wait($status);
+		else if (pcntl_exec($file, $argv) !== FALSE)
+			$this->connect_nbr--;
+	}
+
+	function		client_canlevelup()
 	{
 		if ($this->level == 1)
 		{
 			if (isset($this->stuff["linemate"]) && $this->stuff["linemate"] >= 1)
-				if ($this->getNbPlayerOnMyCase() >= 1)
+				if ($this->get_nb_player_on_my_case() >= 1)
 					return (true);
 		}
 		else if ($this->level == 2)
@@ -87,7 +87,7 @@ class			ia
 			if (isset($this->stuff["linemate"]) && $this->stuff["linemate"] >= 1
 				&& isset($this->stuff["deraumere"]) && $this->stuff["deraumere"] >= 1
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 1)
-				if ($this->getNbPlayerOnMyCase() >= 2)
+				if ($this->get_nb_player_on_my_case() >= 2)
 					return (true);
 		}
 		else if ($this->level == 3)
@@ -95,7 +95,7 @@ class			ia
 			if (isset($this->stuff["linemate"]) && $this->stuff["linemate"] >= 2
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 1
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 2)
-				if ($this->getNbPlayerOnMyCase() >= 2)
+				if ($this->get_nb_player_on_my_case() >= 2)
 					return (true);
 		}
 		else if ($this->level == 4)
@@ -104,7 +104,7 @@ class			ia
 				&& isset($this->stuff["deraumere"]) && $this->stuff["deraumere"] >= 1
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 2
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 1)
-				if ($this->getNbPlayerOnMyCase() >= 4)
+				if ($this->get_nb_player_on_my_case() >= 4)
 					return (true);
 		}
 		else if ($this->level == 5)
@@ -113,7 +113,7 @@ class			ia
 				&& isset($this->stuff["deraumere"]) && $this->stuff["deraumere"] >= 2
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 1
 				&& isset($this->stuff["mendiane"]) && $this->stuff["mendiane"] >= 3)
-				if ($this->getNbPlayerOnMyCase() >= 4)
+				if ($this->get_nb_player_on_my_case() >= 4)
 					return (true);
 		}
 		else if ($this->level == 6)
@@ -122,7 +122,7 @@ class			ia
 				&& isset($this->stuff["deraumere"]) && $this->stuff["deraumere"] >= 2
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 3
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 1)
-				if ($this->getNbPlayerOnMyCase() >= 6)
+				if ($this->get_nb_player_on_my_case() >= 6)
 					return (true);
 		}
 		else if ($this->level == 7)
@@ -133,7 +133,7 @@ class			ia
 				&& isset($this->stuff["mendiane"]) && $this->stuff["mendiane"] >= 2
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 2
 				&& isset($this->stuff["thystame"]) && $this->stuff["thystame"] >= 1)
-				if ($this->getNbPlayerOnMyCase() >= 6)
+				if ($this->get_nb_player_on_my_case() >= 6)
 					return (true);
 		}
 		else
@@ -197,14 +197,14 @@ class			ia
 		return ("avance");
 	}
 
-	function		find_what_missing()
+	function		search_what_missing()
 	{
 		$tab_search = array();
 		if ($this->level == 1)
 		{
 			if (isset($this->stuff["linemate"]) && $this->stuff["linemate"] < 1)
 				$tab_search[] = "linemate";
-			if ($this->getNbPlayerOnMyCase() < 1)
+			if ($this->get_nb_player_on_my_case() < 1)
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 2)
@@ -215,7 +215,7 @@ class			ia
 				$tab_search[] = "deraumere";
 			if (isset($this->stuff["sibur"]) && $this->stuff["sibur"] < 1)
 				$tab_search[] = "sibur";
-			if ($this->getNbPlayerOnMyCase() < 2)
+			if ($this->get_nb_player_on_my_case() < 2)
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 3)
@@ -226,7 +226,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["phiras"]) && $this->stuff["phiras"] < 2)
 				$tab_search[] = "phiras";
-			if ($this->getNbPlayerOnMyCase() < 2)
+			if ($this->get_nb_player_on_my_case() < 2)
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 4)
@@ -239,7 +239,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["phiras"]) && $this->stuff["phiras"] < 1)
 				$tab_search[] = "phiras";
-			if ($this->getNbPlayerOnMyCase() < 4)
+			if ($this->get_nb_player_on_my_case() < 4)
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 5)
@@ -252,7 +252,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["mendiane"]) && $this->stuff["mendiane"] < 3)
 				$tab_search[] = "mendiane";
-			if ($this->getNbPlayerOnMyCase() < 4)
+			if ($this->get_nb_player_on_my_case() < 4)
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 6)
@@ -265,7 +265,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["phiras"]) && $this->stuff["phiras"] < 1)
 				$tab_search[] = "phiras";
-			if ($this->getNbPlayerOnMyCase() < 6)
+			if ($this->get_nb_player_on_my_case() < 6)
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 7)
@@ -282,7 +282,7 @@ class			ia
 				$tab_search[] = "phiras";
 			if (isset($this->stuff["thystame"]) && $this->stuff["thystame"] < 1)
 				$tab_search[] = "thystame";
-			if ($this->getNbPlayerOnMyCase() < 6)
+			if ($this->get_nb_player_on_my_case() < 6)
 				$tab_search[] = "player";
 		}
 		else

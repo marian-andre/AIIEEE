@@ -4,9 +4,11 @@ set_time_limit(0);
 
 class		connection
 {
-	private	$_sock;
-	private	$_port;
-	private	$_host;
+	private			$_sock;
+	private			$_port;
+	private			$_host;
+	static public	$verbose_send = FALSE;
+	static public	$verbose_read = TRUE;
 
 	public	function	set_host($host)
 	{
@@ -40,6 +42,7 @@ class		connection
 
 	public	function	send_msg($msg)
 	{
+		if (self::$verbose_send === TRUE) echo "--> $msg:";
 		if (@socket_write($this->_sock, trim($msg)."\n", strlen($msg) + 1) === FALSE)
 		{
 			echo "Impossible d'envoyer le message sur la socket " . $this->_sock."\n";
@@ -62,7 +65,7 @@ class		connection
 		$rep = $this->read_msg();
 		if ($rep === "elevation en cours")
 			$rep = $this->read_msg();
-		echo $rep . "\n";
+		if (self::$verbose_read === TRUE) echo $rep . "\n";
 		if ($rep === "mort")
 			$this->disconnect();
 		return ($rep);

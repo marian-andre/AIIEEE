@@ -54,22 +54,22 @@ function init_client($argc, $argv, &$ia, &$serveur)
 
 function	run_client($ia, $serveur, $argv)
 {
+	connection::$verbose_send = TRUE;
 	$index = 0;
 	while (true)
 	{
 		$serveur->send_msg("connect_nbr");
 		$ia->connect_nbr = $serveur->receive_msg();
 		if ($ia->connect_nbr > 0)
-			$ia->fork_client(__FILE__, $argv);
+			$ia->client_fork(__FILE__, $argv);
 		if ($ia->stuff === NULL)
 			$cmd_to_send = "inventaire";
-		else if ($ia->canlevelUp())
+		else if ($ia->client_canlevelup())
 			$cmd_to_send = "incantation";
-		else if ($index % 50 === 9)
+		else if ($index % 10 === 9)
 			$cmd_to_send = "fork";
 		else
-			$cmd_to_send = $ia->find_what_missing();
-		echo "--> $cmd_to_send:";
+			$cmd_to_send = $ia->search_what_missing();
 		$ia->last_action = $cmd_to_send;
 		$serveur->send_msg($cmd_to_send);
 		$receive = $serveur->receive_msg();

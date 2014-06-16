@@ -6,14 +6,24 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:50 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 17:21:05 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/16 15:15:25 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "graphic.h"
 
-void		ft_add_player(t_game *game, char **tab)
+static int		ft_nb_team(t_game *game, char *team)
+{
+	int		i;
+
+	i = 0;
+	while (ft_strcmp(team, game->team[i]) != 0)
+		i++;
+	return (i);
+}
+
+static void		ft_add_player(t_game *game, char **tab)
 {
 	int		i;
 
@@ -22,13 +32,13 @@ void		ft_add_player(t_game *game, char **tab)
 	{
 		game->client[i].x = ft_atoi(tab[2]);
 		game->client[i].y = ft_atoi(tab[3]);
-		game->client[i].num_team = ft_atoi(tab[1]);
+		game->client[i].num_team = ft_nb_team(game, tab[1]);
 		game->client[i].lvl = ft_atoi(tab[5]);
 		game->client[i].dir = ft_atoi(tab[4]);
 	}
 }
 
-void		init_client(t_game *game)
+static void		init_client(t_game *game)
 {
 	int		i;
 

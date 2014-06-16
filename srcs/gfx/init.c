@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/15 22:11:01 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 15:56:13 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void		init_time(t_game *game)
 
 void				init_textures(t_game *g)
 {
-	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*) * NB_TEXTURES);
+	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
+		* (NB_TEXTURES + 1));
 	g->textures[0] = loadImage(g, "srcs/gfx/image/food.bmp", 0);
 	g->textures[1] = loadImage(g, "srcs/gfx/image/linemate.bmp", 0xFFFFFF);
 	g->textures[2] = loadImage(g, "srcs/gfx/image/deraumere.bmp", -1);
@@ -62,12 +63,13 @@ void				init_textures(t_game *g)
 	g->textures[4] = loadImage(g, "srcs/gfx/image/mendiane.bmp", -1);
 	g->textures[5] = loadImage(g, "srcs/gfx/image/phiras.bmp", 0xFEFEFE);
 	g->textures[6] = loadImage(g, "srcs/gfx/image/thystame.bmp", -1);
-/*	g->textures[7] = loadImage(g, "srcs/gfx/image/goron_N.bmp", -1);
+	g->textures[7] = loadImage(g, "srcs/gfx/image/goron_N.bmp", -1);
 	g->textures[8] = loadImage(g, "srcs/gfx/image/goron_S.bmp", -1);
 	g->textures[9] = loadImage(g, "srcs/gfx/image/goron_E.bmp", -1);
 	g->textures[10] = loadImage(g, "srcs/gfx/image/goron_W.bmp", -1);
-*/	g->textures[11] = loadImage(g, "srcs/gfx/image/map.bmp", -1);
-//	g->textures[12] = loadImage(g, "srcs/gfx/image/egg.bmp", -1);
+	g->textures[11] = loadImage(g, "srcs/gfx/image/map.bmp", -1);
+	g->textures[12] = loadImage(g, "srcs/gfx/image/egg.bmp", -1);
+	g->textures[13] = NULL;
 }
 
 void				init_sdl(t_game *game)

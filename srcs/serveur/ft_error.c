@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:09:25 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 17:22:50 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/16 15:39:45 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ft_usage(char *str)
 	ft_putendl("	-y hauteur du Monde (par defaut : 20)");
 	ft_putendl("	-n nom_equipe_1 nom_equipe_2 ...");
 	ft_putstr("	-c nombre de client autorises au commencement du jeu ");
-	ft_putendl("(par defaut 2)");
+	ft_putendl("(par defaut 6)");
 	ft_putendl("	-t diviseur de l'unite de temps (par defaut : 100)");
 	exit(0);
 }

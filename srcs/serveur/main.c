@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/15 17:39:38 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 15:39:27 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_game			ft_init_game(t_game game)
 	i = 0;
 	while (i < MAX_NB_TEAM)
 	{
-		game.max_cli[i] = 2;
+		game.max_cli[i] = 6;
 		i++;
 	}
 	game.time = 100;

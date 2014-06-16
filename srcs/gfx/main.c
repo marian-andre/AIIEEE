@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/15 20:27:00 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 16:51:14 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "libft.h"
 #include "graphic.h"
 
-static int				ft_connect(char *addr, int port)
+static int			ft_connect(char *addr, int port)
 {
 	int					sock;
 	struct protoent		*proto;
@@ -60,10 +60,8 @@ int					main(int argc, char **argv)
 	while (42)
 	{
 		draw_render(&game);
-//		display(&game);
 		get_next_line(game.sock, &line);
 		ft_check_msg(&game, line);
 	}
 	return (EXIT_SUCCESS);
 }
-

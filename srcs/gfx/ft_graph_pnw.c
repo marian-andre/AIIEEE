@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:50 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 15:15:25 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 16:45:27 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void		init_client(t_game *game)
 	}
 }
 
-void		ft_graph_pnw(t_game *game, char *line)
+void			ft_graph_pnw(t_game *game, char *line)
 {
 	static int	first = 1;
 	char		**tab;

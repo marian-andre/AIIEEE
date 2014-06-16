@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 15:34:08 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/16 15:56:00 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 16:59:25 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void				cleanup(void)
 	free(game->textures);
 	SDL_DestroyRenderer(game->renderer);
 	SDL_DestroyWindow(game->window);
-    SDL_Quit();
+	SDL_Quit();
 }
 
-SDL_Texture			*loadImage(t_game *game, char *path, int rgb)
+SDL_Texture			*load_image(t_game *game, char *path, int rgb)
 {
 	SDL_Surface		*img;
 	SDL_Texture		*texture;

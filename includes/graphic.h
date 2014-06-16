@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 16:00:27 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 17:15:44 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,14 @@ void				draw_render(t_game *game);
 
 t_game				*singleton(t_game *game);
 void				cleanup(void);
-SDL_Texture			*loadImage(t_game *game, char *path, int rgb);
+SDL_Texture			*load_image(t_game *game, char *path, int rgb);
 void				display(t_game *game);
+
+/*
+** draw_case.c
+*/
+
+void			draw_case(t_game *game, int x, int y);
 
 /*
 ** init.c

@@ -6,10 +6,11 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 16:48:28 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/16 17:06:09 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 17:47:03 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "graphic.h"
 
 static void		ft_dir_goron(t_game *game, SDL_Rect *s, SDL_Rect *d, int i)
@@ -41,13 +42,26 @@ static void		ft_draw_goron(t_game *game, int i)
 	dst.y = y * MAP_SIZE_H + TILES_SIZE_H;
 	dst.w = TILES_SIZE_W;
 	dst.h = TILES_SIZE_H;
+	ft_putendl("trtr");
+	ft_putchar('\n');
+	ft_putnbr(x);
+	ft_putchar('\n');
+	ft_putnbr(y);
+	ft_putchar('\n');
+	ft_putnbr(game->map[y][x].current_player);
+
 	if (game->map[y][x].current_player < 3)
+	{
+		ft_putendl("toto");
 		dst.x = dst.x + (game->map[y][x].current_player * TILES_SIZE_W);
+	}
 	else if (game->map[y][x].current_player < 6)
 	{
+	ft_putendl("tptp");
 		dst.x = dst.x + ((game->map[y][x].current_player - 3) * TILES_SIZE_W);
 		dst.y = dst.y + TILES_SIZE_H;
 	}
+	ft_putendl("tete");
 	if (game->map[y][x].current_player < 6)
 		ft_dir_goron(game, &src, &dst, i);
 	game->map[y][x].current_player++;

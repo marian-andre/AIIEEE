@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 16:51:14 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 17:51:27 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int					main(int argc, char **argv)
 	nb_case = game.width * game.height;
 	while (nb_case-- && get_next_line(game.sock, &line))
 		init_case(&game, line);
+	init_client(&game);
 	while (42)
 	{
 		draw_render(&game);

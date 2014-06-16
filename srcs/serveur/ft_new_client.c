@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/16 14:17:36 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/16 14:23:18 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			ft_new_client(t_game *g, t_fd *fd, char *line, int cs)
 		cs = 0;
 	}
 	else if (g->max_cli[g->cls[fd->nb_cli].num_team]
-				- ft_count_nb_co(g, fd->nb_cli) < 0)
+				- ft_count_nb_co(g, fd->nb_cli) <= 0)
 	{
 		ft_putendl_fd("ERROR this team is full.", cs);
 		close(cs);

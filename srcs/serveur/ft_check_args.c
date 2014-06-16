@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/02 15:17:49 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 17:21:49 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/16 18:48:35 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,11 @@ static int		ft_fill_game(char **argv, int i, t_game *game)
 {
 	if (ft_strcmp(argv[i], "-p") == 0 && ft_isdigit_str(argv[i + 1]) == 1)
 		game->port = ft_atoi(argv[i + 1]);
-	else if (ft_strcmp(argv[i], "-x") == 0 && ft_isdigit_str(argv[i + 1]) >= 10)
+	else if (ft_strcmp(argv[i], "-x") == 0 && ft_isdigit_str(argv[i + 1])
+			&& ft_atoi(argv[i + 1]) > 9 && ft_atoi(argv[i + 1]) < 101)
 		game->width = ft_atoi(argv[i + 1]);
-	else if (ft_strcmp(argv[i], "-y") == 0 && ft_isdigit_str(argv[i + 1]) >= 10)
+	else if (ft_strcmp(argv[i], "-y") == 0 && ft_isdigit_str(argv[i + 1])
+			&& ft_atoi(argv[i + 1]) > 9 && ft_atoi(argv[i + 1]) < 101)
 		game->height = ft_atoi(argv[i + 1]);
 	else if (ft_strcmp(argv[i], "-c") == 0 && ft_isdigit_str(argv[i + 1]) == 1)
 		ft_fill_max_cli(ft_atoi(argv[i + 1]), game);

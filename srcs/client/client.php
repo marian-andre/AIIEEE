@@ -80,8 +80,6 @@ function	run_client($ia, $serveur, $argv)
 		}
 		else if ($cmd_to_send === "inventaire")
 			$ia->get_inventaire($receive);
-		else if ($cmd_to_send === "connect_nbr")
-			$ia->connect_nbr = $receive;
 		else if (strncmp($cmd_to_send, "prend ", 6) === 0 && $receive === "ok")
 			$ia->stuff = NULL;
 		$index++;

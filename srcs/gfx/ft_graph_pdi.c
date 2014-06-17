@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:20 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 17:19:16 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/17 15:24:47 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ void		ft_graph_pdi(t_game *game, char *line)
 	game->client[i].resource.mendiane = 0;
 	game->client[i].resource.phiras = 0;
 	game->client[i].resource.thystame = 0;
-	ft_putendl("pdi end");
 	ft_strdel2(&tab);
 }

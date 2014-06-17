@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:50 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 17:50:16 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/17 15:25:52 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ static void		ft_add_player(t_game *game, char **tab)
 
 	i = ft_atoi(tab[1]);
 	game->client[i].x = ft_atoi(tab[2]);
-	ft_putendl("------------");
-	ft_putnbr(game->client[i].x);
-	ft_putchar('\n');
-	ft_putendl("------------");
 	game->client[i].y = ft_atoi(tab[3]);
 	game->client[i].num_team = ft_nb_team(game, tab[1]);
 	game->client[i].lvl = ft_atoi(tab[5]);
@@ -67,7 +63,6 @@ void			ft_graph_pnw(t_game *game, char *line)
 {
 	char		**tab;
 
-	ft_putendl("lol");
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("malloc failed -> tab in ft_graph_pnw");
 	ft_add_player(game, tab);

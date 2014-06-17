@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:13 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 17:19:39 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/17 15:25:08 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ void			ft_graph_pgt(t_game *game, char *line)
 			game->client[i].resource.food++;
 		}
 	}
-	ft_putendl("pgt end");
 	ft_strdel2(&tab);
 }

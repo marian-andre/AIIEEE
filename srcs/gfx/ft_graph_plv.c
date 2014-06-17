@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:00:10 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/14 17:20:44 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/17 15:25:30 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ void		ft_graph_plv(t_game *game, char *line)
 		ft_graphic_error("malloc failed -> tab in ft_graph_plv");
 	i = ft_atoi(tab[1]);
 	game->client[i].lvl = ft_atoi(tab[2]);
-	ft_putendl("plv end");
 	ft_strdel2(&tab);
 }

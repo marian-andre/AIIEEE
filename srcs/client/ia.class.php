@@ -165,7 +165,11 @@ class			ia
 					if ($map[$a][$b] == $search[$i])
 					{
 						if ($a == 0)
+						{
+							if ($search[$i] !== "nourriture")
+								$this->stuff = NULL;
 							return ("prend " . $search[$i]);
+						}
 						else if ($a == 2
 							|| $a == 6
 							|| $a == 12

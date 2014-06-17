@@ -1,5 +1,0 @@
-#!/bin/sh
-
-. /Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/scripts/setenv.sh
-
-exec /Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/sbin/.php-fpm.bin -y /Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/etc/php-fpm.conf -p /Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/var/ -c /Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/etc/php.ini "$@"

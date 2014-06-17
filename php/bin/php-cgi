@@ -1,7 +1,0 @@
-#!/bin/sh
-PHPRC=/Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/etc
-export PHPRC
-PHP_PEAR_SYSCONF_DIR=/Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/etc
-export PHP_PEAR_SYSCONF_DIR
-. /Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/../scripts/setenv.sh
-exec /Volumes/Data/nfs/zfs-student-3/users/2013/mlemort/mamp/php/bin/php-cgi.bin "$@"

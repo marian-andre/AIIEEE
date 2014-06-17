@@ -100,4 +100,9 @@ function	main($argc, $argv)
 		run_client($ia, $serveur, $argv);
 }
 
+if(!function_exists('pcntl_exec'))
+{
+	echo "Error, PHP version\n";
+	exit (1);
+}
 main($argc, $argv);

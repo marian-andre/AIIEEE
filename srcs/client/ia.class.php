@@ -11,14 +11,14 @@ class			ia
 	public		$serveur;
 	public		$last_action;
 
-	function		__construct()
+	public function		__construct()
 	{
 		$this->stuff = NULL;
 		$this->level = 1;
 		$this->last_action = NULL;
 	}
 
-	function		get_inventaire($receive)
+	public function		get_inventaire($receive)
 	{
 		$receive = str_replace('{', '', $receive);
 		$receive = str_replace('}', '', $receive);
@@ -34,7 +34,22 @@ class			ia
 		}
 	}
 
-	function		get_nb_player_on_my_case()
+	public function		client_fork($file, $argv)
+	{
+		array_shift($argv);
+		$pid = pcntl_fork();
+		if ($pid == -1)
+		{
+			echo "Duplication impossible\n";
+			exit (1);
+		}
+		else if ($pid)
+			pcntl_wait($status);
+		else if (pcntl_exec($file, $argv) !== FALSE)
+			$this->connect_nbr--;
+	}
+
+	private function	get_nb_player_on_my_case()
 	{
 		$this->serveur->send_msg("voir");
 		$receive = $this->serveur->receive_msg();
@@ -59,22 +74,7 @@ class			ia
 		return ($nb);
 	}
 
-	function		client_fork($file, $argv)
-	{
-		array_shift($argv);
-		$pid = pcntl_fork();
-		if ($pid == -1)
-		{
-			echo "Duplication impossible\n";
-			exit (1);
-		}
-		else if ($pid)
-			pcntl_wait($status);
-		else if (pcntl_exec($file, $argv) !== FALSE)
-			$this->connect_nbr--;
-	}
-
-	function		client_canlevelup()
+	public function		client_canlevelup()
 	{
 		if ($this->level == 1)
 		{
@@ -139,8 +139,10 @@ class			ia
 		return (false);
 	}
 
-	function		vision($receive, $search)
+	private function		search_array($search)
 	{
+		$this->serveur->send_msg("voir");
+		$receive = $this->serveur->receive_msg();
 		$receive = str_replace('{', '', $receive);
 		$receive = str_replace('}', '', $receive);
 		$map = array();
@@ -199,7 +201,7 @@ class			ia
 		return ("avance");
 	}
 
-	function		search_what_missing()
+	public function		search_what_missing()
 	{
 		$tab_search = array();
 		if ($this->level == 1)
@@ -289,8 +291,6 @@ class			ia
 		}
 		else
 			$tab_search[] = "nourriture";
-		$this->serveur->send_msg("voir");
-		$receive = $this->serveur->receive_msg();
-		return ($this->vision($receive, $tab_search));
+		return ($this->search_array($tab_search));
 	}
 }

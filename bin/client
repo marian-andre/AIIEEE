@@ -1,0 +1,2 @@
+#!/bin/sh
+./php-5.5.13/sapi/cli/php srcs/client/client.php $*

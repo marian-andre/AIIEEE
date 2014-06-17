@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/17 14:00:02 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:49:11 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		init_textures(t_game *g)
 	g->textures[10] = load_image(g, "srcs/gfx/image/goron_W.bmp", 0x929292);
 	g->textures[11] = load_image(g, "srcs/gfx/image/map.bmp", -1);
 	g->textures[12] = load_image(g, "srcs/gfx/image/egg.bmp", -1);
-	g->textures[3] = NULL;
+	g->textures[13] = NULL;
 }
 
 void		init_sdl(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/16 15:39:27 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:11:52 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static t_game			ft_init_map(t_game game)
 			game.map[y][x].mendiane = 0;
 			game.map[y][x].phiras = 0;
 			game.map[y][x].thystame = 0;
-			game.map[y][x].food = 0;
+			game.map[y][x].nourriture = 0;
 			game.map[y][x].nb_player = 0;
 		}
 	}

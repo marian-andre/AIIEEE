@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 11:40:18 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 12:51:35 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:06:59 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_send_pin(t_game *g, int i, int num_cli)
 	ft_putchar_fd(' ', g->cls[i].cs);
 	ft_putnbr_fd(g->cls[num_cli].y, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);
-	ft_putnbr_fd(g->cls[num_cli].resource.food, g->cls[i].cs);
+	ft_putnbr_fd(g->cls[num_cli].resource.nourriture, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);
 	ft_putnbr_fd(g->cls[num_cli].resource.linemate, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);

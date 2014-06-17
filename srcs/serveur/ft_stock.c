@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 11:46:52 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:10:04 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void		ft_stock(t_cmd *cmd, t_game *g)
 		ft_putnbr_fd(g->cls[cmd->num_cli].resource.phiras, cmd->fd);
 		ft_putstr_fd(", thystame ", cmd->fd);
 		ft_putnbr_fd(g->cls[cmd->num_cli].resource.thystame, cmd->fd);
-		ft_putstr_fd(", food ", cmd->fd);
-		ft_putnbr_fd(g->cls[cmd->num_cli].resource.food, cmd->fd);
+		ft_putstr_fd(", nourriture ", cmd->fd);
+		ft_putnbr_fd(g->cls[cmd->num_cli].resource.nourriture, cmd->fd);
 		ft_putendl_fd("}", cmd->fd);
 	}
 }

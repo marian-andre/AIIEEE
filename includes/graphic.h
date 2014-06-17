@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 17:15:44 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/16 17:50:43 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void				ft_graph_tna(t_game *game, char *line);
 ** ft_graph_pnw.c
 */
 
+void				init_client(t_game *game);
 void				ft_graph_pnw(t_game *game, char *line);
 
 /*

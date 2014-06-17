@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:55:36 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/12 15:56:28 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 17:20:22 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void				ft_add_node(t_game *g, t_cmd *cmd)
 		g->list = cmd;
 }
 
-t_cmd				*ft_create_node(t_game *g, char *line, int i)
+t_cmd				*ft_create_node(t_game *g, char *line, int i, int num_egg)
 {
 	t_cmd	*cmd;
 
@@ -95,6 +95,7 @@ t_cmd				*ft_create_node(t_game *g, char *line, int i)
 		ft_error("ERROR malloc");
 	cmd->cmd = ft_strdup(line);
 	cmd->num_cli = i;
+	cmd->num_egg = num_egg;
 	cmd->next = NULL;
 	cmd->fd = g->cls[i].cs;
 	cmd->time = ft_get_cd(g, line);

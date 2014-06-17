@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/17 14:19:02 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 17:19:29 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ struct			s_cmd
 	t_time		time;
 	int			fd;
 	int			num_cli;
+	int			num_egg;
 	t_cmd		*next;
 };
 
@@ -127,7 +128,7 @@ void			ft_east(t_game *g, t_var *var);
 void			ft_west(t_game *g, t_var *var);
 void			ft_add_node(t_game *g, t_cmd *cmd);
 void			ft_del_node(t_game *g, t_cmd *cmd);
-t_cmd			*ft_create_node(t_game *g, char *line, int i);
+t_cmd			*ft_create_node(t_game *g, char *line, int i, int num_egg);
 void			ft_init_tab(t_tab tab[12]);
 long			timevaldiff(t_time starttime, t_time finishtime);
 int				ft_rand(int a);
@@ -199,9 +200,9 @@ void			ft_graph_smg(t_game *g, int i, char *msg);
 void			ft_graph_suc(t_game *g, int i);
 void			ft_graph_sbp(t_game *g, int i);
 void			ft_graph_bct(t_game *g, int i, int x, int y);
-void			ft_graph_enw(t_game *g, int i, int num_cli);
-void			ft_graph_eht(t_game *g, int i, int nb_egg);
+void			ft_graph_enw(t_game *g, int num_cli);
+void			ft_graph_eht(t_game *g, int nb_egg);
 void			ft_graph_ebo(t_game *g, int i, int nb_egg);
-void			ft_graph_edi(t_game *g, int i, int nb_egg);
+void			ft_graph_edi(t_game *g, int nb_egg);
 
 #endif

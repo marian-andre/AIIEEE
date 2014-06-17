@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 14:08:05 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 17:26:11 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void		ft_init_cli(t_game *g, t_fd *fd, int cs)
 	t_cmd		*cmd;
 
 	g->cls[fd->nb_cli].cs = cs;
-	cmd = ft_create_node(g, "life", fd->nb_cli);
+	cmd = ft_create_node(g, "life", fd->nb_cli, 0);
 	ft_add_node(g, cmd);
 	g->cls[fd->nb_cli].lvl = 1;
 	g->cls[fd->nb_cli].graph = 0;
@@ -65,7 +65,7 @@ static void		ft_init_egg(t_game *g, t_fd *fd, int i, int cs)
 
 	g->eggs[i].cl.cs = cs;
 	g->cls[fd->nb_cli] = g->eggs[i].cl;
-	ft_add_node(g, ft_create_node(g, "life", fd->nb_cli));
+	ft_add_node(g, ft_create_node(g, "life", fd->nb_cli, 0));
 	g->eggs[i].active = 0;
 	ft_graph_pnw(g, fd->nb_cli);
 	line = ft_itoa(g->width);

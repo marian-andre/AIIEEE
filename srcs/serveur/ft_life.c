@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/16 14:13:29 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:07:47 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void		ft_life(t_cmd *cmd, t_game *g)
 
 	if (g->cls[cmd->num_cli].cs == cmd->fd)
 	{
-		ft_putstr("food = ");
-		ft_putnbr(g->cls[cmd->num_cli].resource.food);
+		ft_putstr("nourriture = ");
+		ft_putnbr(g->cls[cmd->num_cli].resource.nourriture);
 		ft_putstr(", t = ");
 		ft_putnbr(g->tab[11].t);
 		ft_putstr(", client num ");
 		ft_putnbr(cmd->num_cli);
 		ft_putchar('\n');
-		g->cls[cmd->num_cli].resource.food--;
-		if (g->cls[cmd->num_cli].resource.food <= 0)
+		g->cls[cmd->num_cli].resource.nourriture--;
+		if (g->cls[cmd->num_cli].resource.nourriture <= 0)
 			ft_death(cmd, g);
 		else
 		{

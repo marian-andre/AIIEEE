@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/15 19:55:57 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:12:46 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct	s_map
 	int			mendiane;
 	int			phiras;
 	int			thystame;
-	int			food;
+	int			nourriture;
 	int			nb_player;
 }				t_map;
 

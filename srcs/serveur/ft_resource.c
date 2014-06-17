@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 10:02:56 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/11 16:53:26 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/17 14:09:15 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void		ft_distrib(t_map **map, int x, int y, t_game game)
 		map[y][x].mendiane = ft_rand_stone(q, 4, game);
 	if (q[5] > 0)
 		map[y][x].thystame = ft_rand_stone(q, 5, game);
-	map[y][x].food = ft_rand(Q_FO);
+	map[y][x].nourriture = ft_rand(Q_FO);
 }
 
 t_game			ft_resource(t_game game)

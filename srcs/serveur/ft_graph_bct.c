@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 19:18:39 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 12:52:05 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:06:44 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_send_bct(t_game *g, int i, int x, int y)
 	ft_putchar_fd(' ', g->cls[i].cs);
 	ft_putnbr_fd(y, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);
-	ft_putnbr_fd(g->map[y][x].food, g->cls[i].cs);
+	ft_putnbr_fd(g->map[y][x].nourriture, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);
 	ft_putnbr_fd(g->map[y][x].linemate, g->cls[i].cs);
 	ft_putchar_fd(' ', g->cls[i].cs);

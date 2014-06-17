@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/15 20:05:19 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:06:23 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_client	ft_new_egg(t_cmd *cmd, t_game *g)
 	cl.resource.mendiane = 0;
 	cl.resource.phiras = 0;
 	cl.resource.thystame = 0;
-	cl.resource.food = 10;
+	cl.resource.nourriture = 10;
 	cl.dir = (rand() % 4) + 1;
 	cl.x = g->cls[cmd->num_cli].x;
 	cl.y = g->cls[cmd->num_cli].y;

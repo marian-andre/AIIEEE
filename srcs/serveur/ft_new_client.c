@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/16 14:23:18 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:08:05 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void		ft_init_cli(t_game *g, t_fd *fd, int cs)
 	g->cls[fd->nb_cli].resource.mendiane = 0;
 	g->cls[fd->nb_cli].resource.phiras = 0;
 	g->cls[fd->nb_cli].resource.thystame = 0;
-	g->cls[fd->nb_cli].resource.food = 10;
+	g->cls[fd->nb_cli].resource.nourriture = 10;
 	g->cls[fd->nb_cli].dir = (rand() % 4) + 1;
 	ft_send(g, fd);
 }

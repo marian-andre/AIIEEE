@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 12:48:07 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:10:49 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	ft_take_thystame(t_cmd *cmd, t_game *g)
 
 static void	ft_take_food(t_cmd *cmd, t_game *g)
 {
-	if (g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].food > 0)
+	if (g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].nourriture > 0)
 	{
-		g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].food--;
-		g->cls[cmd->num_cli].resource.food++;
+		g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].nourriture--;
+		g->cls[cmd->num_cli].resource.nourriture++;
 		ft_putendl_fd("ok", cmd->fd);
 		ft_send_take_graph(cmd, g, 0);
 	}
@@ -65,7 +65,7 @@ void		ft_take(t_cmd *cmd, t_game *g)
 			ft_take_phiras(cmd, g);
 		else if (ft_strcmp("thystame", split[1]) == 0)
 			ft_take_thystame(cmd, g);
-		else if (ft_strcmp("food", split[1]) == 0)
+		else if (ft_strcmp("nourriture", split[1]) == 0)
 			ft_take_food(cmd, g);
 		else
 			ft_putendl_fd("ko", cmd->fd);

@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:49:23 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/12 19:41:56 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:12:16 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	nourriture_joueur(t_game *g, char **msg, t_var var, int k)
 	int		i;
 
 	i = -1;
-	while (++i < g->map[var.new_y][var.new_x].food)
+	while (++i < g->map[var.new_y][var.new_x].nourriture)
 		*msg = ft_strjoin_free(*msg, " nourriture", 1);
 	i = -1;
 	while (++i < g->map[var.new_y][var.new_x].nb_player - k)

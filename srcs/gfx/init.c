@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 18:47:40 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/17 13:39:49 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		init_textures(t_game *g)
 {
 	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
 		* (NB_TEXTURES + 1));
-	g->textures[0] = load_image(g, "srcs/gfx/image/food.bmp", 0);
+	g->textures[0] = load_image(g, "srcs/gfx/image/food.bmp", 0x39261d);
 	g->textures[1] = load_image(g, "srcs/gfx/image/linemate.bmp", 0x39261d);
 	g->textures[2] = load_image(g, "srcs/gfx/image/deraumere.bmp", 0x39261d);
 	g->textures[3] = load_image(g, "srcs/gfx/image/sibur.bmp", 0x39261d);

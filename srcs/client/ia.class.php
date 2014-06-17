@@ -24,13 +24,13 @@ class			ia
 		$receive = str_replace('}', '', $receive);
 		$inventaire = array();
 		$inventaire = explode(',', $receive);
-		$i = 0;
+		$index = 0;
 		$stuff = array();
-		while (isset($inventaire[$i]))
+		while (isset($inventaire[$index]))
 		{
-			$inventaire[$i] = explode(' ', $inventaire[$i]);
-			@$this->stuff[$inventaire[$i][0]] = $inventaire[$i][1];
-			$i++;
+			$inventaire[$index] = explode(' ', $inventaire[$index]);
+			@$this->stuff[$inventaire[$index][0]] = $inventaire[$index][1];
+			$index++;
 		}
 	}
 
@@ -58,20 +58,20 @@ class			ia
 		$map = array();
 		$map = explode(',', $receive);
 		$map = explode(' ', $map[0]);
-		$i = 0;
-		$nb = 0;
-		while (isset($map[$i]))
+		$index = 0;
+		$count = 0;
+		while (isset($map[$index]))
 		{
-			if ($map[$i] == "nourriture")
+			if ($map[$index] == "nourriture")
 			{
 				$this->serveur->send_msg("prend nourriture");
 				$receive = $this->serveur->receive_msg();
 			}
-			if ($map[$i] == "joueur")
-				$nb++;
-			$i++;
+			if ($map[$index] == "joueur")
+				$count++;
+			$index++;
 		}
-		return ($nb);
+		return ($count);
 	}
 
 	public function		client_canlevelup()
@@ -147,16 +147,16 @@ class			ia
 		$receive = str_replace('}', '', $receive);
 		$map = array();
 		$map = explode(',', $receive);
-		$i = 0;
-		while (isset($map[$i]))
+		$index = 0;
+		while (isset($map[$index]))
 		{
-			$map[$i] = explode(' ', $map[$i]);
-			$i++;
+			$map[$index] = explode(' ', $map[$index]);
+			$index++;
 		}
 		if ($this->last_action == "gauche" || $this->last_action == "droite")
 			return ("avance");
-		$i = 0;
-		while (isset($search[$i]))
+		$index = 0;
+		while (isset($search[$index]))
 		{
 			$a = 0;
 			while (isset($map[$a]))
@@ -164,13 +164,13 @@ class			ia
 				$b = 0;
 				while (isset($map[$a][$b]))
 				{
-					if ($map[$a][$b] == $search[$i])
+					if ($map[$a][$b] == $search[$index])
 					{
 						if ($a == 0)
 						{
-							if ($search[$i] !== "nourriture")
+							if ($search[$index] !== "nourriture")
 								$this->stuff = NULL;
-							return ("prend " . $search[$i]);
+							return ("prend " . $search[$index]);
 						}
 						else if ($a == 2
 							|| $a == 6
@@ -196,7 +196,7 @@ class			ia
 				}
 				$a++;
 			}
-			$i++;
+			$index++;
 		}
 		return ("avance");
 	}

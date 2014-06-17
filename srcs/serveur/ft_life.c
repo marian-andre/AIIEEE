@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 14:07:47 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:19:28 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	ft_death(t_cmd *cmd, t_game *g)
 	ft_putnbr(cmd->num_cli);
 	ft_putendl(" died.");
 	ft_putendl_fd("mort", cmd->fd);
+	ft_graph_pdi(g, cmd->num_cli);
 	close(g->cls[cmd->num_cli].cs);
 	g->cls[cmd->num_cli].cs = MORT;
 }

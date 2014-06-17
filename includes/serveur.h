@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/17 14:12:46 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/17 14:19:02 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ void			ft_graph_pie(t_game *g, int num_cli, int res);
 void			ft_graph_pfk(t_game *g, int num_cli);
 void			ft_graph_pdr(t_game *g, int num_cli, int resource);
 void			ft_graph_pgt(t_game *g, int num_cli, int resource);
-void			ft_graph_pdi(t_game *g, int i, int num_cli);
+void			ft_graph_pdi(t_game *g, int num_cli);
 void			ft_graph_seg(t_game *g, int i, char *team);
 void			ft_graph_smg(t_game *g, int i, char *msg);
 void			ft_graph_suc(t_game *g, int i);

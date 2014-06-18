@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/18 19:55:35 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/18 21:07:27 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,4 @@ void		init_sdl(t_game *game)
 	if (game->window == NULL || game->renderer == NULL)
 		ft_graphic_error("screen mode initialization is impossible.");
 	init_textures(game);
-}
-
-void		init_case(t_game *game, char *line)
-{
-	char	**tab;
-
-	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		ft_graphic_error("parse error -> array in init_case");
-	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].food = ft_atoi(tab[3]);
-	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].linemate = ft_atoi(tab[4]);
-	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].deraumere = ft_atoi(tab[5]);
-	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].sibur = ft_atoi(tab[6]);
-	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].mendiane = ft_atoi(tab[7]);
-	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].phiras = ft_atoi(tab[8]);
-	game->map[ft_atoi(tab[2])][ft_atoi(tab[1])].thystame = ft_atoi(tab[9]);
-	ft_strdel2(&tab);
-	free(line);
 }

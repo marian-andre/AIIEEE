@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/18 20:01:31 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/18 21:16:09 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,16 @@ int					main(int argc, char **argv)
 	signal(SIGINT, exit);
 	nb_case = game.width * game.height;
 	while (nb_case-- && get_next_line(game.sock, &line))
-		init_case(&game, line);
+	{
+		ft_graph_bct(&game, line);
+		free(line);
+	}
 	init_client(&game);
 	while (42)
 	{
-		SDL_RenderClear(game.renderer);
 		draw_render(&game);
 		get_next_line(game.sock, &line);
+		ft_putendl(line);
 		if (line != NULL)
 			ft_check_msg(&game, line);
 		free(line);

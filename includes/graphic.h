@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 17:50:43 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/18 21:15:53 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void			draw_case(t_game *game, int x, int y);
 void				init_map(t_game *game);
 void				init_time(t_game *game);
 void				init_sdl(t_game *game);
-void				init_case(t_game *game, char *line);
 void				init_textures(t_game *game);
 
 /*
@@ -107,6 +106,12 @@ void				init_textures(t_game *game);
 */
 
 void				ft_check_msg(t_game *game, char *line);
+
+/*
+** ft_graph_bct.c
+*/
+
+void				ft_graph_bct(t_game *game, char *line);
 
 /*
 ** ft_graph_tna.c

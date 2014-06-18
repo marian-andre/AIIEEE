@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 18:25:02 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/17 14:11:33 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/18 21:45:07 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_up_food(t_game *game)
 		while (++x < game->width)
 			food = food + game->map[y][x].nourriture;
 	}
-	if (food < (game->height * game->width) * (Q_FO / 2))
+	if (food < (game->height * game->width) * (Q_FO / 4))
 	{
 		ft_loop_map(game, x, y);
 		ft_graph_mct(game, 0);

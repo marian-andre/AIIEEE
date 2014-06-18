@@ -6,11 +6,10 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/18 18:25:30 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/18 20:50:53 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "serveur.h"
 #include "libft.h"
 
@@ -37,7 +36,9 @@ static int	ft_co_wizards(t_cmd *cmd, t_game *g, int lvl_up)
 	if (lvl_up == 1)
 	{
 		g->cls[cmd->num_cli].lvl++;
-		dprintf(cmd->fd, "niveau actuel : %d\n", g->cls[cmd->num_cli].lvl);
+		ft_putstr_fd("niveau actuel : ", cmd->fd);
+		ft_putnbr_fd(g->cls[cmd->num_cli].lvl, cmd->fd);
+		ft_putchar_fd('\n', cmd->fd);
 	}
 	return (nb);
 }
@@ -86,5 +87,9 @@ void		ft_spell(t_cmd *cmd, t_game *g)
 	if (g->cls[cmd->num_cli].lvl == 7 && nb >= 6)
 		ft_end_of_spell(g, cmd, nb);
 	else
-		dprintf(cmd->fd, "niveau actuel : %d\n", g->cls[cmd->num_cli].lvl);
+	{
+		ft_putstr_fd("niveau actuel : ", cmd->fd);
+		ft_putnbr_fd(g->cls[cmd->num_cli].lvl, cmd->fd);
+		ft_putchar_fd('\n', cmd->fd);
+	}
 }

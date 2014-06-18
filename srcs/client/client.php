@@ -61,7 +61,7 @@ function	run_client($ia, $serveur, $argv)
 		$serveur->send_msg("connect_nbr");
 		$ia->connect_nbr = $serveur->receive_msg();
 		if ($ia->connect_nbr > 0)
-			$ia->client_fork("./bin/client", $argv);
+			$ia->client_fork(__FILE__, $argv);
 		if ($ia->stuff === NULL)
 			$cmd_to_send = "inventaire";
 		else if ($ia->client_canlevelup())
@@ -72,14 +72,14 @@ function	run_client($ia, $serveur, $argv)
 			$cmd_to_send = $ia->search_what_missing();
 		$ia->last_action = $cmd_to_send;
 		$serveur->send_msg($cmd_to_send);
-		$receive = $serveur->receive_msg();
+		$ia->last_action_receive = $serveur->receive_msg();
 		if ($cmd_to_send === "incantation")
 		{
-			if (strncmp($receive, "niveau actuel : ", 16) === 0)
+			if (strncmp($ia->last_action_receive, "niveau actuel : ", 16) === 0)
 				$ia->level++;
 		}
 		else if ($cmd_to_send === "inventaire")
-			$ia->get_inventaire($receive);
+			$ia->get_inventaire($ia->last_action_receive);
 		$index++;
 	}
 }

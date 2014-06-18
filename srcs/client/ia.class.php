@@ -10,6 +10,7 @@ class			ia
 	public		$stuff;
 	public		$serveur;
 	public		$last_action;
+	public		$last_action_receive;
 
 	public function		__construct()
 	{
@@ -28,8 +29,8 @@ class			ia
 		$stuff = array();
 		while (isset($inventaire[$index]))
 		{
-			$inventaire[$index] = explode(' ', $inventaire[$index]);
-			@$this->stuff[$inventaire[$index][0]] = $inventaire[$index][1];
+			$inventaire[$index] = explode(' ', trim($inventaire[$index]));
+			$this->stuff[$inventaire[$index][0]] = $inventaire[$index][1];
 			$index++;
 		}
 	}
@@ -51,9 +52,13 @@ class			ia
 
 	private function	get_nb_player_on_my_case()
 	{
-		$this->serveur->send_msg("voir");
-		$receive = $this->serveur->receive_msg();
-		$receive = str_replace('{', '', $receive);
+		if ($this->last_action != "voir")
+		{
+			$this->last_action = "voir";
+			$this->serveur->send_msg($this->last_action);
+			$this->last_action_receive = $this->serveur->receive_msg();
+		}
+		$receive = str_replace('{', '', $this->last_action_receive);
 		$receive = str_replace('}', '', $receive);
 		$map = array();
 		$map = explode(',', $receive);
@@ -65,7 +70,7 @@ class			ia
 			if ($map[$index] == "nourriture")
 			{
 				$this->serveur->send_msg("prend nourriture");
-				$receive = $this->serveur->receive_msg();
+				$this->serveur->receive_msg();
 			}
 			if ($map[$index] == "joueur")
 				$count++;
@@ -141,16 +146,20 @@ class			ia
 
 	private function		search_array($search)
 	{
-		$this->serveur->send_msg("voir");
-		$receive = $this->serveur->receive_msg();
-		$receive = str_replace('{', '', $receive);
+		if ($this->last_action != "voir")
+		{
+			$this->last_action = "voir";
+			$this->serveur->send_msg($this->last_action);
+			$this->last_action_receive = $this->serveur->receive_msg();
+		}
+		$receive = str_replace('{', '', $this->last_action_receive);
 		$receive = str_replace('}', '', $receive);
 		$map = array();
 		$map = explode(',', $receive);
 		$index = 0;
 		while (isset($map[$index]))
 		{
-			$map[$index] = explode(' ', $map[$index]);
+			$map[$index] = explode(' ', trim($map[$index]));
 			$index++;
 		}
 		if ($this->last_action == "gauche" || $this->last_action == "droite")
@@ -158,43 +167,43 @@ class			ia
 		$index = 0;
 		while (isset($search[$index]))
 		{
-			$a = 0;
-			while (isset($map[$a]))
+			$index_case = 0;
+			while (isset($map[$index_case]))
 			{
-				$b = 0;
-				while (isset($map[$a][$b]))
+				$index_object = 0;
+				while (isset($map[$index_case][$index_object]))
 				{
-					if ($map[$a][$b] == $search[$index])
+					if ($map[$index_case][$index_object] == $search[$index])
 					{
-						if ($a == 0)
+						if ($index_case == 0)
 						{
 							if ($search[$index] !== "nourriture")
 								$this->stuff = NULL;
 							return ("prend " . $search[$index]);
 						}
-						else if ($a == 2
-							|| $a == 6
-							|| $a == 12
-							|| $a == 20
-							|| $a == 30
-							|| $a == 42
-							|| $a == 56
-							|| $a == 72)
+						else if ($index_case == 2
+							|| $index_case == 6
+							|| $index_case == 12
+							|| $index_case == 20
+							|| $index_case == 30
+							|| $index_case == 42
+							|| $index_case == 56
+							|| $index_case == 72)
 							return ("avance");
-						else if ($a == 3
-							|| ($a  > 6 && $a < 9)
-							|| ($a  > 12 && $a < 16)
-							|| ($a  > 20 && $a < 25)
-							|| ($a  > 30 && $a < 36)
-							|| ($a  > 42 && $a < 49)
-							|| ($a  > 56 && $a < 64)
-							|| ($a  > 72 && $a < 81))
+						else if ($index_case == 3
+							|| ($index_case  > 6 && $index_case < 9)
+							|| ($index_case  > 12 && $index_case < 16)
+							|| ($index_case  > 20 && $index_case < 25)
+							|| ($index_case  > 30 && $index_case < 36)
+							|| ($index_case  > 42 && $index_case < 49)
+							|| ($index_case  > 56 && $index_case < 64)
+							|| ($index_case  > 72 && $index_case < 81))
 							return ("droite");
 						return ("gauche");
 					}
-					$b++;
+					$index_object++;
 				}
-				$a++;
+				$index_case++;
 			}
 			$index++;
 		}

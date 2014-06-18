@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 17:39:04 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 16:43:59 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/18 16:50:28 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void		ft_graph_enw(t_game *g, int num_cli)
 	{
 		if (g->cls[i].graph == 1)
 			ft_put_enw(g, i, j, num_cli);
-		j++;
+		i++;
 	}
 }

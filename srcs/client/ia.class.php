@@ -40,12 +40,9 @@ class			ia
 		array_shift($argv);
 		$pid = pcntl_fork();
 		if ($pid == -1)
-		{
-			echo "Duplication impossible\n";
-			exit (1);
-		}
-		else if (pcntl_exec($file, $argv) !== FALSE)
-			$this->connect_nbr--;
+			echo "ERROR : Duplication impossible\n";
+		else if (!$pid)
+			pcntl_exec($file, $argv);
 	}
 
 	private function	get_nb_player_on_my_case()

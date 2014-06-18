@@ -64,8 +64,8 @@ function	run_client($ia, $serveur, $argv)
 			$ia->client_fork("./bin/client", $argv);
 		if ($ia->stuff === NULL)
 			$cmd_to_send = "inventaire";
-        else if ($ia->client_canlevelup())
-            $cmd_to_send = "incantation";
+		else if ($ia->client_canlevelup())
+			$cmd_to_send = "incantation";
 		else if ($index % 30 === 9)
 			$cmd_to_send = "fork";
 		else
@@ -73,8 +73,8 @@ function	run_client($ia, $serveur, $argv)
 		$ia->last_action = $cmd_to_send;
 		$serveur->send_msg($cmd_to_send);
 		$ia->last_action_receive = $serveur->receive_msg();
-        if ($cmd_to_send === "incantation")
-            $ia->level = substr($ia->last_action_receive, 16, 1);
+		if ($cmd_to_send === "incantation")
+			$ia->level = substr($ia->last_action_receive, 16, 1);
 		else if ($cmd_to_send === "inventaire")
 			$ia->get_inventaire($ia->last_action_receive);
 		$index++;

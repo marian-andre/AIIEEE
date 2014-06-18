@@ -44,8 +44,6 @@ class			ia
 			echo "Duplication impossible\n";
 			exit (1);
 		}
-//		else if ($pid)
-//			pcntl_wait($status);
 		else if (pcntl_exec($file, $argv) !== FALSE)
 			$this->connect_nbr--;
 	}
@@ -217,7 +215,7 @@ class			ia
 		{
 			if (isset($this->stuff["linemate"]) && $this->stuff["linemate"] < 1)
 				$tab_search[] = "linemate";
-			if ($this->get_nb_player_on_my_case() < 1)
+			if ($this->get_nb_player_on_my_case() < 1 && empty($tab_search))
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 2)
@@ -228,7 +226,7 @@ class			ia
 				$tab_search[] = "deraumere";
 			if (isset($this->stuff["sibur"]) && $this->stuff["sibur"] < 1)
 				$tab_search[] = "sibur";
-			if ($this->get_nb_player_on_my_case() < 2)
+			if ($this->get_nb_player_on_my_case() < 2 && empty($tab_search))
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 3)
@@ -239,7 +237,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["phiras"]) && $this->stuff["phiras"] < 2)
 				$tab_search[] = "phiras";
-			if ($this->get_nb_player_on_my_case() < 2)
+			if ($this->get_nb_player_on_my_case() < 2 && empty($tab_search))
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 4)
@@ -252,7 +250,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["phiras"]) && $this->stuff["phiras"] < 1)
 				$tab_search[] = "phiras";
-			if ($this->get_nb_player_on_my_case() < 4)
+			if ($this->get_nb_player_on_my_case() < 4 && empty($tab_search))
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 5)
@@ -265,7 +263,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["mendiane"]) && $this->stuff["mendiane"] < 3)
 				$tab_search[] = "mendiane";
-			if ($this->get_nb_player_on_my_case() < 4)
+			if ($this->get_nb_player_on_my_case() < 4 && empty($tab_search))
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 6)
@@ -278,7 +276,7 @@ class			ia
 				$tab_search[] = "sibur";
 			if (isset($this->stuff["phiras"]) && $this->stuff["phiras"] < 1)
 				$tab_search[] = "phiras";
-			if ($this->get_nb_player_on_my_case() < 6)
+			if ($this->get_nb_player_on_my_case() < 6 && empty($tab_search))
 				$tab_search[] = "player";
 		}
 		else if ($this->level == 7)
@@ -295,7 +293,7 @@ class			ia
 				$tab_search[] = "phiras";
 			if (isset($this->stuff["thystame"]) && $this->stuff["thystame"] < 1)
 				$tab_search[] = "thystame";
-			if ($this->get_nb_player_on_my_case() < 6)
+			if ($this->get_nb_player_on_my_case() < 6 && empty($tab_search))
 				$tab_search[] = "player";
 		}
 		else

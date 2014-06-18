@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 17:19:22 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/18 19:55:42 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_client	ft_new_egg(t_cmd *cmd, t_game *g)
 {
 	t_client	cl;
 
-	cl.cs = 1000;
+	cl.cs = MORT;
 	cl.lvl = 1;
 	cl.graph = 0;
 	cl.num_team = g->cls[cmd->num_cli].num_team;

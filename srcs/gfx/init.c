@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/17 15:24:18 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/18 19:55:35 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void		init_textures(t_game *g)
 {
 	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
 		* (NB_TEXTURES + 1));
-	g->textures[0] = load_image(g, "srcs/gfx/image/food.bmp", 0x39261d);
-	g->textures[1] = load_image(g, "srcs/gfx/image/linemate.bmp", 0x39261d);
-	g->textures[2] = load_image(g, "srcs/gfx/image/deraumere.bmp", 0x39261d);
-	g->textures[3] = load_image(g, "srcs/gfx/image/sibur.bmp", 0x39261d);
-	g->textures[4] = load_image(g, "srcs/gfx/image/mendiane.bmp", 0x39261d);
-	g->textures[5] = load_image(g, "srcs/gfx/image/phiras.bmp",  0x39261d);
-	g->textures[6] = load_image(g, "srcs/gfx/image/thystame.bmp",  0x39261d);
+	g->textures[0] = load_image(g, "srcs/gfx/image/food.bmp", 0xFFFFFF);
+	g->textures[1] = load_image(g, "srcs/gfx/image/linemate.bmp", 0xFFFFFF);
+	g->textures[2] = load_image(g, "srcs/gfx/image/deraumere.bmp", 0xFFFFFF);
+	g->textures[3] = load_image(g, "srcs/gfx/image/sibur.bmp", 0xFFFFFF);
+	g->textures[4] = load_image(g, "srcs/gfx/image/mendiane.bmp", 0xFFFFFF);
+	g->textures[5] = load_image(g, "srcs/gfx/image/phiras.bmp",  0xFFFFFF);
+	g->textures[6] = load_image(g, "srcs/gfx/image/thystame.bmp",  0xFFFFFF);
 	g->textures[7] = load_image(g, "srcs/gfx/image/goron_N.bmp", 0x929292);
 	g->textures[8] = load_image(g, "srcs/gfx/image/goron_S.bmp", 0x929292);
 	g->textures[9] = load_image(g, "srcs/gfx/image/goron_E.bmp", 0x929292);
@@ -74,7 +74,7 @@ void		init_textures(t_game *g)
 
 void		init_sdl(t_game *game)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 		ft_graphic_error("SDL initialization has failed.");
 	game->window = SDL_CreateWindow("Zappy", SDL_WINDOWPOS_CENTERED,
 									SDL_WINDOWPOS_CENTERED,

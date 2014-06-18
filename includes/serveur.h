@@ -15,20 +15,20 @@
 # include <sys/select.h>
 # include <sys/time.h>
 
-# define MAX_CLI 42
+# define MAX_CLI 1000
 # define MAX_NB_TEAM 10
 # define MORT 1000
 # define NORTH 1
 # define EAST 2
 # define SOUTH 3
 # define WEST 4
-# define Q_LI 50
-# define Q_DE 50
-# define Q_SI 50
-# define Q_PH 20
-# define Q_ME 20
-# define Q_TH 10
-# define Q_FO 3
+# define Q_LI 150
+# define Q_DE 100
+# define Q_SI 100
+# define Q_PH 50
+# define Q_ME 50
+# define Q_TH 25
+# define Q_FO 4
 
 typedef struct timeval	t_time;
 typedef struct s_cmd	t_cmd;

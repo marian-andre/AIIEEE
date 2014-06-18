@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 10:02:56 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/17 14:09:15 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/18 19:05:34 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 int				ft_rand_stone(int *q, int i, t_game game)
 {
-	static float	chance = 5;
+	static float	chance = 10;
 	float			rolling;
 
 	rolling = (int)(rand() % 100 + 1);
 	if (rolling <= chance)
 	{
-		chance += 20 / (game.height * game.width);
+		chance += 10 / (game.height * game.width);
 		q[i] -= 1;
 		if (q[i] > 2)
 			return (ft_rand(2) + 1);
@@ -35,7 +35,7 @@ int				ft_rand_stone(int *q, int i, t_game game)
 
 int				ft_rand(int a)
 {
-	return ((int)(rand() % a + 1));
+	return ((int)(rand() % a));
 }
 
 static void		ft_distrib(t_map **map, int x, int y, t_game game)

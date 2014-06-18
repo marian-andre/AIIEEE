@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/18 16:30:12 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/18 20:01:31 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ int					main(int argc, char **argv)
 	init_client(&game);
 	while (42)
 	{
+		SDL_RenderClear(game.renderer);
 		draw_render(&game);
 		get_next_line(game.sock, &line);
-		ft_check_msg(&game, line);
+		if (line != NULL)
+			ft_check_msg(&game, line);
 		free(line);
 		line = NULL;
 	}

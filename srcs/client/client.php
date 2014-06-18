@@ -61,7 +61,7 @@ function	run_client($ia, $serveur, $argv)
 		$serveur->send_msg("connect_nbr");
 		$ia->connect_nbr = $serveur->receive_msg();
 		if ($ia->connect_nbr > 0)
-			$ia->client_fork(__FILE__, $argv);
+			$ia->client_fork("./bin/client", $argv);
 		if ($ia->stuff === NULL)
 			$cmd_to_send = "inventaire";
 		else if ($ia->client_canlevelup())

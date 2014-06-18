@@ -6,7 +6,7 @@
 #    By: jgranet <jgranet@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/08 16:48:39 by jgranet           #+#    #+#              #
-#    Updated: 2014/06/17 20:45:51 by mlemort          ###   ########.fr        #
+#    Updated: 2014/06/18 15:22:10 by mlemort          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ SRCS_SER = $(patsubst %,$(SRC_DIR_SER)/%,$(UNITS_SER))
 OBJS_SER = $(patsubst %,$(OBJ_DIR_SER)/%,$(UNITS_O_SER))
 SRCS_GFX = $(patsubst %,$(SRC_DIR_GFX)/%,$(UNITS_GFX))
 OBJS_GFX = $(patsubst %,$(OBJ_DIR_GFX)/%,$(UNITS_O_GFX))
-HEADS = $(patsubst %,$(INC_DIR)/%,$(UNITS_H))
 
 LIBFLAGS = -L$(LIBFT) -lft
 FLAGS = -Wall -Werror -Wextra -I libft/includes -I SDL2-2.0.3/include
@@ -59,7 +58,7 @@ $(BIN_DIR)$(NAME_SER): $(OBJS_SER)
 	@$(CC) -o $@ $^ $(LIBFLAGS)
 	@echo "Program [$(NAME_SER)] :\033[1;33m DONE !\033[m"
 
-$(OBJ_DIR_SER)/%.o: $(SRC_DIR_SER)/%.c $(HEADS)
+$(OBJ_DIR_SER)/%.o: $(SRC_DIR_SER)/%.c ./includes/serveur.h
 	@$(CC) -c -o $@ $< -I$(INC_DIR)
 
 $(BIN_DIR)$(NAME_GFX): $(OBJS_GFX)
@@ -67,7 +66,7 @@ $(BIN_DIR)$(NAME_GFX): $(OBJS_GFX)
 	@$(CC) -o $@ $^ $(LIBFLAGS) -L SDL2-2.0.3/build/.libs -l SDL2
 	@echo "Program [$(NAME_GFX)] :\033[1;33m DONE !\033[m"
 
-$(OBJ_DIR_GFX)/%.o: $(SRC_DIR_GFX)/%.c $(HEADS)
+$(OBJ_DIR_GFX)/%.o: $(SRC_DIR_GFX)/%.c ./includes/graphic.h
 	@$(CC) -c -o $@ $< -I$(INC_DIR)
 
 clean:

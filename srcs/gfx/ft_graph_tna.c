@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:14 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/17 15:26:05 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/18 16:24:57 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void			ft_graph_tna(t_game *game, char *line)
 		game->team[0] = NULL;
 		first = 0;
 	}
+	ft_putendl(line);
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("parse error -> tab in ft_graph_tna");
 	game->team = ft_realloc(game, game->team, tab[1]);

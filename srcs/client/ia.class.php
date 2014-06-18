@@ -44,8 +44,8 @@ class			ia
 			echo "Duplication impossible\n";
 			exit (1);
 		}
-		else if ($pid)
-			pcntl_wait($status);
+//		else if ($pid)
+//			pcntl_wait($status);
 		else if (pcntl_exec($file, $argv) !== FALSE)
 			$this->connect_nbr--;
 	}

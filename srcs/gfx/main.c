@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 17:51:27 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/18 16:30:12 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int					main(int argc, char **argv)
 		draw_render(&game);
 		get_next_line(game.sock, &line);
 		ft_check_msg(&game, line);
+		free(line);
+		line = NULL;
 	}
 	return (EXIT_SUCCESS);
 }

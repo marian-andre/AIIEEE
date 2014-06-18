@@ -6,12 +6,13 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:08:40 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/16 17:48:32 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/18 16:23:10 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "graphic.h"
+#include "string.h"
 
 static void		ft_core_msg(t_game *game, char *line)
 {

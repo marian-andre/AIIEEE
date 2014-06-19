@@ -111,6 +111,7 @@ typedef struct	s_game
 	int			max_cli[MAX_NB_TEAM];
 	int			time;
 	char		**team;
+	int			nourr_base;
 	t_egg		eggs[MAX_CLI];
 	t_client	cls[MAX_CLI];
 	t_map		**map;

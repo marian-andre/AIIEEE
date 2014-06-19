@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 14:43:56 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/12 11:31:14 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:00:20 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_graph_pgt(t_game *g, int num_cli, int resource)
 	int		i;
 
 	i = 0;
-	while (g->cls[i].cs)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 1)
 		{

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 19:18:39 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/18 21:43:08 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 16:58:19 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ void		ft_graph_bct(t_game *g, int i, int x, int y)
 {
 	if (i == 0)
 	{
-		while (g->cls[i].cs && g->cls[i].graph != 1)
+		while (i < MAX_CLI && g->cls[i].cs)
+		{
+			if (g->cls[i].graph == 1)
+				ft_send_bct(g, i, x, y);
 			i++;
-		ft_send_bct(g, i, x, y);
+		}
 	}
 	else
 		ft_send_bct(g, i, x, y);

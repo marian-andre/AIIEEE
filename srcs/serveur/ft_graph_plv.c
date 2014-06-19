@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 11:36:51 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 12:08:59 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/19 17:01:01 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_graph_plv(t_game *g, int num_cli)
 	int		i;
 
 	i = 0;
-	while (g->cls[i].cs)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 1)
 		{

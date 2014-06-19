@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/19 15:19:41 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:04:48 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int		ft_win(t_game *g)
 	{
 		j = 0;
 		nb = 0;
-		while (g->cls[j].cs)
+		while (j < MAX_CLI && g->cls[j].cs)
 		{
 			if (g->cls[j].num_team == i && g->cls[j].lvl == 8)
 				nb++;

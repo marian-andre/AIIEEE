@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 17:39:04 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/18 16:50:28 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 16:59:28 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		ft_graph_enw(t_game *g, int num_cli)
 
 	i = 0;
 	j = 0;
-	while (g->eggs[j].nb)
+	while (j < MAX_CLI && g->eggs[j].nb)
 	{
 		if (g->eggs[j].active == 1 && g->eggs[j].cl.cs == g->cls[num_cli].cs
 			&& g->eggs[j].x == g->cls[num_cli].x
@@ -41,7 +41,7 @@ void		ft_graph_enw(t_game *g, int num_cli)
 			break ;
 		j++;
 	}
-	while (g->cls[i].cs)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 1)
 			ft_put_enw(g, i, j, num_cli);

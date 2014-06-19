@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/07 13:36:15 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 16:53:38 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 16:58:54 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_graph_eht(t_game *g, int nb_egg)
 	int		i;
 
 	i = 0;
-	while (g->cls[i].cs)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 1)
 		{

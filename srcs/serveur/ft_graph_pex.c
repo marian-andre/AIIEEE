@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 13:57:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/10 18:39:46 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:00:03 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ft_graph_pex(t_game *g, int num_cli)
 	int		i;
 
 	i = 0;
-	while (g->cls[i].cs)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 1)
 		{

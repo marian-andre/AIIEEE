@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/18 20:50:53 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:04:57 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_co_wizards(t_cmd *cmd, t_game *g, int lvl_up)
 
 	nb = 0;
 	i = 0;
-	while (g->cls[i].cs > 0)
+	while (i < MAX_CLI && g->cls[i].cs > 0)
 	{
 		if (g->cls[i].x == g->cls[cmd->num_cli].x
 			&& g->cls[i].y == g->cls[cmd->num_cli].y

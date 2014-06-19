@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/13 12:12:49 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/13 19:52:39 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:01:47 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		ft_init_graph(t_game *g, t_fd *fd, int cs)
 	ft_graph_sgt(g, fd->nb_cli);
 	ft_graph_mct(g, fd->nb_cli);
 	ft_graph_tna(g, fd->nb_cli);
-	while (g->cls[i].cs)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 0)
 			ft_graph_pnw(g, i);

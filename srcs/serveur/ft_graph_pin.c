@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/06 11:40:18 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 14:06:59 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:00:55 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		ft_graph_pin(t_game *g, int num_cli)
 	int		i;
 
 	i = 0;
-	while (g->cls[i].cs)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (g->cls[i].graph == 1)
 			ft_send_pin(g, i, num_cli);

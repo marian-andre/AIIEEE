@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/16 15:35:58 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:03:19 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			ft_count_nb_co(t_game *g, int i)
 
 	nb = 0;
 	j = 0;
-	while (g->cls[j].cs)
+	while (j < MAX_CLI && g->cls[j].cs)
 	{
 		if (g->cls[j].num_team == g->cls[i].num_team)
 			nb++;

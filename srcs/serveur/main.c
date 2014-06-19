@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/19 15:14:40 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/19 18:06:24 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,62 +23,60 @@
 #include "serveur.h"
 #include "libft.h"
 
-static t_game			ft_init_game(t_game game)
+static void				ft_init_game(t_game *game)
 {
 	int		i;
 
 	i = 0;
 	while (i < MAX_CLI)
 	{
-		ft_bzero(&game.eggs[i], sizeof(t_egg));
-		ft_bzero(&game.cls[i], sizeof(t_client));
+		ft_bzero(&game->eggs[i], sizeof(t_egg));
+		ft_bzero(&game->cls[i], sizeof(t_client));
 		i++;
 	}
-	ft_init_tab(game.tab);
-	game.tab[12].line = ft_strdup("birth");
-	game.tab[12].t = 600;
-	game.sock = 0;
-	game.port = 4242;
-	game.width = 20;
-	game.height = 20;
-	game.nourr_base = 0;
+	ft_init_tab(game->tab);
+	game->tab[12].line = ft_strdup("birth");
+	game->tab[12].t = 600;
+	game->sock = 0;
+	game->port = 4242;
+	game->width = 20;
+	game->height = 20;
+	game->nourr_base = 0;
 	i = 0;
 	while (i < MAX_NB_TEAM)
 	{
-		game.max_cli[i] = 6;
+		game->max_cli[i] = 6;
 		i++;
 	}
-	game.time = 100;
-	return (game);
+	game->time = 100;
 }
 
-static t_game			ft_init_map(t_game game)
+static void				ft_init_map(t_game *game)
 {
 	int		x;
 	int		y;
 
 	x = -1;
 	y = -1;
-	game.map = (t_map**)malloc(sizeof(t_map*) * game.height);
-	while (++y < game.height)
-		game.map[y] = (t_map*)malloc(sizeof(t_map) * game.width);
+	game->map = (t_map**)malloc(sizeof(t_map*) * game->height);
+	while (++y < game->height)
+		game->map[y] = (t_map*)malloc(sizeof(t_map) * game->width);
 	y = -1;
-	while (++y < game.height)
+	while (++y < game->height)
 	{
 		x = -1;
-		while (++x < game.width)
+		while (++x < game->width)
 		{
-			game.map[y][x].linemate = 0;
-			game.map[y][x].deraumere = 0;
-			game.map[y][x].sibur = 0;
-			game.map[y][x].mendiane = 0;
-			game.map[y][x].phiras = 0;
-			game.map[y][x].thystame = 0;
-			game.map[y][x].nourriture = 0;
-			game.map[y][x].nb_player = 0;
+			game->map[y][x].linemate = 0;
+			game->map[y][x].deraumere = 0;
+			game->map[y][x].sibur = 0;
+			game->map[y][x].mendiane = 0;
+			game->map[y][x].phiras = 0;
+			game->map[y][x].thystame = 0;
+			game->map[y][x].nourriture = 0;
+			game->map[y][x].nb_player = 0;
 		}
 	}
-	return (game);
 }
 
 static int				create_server(t_game game)
@@ -121,11 +119,11 @@ int						main(int argc, char **argv)
 	srand(time(NULL));
 	if (argc == 1)
 		ft_usage(argv[0]);
-	game = ft_init_game(game);
-	game = ft_check_args(argv, game);
+	ft_init_game(&game);
+	ft_check_args(argv, &game);
 	atexit(ft_quit);
-	game = ft_init_map(game);
-	game = ft_resource(game);
+	ft_init_map(&game);
+	ft_resource(&game);
 	game.sock = create_server(game);
 	ft_init_cls(&game);
 	ft_serveur(&game);

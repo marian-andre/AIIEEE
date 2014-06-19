@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:37:50 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/19 16:33:40 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/19 18:09:04 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int		ft_check_ret(t_game *game, int *q, int *ret, int i)
 {
 	int		tmp;
 
-	tmp = ft_rand_stone(q, i, *game);
+	tmp = ft_rand_stone(q, i, game);
 	*ret += tmp;
 	return (tmp); 
 }

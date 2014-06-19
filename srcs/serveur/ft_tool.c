@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:13:29 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/14 17:24:42 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 18:24:05 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@ void		ft_quit(void)
 	i = -1;
 	while (++i < 13)
 		free(game->tab[i].line);
+	ft_putendl("free game.tab ok");
+	ft_putnbr(game->height);
+	ft_putchar('\n');
 	i = -1;
 	while (++i < game->height)
 		free(game->map[i]);
+	ft_putendl("free game.map[i] ok");
 	free(game->map);
+	ft_putendl("free game.map ok");
 	i = -1;
 	while (game->team[++i])
 		free(game->team[i]);
+	ft_putendl("free game.team[i] ok");
 	free(game->team);
+	ft_putendl("free game.team ok");
 	close(game->sock);
 }

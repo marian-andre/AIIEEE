@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/17 17:19:29 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 18:08:44 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ t_cmd			*ft_create_node(t_game *g, char *line, int i, int num_egg);
 void			ft_init_tab(t_tab tab[12]);
 long			timevaldiff(t_time starttime, t_time finishtime);
 int				ft_rand(int a);
-int				ft_rand_stone(int *q, int i, t_game game);
-t_game			ft_resource(t_game game);
-t_game			ft_check_args(char **argv, t_game game);
+int				ft_rand_stone(int *q, int i, t_game *game);
+void			ft_resource(t_game *game);
+void			ft_check_args(char **argv, t_game *game);
 void			ft_dispatch_stone(t_game *g, int cli);
 void			ft_disp_lvl_1_to_3(int *q, t_game *game, int lvl, int num_cli);
 void			ft_disp_lvl_4_to_5(int *q, t_game *game, int lvl, int num_cli);
@@ -196,7 +196,7 @@ void			ft_graph_pfk(t_game *g, int num_cli);
 void			ft_graph_pdr(t_game *g, int num_cli, int resource);
 void			ft_graph_pgt(t_game *g, int num_cli, int resource);
 void			ft_graph_pdi(t_game *g, int num_cli);
-void			ft_graph_seg(t_game *g, int i, char *team);
+void			ft_graph_seg(t_game *g, char *team);
 void			ft_graph_smg(t_game *g, int i, char *msg);
 void			ft_graph_suc(t_game *g, int i);
 void			ft_graph_sbp(t_game *g, int i);

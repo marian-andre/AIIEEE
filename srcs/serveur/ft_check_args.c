@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/02 15:17:49 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/16 18:48:35 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 18:07:01 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int		ft_fill_game(char **argv, int i, t_game *game)
 	return (i);
 }
 
-t_game			ft_check_args(char **argv, t_game game)
+void			ft_check_args(char **argv, t_game *game)
 {
 	int		i;
 	int		count;
@@ -111,11 +111,10 @@ t_game			ft_check_args(char **argv, t_game game)
 			if (ft_strcmp(argv[i], "-n") == 0 && argv[i + 1]
 				&& argv[i + 1][0] != '-')
 				count++;
-			i = ft_fill_game(argv, i, &game);
+			i = ft_fill_game(argv, i, game);
 		}
 		i++;
 	}
 	if (count != 1)
 		ft_error("ERROR bad arguments.");
-	return (game);
 }

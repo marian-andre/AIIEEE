@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/19 18:11:18 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/19 18:12:34 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct		s_game
 	int				time;
 	char			**team;
 	t_client		client[MAX_CLI];
-	t_egg			eggs[MAXX_CLI];
+	t_egg			egg[MAX_CLI];
 	int				sock;
 }					t_game;
 

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 15:59:14 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/18 20:50:57 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:37:50 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char			**ft_realloc(t_game *game, char **tab, char *team)
 
 	i = -1;
 	length = nb_line(game->team);
-	if ((new = (char**)malloc(sizeof(char*) * length + 2)) == NULL)
+	if ((new = (char**)malloc(sizeof(char*) * (length + 2))) == NULL)
 		ft_graphic_error("malloc failed -> new in ft_realloc");
 	while (tab[++i])
 		new[i] = ft_strdup(tab[i]);

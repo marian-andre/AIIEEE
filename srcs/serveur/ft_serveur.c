@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/19 17:04:48 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:36:52 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ void			ft_serveur(t_game *game)
 		else
 			ft_save_request(game, &fd);
 	}
+	ft_putendl("fin de partie");
 }

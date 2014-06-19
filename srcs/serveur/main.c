@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 14:11:52 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 15:14:40 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static t_game			ft_init_game(t_game game)
 	game.port = 4242;
 	game.width = 20;
 	game.height = 20;
+	game.nourr_base = 0;
 	i = 0;
 	while (i < MAX_NB_TEAM)
 	{

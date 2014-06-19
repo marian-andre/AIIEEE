@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/18 21:07:27 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 14:31:00 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		init_textures(t_game *g)
 
 void		init_sdl(t_game *game)
 {
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		ft_graphic_error("SDL initialization has failed.");
 	game->window = SDL_CreateWindow("Zappy", SDL_WINDOWPOS_CENTERED,
 									SDL_WINDOWPOS_CENTERED,

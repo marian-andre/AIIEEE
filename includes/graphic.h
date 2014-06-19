@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/18 21:15:53 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 15:06:26 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define TILES_SIZE_H 16
 # define TILES_SIZE_W 16
 # define NB_TEXTURES 13
-# define MAX_CLI 42
+# define MAX_CLI 1000
 # define NORTH 1
 # define EAST 2
 # define SOUTH 3

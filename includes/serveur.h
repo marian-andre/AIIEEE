@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2014/06/17 17:19:29 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 18:06:33 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,9 +137,9 @@ int				ft_rand_stone(int *q, int i, t_game game);
 t_game			ft_resource(t_game game);
 t_game			ft_check_args(char **argv, t_game game);
 void			ft_dispatch_stone(t_game *g, int cli);
-void			ft_disp_lvl_1_to_3(int *q, t_game *game, int lvl, int num_cli);
-void			ft_disp_lvl_4_to_5(int *q, t_game *game, int lvl, int num_cli);
-void			ft_disp_lvl_6(int *q, t_game *game, int num_cli);
+void			ft_disp_lvl_1_to_2(int *q, t_game *game, int lvl, int num_cli);
+void			ft_disp_lvl_3_to_4(int *q, t_game *game, int lvl, int num_cli);
+void			ft_disp_lvl_5_to_6(int *q, t_game *game, int num_cli, int lvl);
 void			ft_disp_lvl_7(int *q, t_game *game, int num_cli);
 void			ft_up_food(t_game *game);
 void			ft_serveur(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/18 21:38:51 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 15:05:49 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void			ft_serveur(t_game *game)
 	game->list = NULL;
 	while (!ft_win(game))
 	{
+		ft_up_food(game);
 		ft_exec_request(game);
 		FD_ZERO(&fd.rdfs);
 		FD_SET(game->sock, &fd.rdfs);
@@ -93,6 +94,5 @@ void			ft_serveur(t_game *game)
 			ft_new_connection(game, &fd);
 		else
 			ft_save_request(game, &fd);
-		ft_up_food(game);
 	}
 }

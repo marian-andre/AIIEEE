@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/19 15:06:26 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:58:43 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ typedef struct		s_client
 	t_map			resource;
 }					t_client;
 
+typedef struct		s_egg
+{
+	int				active;
+	int				x;
+	int				y;
+	int				client;
+}
+
 typedef struct		s_game
 {
 	SDL_Window		*window;
@@ -61,6 +69,7 @@ typedef struct		s_game
 	int				time;
 	char			**team;
 	t_client		client[MAX_CLI];
+	t_egg			eggs[MAXX_CLI];
 	int				sock;
 }					t_game;
 

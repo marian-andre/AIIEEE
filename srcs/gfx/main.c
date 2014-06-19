@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/19 17:46:05 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/19 19:05:21 by cchauvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,18 @@ static int			ft_connect(char *addr, int port)
 	int					sock;
 	struct protoent		*proto;
 	struct sockaddr_in	sin;
+	struct hostent		*host;
 
 	sock = 0;
 	if ((proto = getprotobyname("tcp")) == 0)
 		ft_graphic_error("ERROR getprotobyname");
+	if ((host = gethostbyname(addr)) == NULL)
+		ft_graphic_error("ERROR gethostbyname");
 	if ((sock = socket(PF_INET, SOCK_STREAM, proto->p_proto)) == -1)
 		ft_graphic_error("ERROR socket");
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(port);
-	sin.sin_addr.s_addr = inet_addr(addr);
+	ft_memcpy(&(sin.sin_addr.s_addr), host->h_addr, host->h_length);
 	if (connect(sock, (const struct sockaddr*)&sin, sizeof(sin)))
 		ft_graphic_error("ERROR connect");
 	return (sock);

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/18 21:16:09 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 17:46:05 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int					main(int argc, char **argv)
 	{
 		draw_render(&game);
 		get_next_line(game.sock, &line);
-		ft_putendl(line);
+//		ft_putendl(line);
 		if (line != NULL)
 			ft_check_msg(&game, line);
 		free(line);

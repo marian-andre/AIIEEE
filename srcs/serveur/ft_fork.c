@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/18 19:55:42 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/19 16:12:07 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void			ft_fork(t_cmd *cmd, t_game *g)
 {
 	static int		i = 0;
 
-	g->eggs[i].active = 1;
+	if (g->max_cli[g->cls[cmd->num_cli].num_team] > 15)
+		g->eggs[i].active = 0;
+	else
+		g->eggs[i].active = 1;
 	g->eggs[i].nb = i;
 	g->eggs[i].x = g->cls[cmd->num_cli].x;
 	g->eggs[i].y = g->cls[cmd->num_cli].y;

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/12 17:17:27 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/19 18:06:24 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/20 13:54:54 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ int						main(int argc, char **argv)
 		ft_usage(argv[0]);
 	ft_init_game(&game);
 	ft_check_args(argv, &game);
-	atexit(ft_quit);
 	ft_init_map(&game);
+	atexit(ft_quit);
 	ft_resource(&game);
 	game.sock = create_server(game);
 	ft_init_cls(&game);

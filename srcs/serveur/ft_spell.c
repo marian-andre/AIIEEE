@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/20 14:14:35 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/20 14:27:19 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_co_wizards(t_cmd *cmd, t_game *g, int lvl_up)
 	}
 	if (lvl_up == 1)
 	{
-		g->cls[cmd->num_cli].lvl++;
+//		g->cls[cmd->num_cli].lvl++;
 		ft_putstr_fd("niveau actuel : ", cmd->fd);
 		ft_putnbr_fd(g->cls[cmd->num_cli].lvl, cmd->fd);
 		ft_putchar_fd('\n', cmd->fd);

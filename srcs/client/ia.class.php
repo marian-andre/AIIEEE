@@ -74,6 +74,25 @@ class			ia
 		return ($count);
 	}
 
+	private function	client_pose_item()
+	{
+		$to_pose = array_keys($this->stuff);
+		foreach ($this->stuff as $elem)
+		{
+			$index_elem = 0;
+			if ($to_pose[$index] != "nourriture")
+				while (++$index_elem <= $elem)
+				{
+					$this->last_action = "pose " . $to_pose[$index];
+					$this->serveur->send_msg($this->last_action);
+					$this->serveur->receive_msg();
+				}
+			$index++;
+		}
+		$this->stuff = NULL;
+		return (true);
+	}
+
 	public function		client_canlevelup()
 	{
 		if ($this->level == 1)
@@ -212,8 +231,6 @@ class			ia
 		{
 			if (isset($this->stuff["linemate"]) && $this->stuff["linemate"] < 1)
 				$tab_search[] = "linemate";
-			if ($this->get_nb_player_on_my_case() < 1 && empty($tab_search))
-				$tab_search[] = "player";
 		}
 		else if ($this->level == 2)
 		{

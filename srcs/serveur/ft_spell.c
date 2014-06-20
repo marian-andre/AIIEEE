@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/19 17:04:57 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/20 14:14:35 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,17 @@ void		ft_spell(t_cmd *cmd, t_game *g)
 	ft_graph_pic(g, cmd->num_cli);
 	if (g->cls[cmd->num_cli].lvl == 1)
 		ft_end_of_spell(g, cmd, nb);
-	if (g->cls[cmd->num_cli].lvl == 2 && nb >= 2)
+	else if (g->cls[cmd->num_cli].lvl == 2 && nb >= 2)
 		ft_end_of_spell(g, cmd, nb);
-	if (g->cls[cmd->num_cli].lvl == 3 && nb >= 2)
+	else if (g->cls[cmd->num_cli].lvl == 3 && nb >= 2)
 		ft_end_of_spell(g, cmd, nb);
-	if (g->cls[cmd->num_cli].lvl == 4 && nb >= 4)
+	else if (g->cls[cmd->num_cli].lvl == 4 && nb >= 4)
 		ft_end_of_spell(g, cmd, nb);
-	if (g->cls[cmd->num_cli].lvl == 5 && nb >= 4)
+	else if (g->cls[cmd->num_cli].lvl == 5 && nb >= 4)
 		ft_end_of_spell(g, cmd, nb);
-	if (g->cls[cmd->num_cli].lvl == 6 && nb >= 6)
+	else if (g->cls[cmd->num_cli].lvl == 6 && nb >= 6)
 		ft_end_of_spell(g, cmd, nb);
-	if (g->cls[cmd->num_cli].lvl == 7 && nb >= 6)
+	else if (g->cls[cmd->num_cli].lvl == 7 && nb >= 6)
 		ft_end_of_spell(g, cmd, nb);
 	else
 	{

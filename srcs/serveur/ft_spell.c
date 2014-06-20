@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/20 14:27:19 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/20 14:41:26 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static int	ft_co_wizards(t_cmd *cmd, t_game *g, int lvl_up)
 			&& g->cls[i].cs != MORT)
 		{
 			nb++;
-			if (lvl_up == 1)
+			if (lvl_up > 0)
 				g->cls[i].lvl++;
 		}
 		i++;
 	}
-	if (lvl_up == 1)
+	if (lvl_up > 1)
 	{
 //		g->cls[cmd->num_cli].lvl++;
 		ft_putstr_fd("niveau actuel : ", cmd->fd);
@@ -50,7 +50,7 @@ static void	ft_end_of_spell(t_game *g, t_cmd *cmd, int nb)
 	i = 0;
 	if (nb != -1)
 	{
-		ft_co_wizards(cmd, g, 1);
+		ft_co_wizards(cmd, g, g->cls[cmd->num_cli].lvl);
 		ft_graph_pie(g, cmd->num_cli, g->cls[cmd->num_cli].lvl);
 		while (g->cls[i].cs)
 		{

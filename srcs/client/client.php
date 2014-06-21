@@ -54,7 +54,6 @@ function init_client($argc, $argv, &$ia, &$serveur)
 
 function	run_client($ia, $serveur, $argv)
 {
-	connection::$verbose_send = TRUE;
 	$index = 0;
 	while (true)
 	{
@@ -87,15 +86,16 @@ function	run_client($ia, $serveur, $argv)
 
 function	main($argc, $argv)
 {
+	connection::$verbose_debug = FALSE;
 	check_args($argc, $argv);
 	init_client($argc, $argv, $ia, $serveur);
 	if ($ia->connect_nbr !== "ko" && $ia->mapsize !== "ko")
 		run_client($ia, $serveur, $argv);
 }
 
-if(!function_exists('pcntl_exec'))
+if (!function_exists('pcntl_exec'))
 {
-	echo "Error, PHP version\n";
+	echo "Error, PHP version !" . PHP_EOL;
 	exit (1);
 }
 main($argc, $argv);

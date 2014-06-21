@@ -6,7 +6,7 @@
 #    By: jgranet <jgranet@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/08 16:48:39 by jgranet           #+#    #+#              #
-#    Updated: 2014/06/21 02:58:31 by cchauvie         ###   ########.fr        #
+#    Updated: 2014/06/21 14:46:55 by cchauvie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ RM = /bin/rm -f
 all: $(SDL2) $(PHP) LIB_NAME $(BIN_DIR)$(NAME_SER) $(BIN_DIR)$(NAME_GFX)
 
 $(PHP):
-	cd php-5.5.13 && ./configure --enable-sockets --enable-pcntl \
+	cd php-5.5.13 && ./configure CC=clang --enable-sockets --enable-pcntl \
 		--with-config-file-path=./ && make
 
 $(SDL2):

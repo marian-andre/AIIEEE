@@ -99,7 +99,7 @@ class			ia
 		{
 			if (isset($this->stuff["linemate"]) && $this->stuff["linemate"] >= 1)
 				if ($this->get_nb_player_on_my_case() >= 1)
-					return (true);
+					return ($this->client_pose_item());
 		}
 		else if ($this->level == 2)
 		{
@@ -107,7 +107,7 @@ class			ia
 				&& isset($this->stuff["deraumere"]) && $this->stuff["deraumere"] >= 1
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 1)
 				if ($this->get_nb_player_on_my_case() >= 2)
-					return (true);
+					return ($this->client_pose_item());
 		}
 		else if ($this->level == 3)
 		{
@@ -115,7 +115,7 @@ class			ia
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 1
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 2)
 				if ($this->get_nb_player_on_my_case() >= 2)
-					return (true);
+					return ($this->client_pose_item());
 		}
 		else if ($this->level == 4)
 		{
@@ -124,7 +124,7 @@ class			ia
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 2
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 1)
 				if ($this->get_nb_player_on_my_case() >= 4)
-					return (true);
+					return ($this->client_pose_item());
 		}
 		else if ($this->level == 5)
 		{
@@ -133,7 +133,7 @@ class			ia
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 1
 				&& isset($this->stuff["mendiane"]) && $this->stuff["mendiane"] >= 3)
 				if ($this->get_nb_player_on_my_case() >= 4)
-					return (true);
+					return ($this->client_pose_item());
 		}
 		else if ($this->level == 6)
 		{
@@ -142,7 +142,7 @@ class			ia
 				&& isset($this->stuff["sibur"]) && $this->stuff["sibur"] >= 3
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 1)
 				if ($this->get_nb_player_on_my_case() >= 6)
-					return (true);
+					return ($this->client_pose_item());
 		}
 		else if ($this->level == 7)
 		{
@@ -153,7 +153,7 @@ class			ia
 				&& isset($this->stuff["phiras"]) && $this->stuff["phiras"] >= 2
 				&& isset($this->stuff["thystame"]) && $this->stuff["thystame"] >= 1)
 				if ($this->get_nb_player_on_my_case() >= 6)
-					return (true);
+					return ($this->client_pose_item());
 		}
 		return (false);
 	}

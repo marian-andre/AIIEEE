@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 15:55:30 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 17:22:24 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/21 15:38:00 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "serveur.h"
 #include "libft.h"
-
+/*
 static void	ft_print_command(char *line, int i)
 {
 	ft_putstr("command <");
@@ -24,7 +24,7 @@ static void	ft_print_command(char *line, int i)
 	ft_putnbr(i);
 	ft_putendl(".");
 }
-
+*/
 static void	ft_recep_message(int i, t_game *g)
 {
 	char	*line;
@@ -33,7 +33,7 @@ static void	ft_recep_message(int i, t_game *g)
 	line = NULL;
 	if (get_next_line(g->cls[i].cs, &line) > 0)
 	{
-		ft_print_command(line, i);
+//		ft_print_command(line, i);
 		if (ft_strcmp(line, "connect_nbr") == 0)
 			ft_nb_connect(g, i);
 		else
@@ -48,7 +48,9 @@ static void	ft_recep_message(int i, t_game *g)
 	else
 	{
 		close(g->cls[i].cs);
+		g->max_cli[g->cls[i].num_team]--;
 		g->cls[i].cs = MORT;
+		g->cls[i].num_team = MORT;
 	}
 }
 

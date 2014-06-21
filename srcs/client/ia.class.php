@@ -38,7 +38,7 @@ class			ia
 	public function		client_fork($file, $argv)
 	{
 		array_shift($argv);
-		$pid = pcntl_fork();
+		$pid = @pcntl_fork();
 		if ($pid == -1)
 			echo "ERROR : Duplication impossible\n";
 		else if (!$pid)

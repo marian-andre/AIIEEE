@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/21 19:52:19 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/21 20:11:38 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void			ft_serveur(t_game *game)
 	t_time		timeout;
 
 	timeout.tv_sec = 0;
-	timeout.tv_usec = 100;
+	timeout.tv_usec = 1;
 	fd.max = game->sock;
 	fd.nb_cli = 0;
 	game->list = NULL;

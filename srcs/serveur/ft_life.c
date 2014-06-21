@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/21 16:01:16 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/21 20:41:58 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 static void	ft_death(t_cmd *cmd, t_game *g)
 {
+	int		num_team;
+
 	g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].nb_player--;
 	ft_putstr("\033[31;01mClient ");
 	ft_putnbr(cmd->num_cli);
@@ -25,7 +27,8 @@ static void	ft_death(t_cmd *cmd, t_game *g)
 	close(g->cls[cmd->num_cli].cs);
 	g->cls[cmd->num_cli].cs = MORT;
 	g->cls[cmd->num_cli].num_team = MORT;
-	g->max_cli[g->cls[cmd->num_cli].num_team]--;
+	num_team = g->cls[cmd->num_cli].num_team;
+	g->max_cli[num_team]--;
 }
 
 void		ft_life(t_cmd *cmd, t_game *g)
@@ -34,11 +37,6 @@ void		ft_life(t_cmd *cmd, t_game *g)
 
 	if (g->cls[cmd->num_cli].cs == cmd->fd)
 	{
-//		ft_putstr("nourriture = ");
-//		ft_putnbr(g->cls[cmd->num_cli].resource.nourriture);
-//		ft_putstr(", client num ");
-//		ft_putnbr(cmd->num_cli);
-//		ft_putchar('\n');
 		g->cls[cmd->num_cli].resource.nourriture--;
 		if (g->cls[cmd->num_cli].resource.nourriture <= 0)
 			ft_death(cmd, g);

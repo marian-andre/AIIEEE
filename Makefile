@@ -6,7 +6,7 @@
 #    By: jgranet <jgranet@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/08 16:48:39 by jgranet           #+#    #+#              #
-#    Updated: 2014/06/21 14:46:55 by cchauvie         ###   ########.fr        #
+#    Updated: 2014/06/21 20:42:08 by mlemort          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS_GFX = $(patsubst %,$(SRC_DIR_GFX)/%,$(UNITS_GFX))
 OBJS_GFX = $(patsubst %,$(OBJ_DIR_GFX)/%,$(UNITS_O_GFX))
 
 LIBFLAGS = -L$(LIBFT) -lft
-FLAGS = -Wall -Werror -Wextra -I libft/includes -I SDL2-2.0.3/include
+FLAGS = -Wall -Werror -Wextra -O1 -I libft/includes -I SDL2-2.0.3/include
 
 CC = gcc $(FLAGS)
 

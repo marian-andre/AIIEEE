@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 16:07:36 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/21 16:20:47 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void		init_map(t_game *game)
 	game->map = (t_map**)malloc(sizeof(t_map*) * ft_atoi(array[2]));
 	while (++i < ft_atoi(array[2]))
 		game->map[i] = (t_map*)malloc(sizeof(t_map) * ft_atoi(array[1]));
-	ft_putendl("msz");
 	ft_strdel2(&array);
 }
 

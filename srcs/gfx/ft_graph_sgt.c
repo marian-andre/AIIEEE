@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:54 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 16:06:27 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/21 16:19:40 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,4 @@ void		ft_graph_sgt(t_game *game, char *line)
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		ft_graphic_error("parse error -> tab in ft_graph_sgt");
 	game->time = ft_atoi(tab[1]);
-	ft_putstr("sst ");
-	ft_putnbr(game->time);
-	ft_putchar('\n');
 }

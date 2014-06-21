@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/09 15:13:29 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/20 16:07:35 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/21 14:12:24 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void		ft_quit(void)
 	i = -1;
 	while (game->team[++i])
 		free(game->team[i]);
+	i = -1;
+	while (i < MAX_CLI && game->cls[i].cs)
+	{
+		if (game->cls[i].cs != MORT)
+			close(game->cls[i].cs);
+	}
 	free(game->team);
 	close(game->sock);
 }

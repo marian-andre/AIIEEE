@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/19 14:31:00 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/21 15:21:04 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		init_time(t_game *game)
 	free(line);
 	ft_strdel2(&array);
 }
-
+/*
 void		init_textures(t_game *g)
 {
 	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
@@ -71,6 +71,28 @@ void		init_textures(t_game *g)
 	g->textures[12] = load_image(g, "srcs/gfx/image/egg.bmp", -1);
 	g->textures[13] = NULL;
 }
+*/
+
+void		init_textures(t_game *g)
+{
+	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
+		* (NB_TEXTURES + 1));
+	g->textures[0] = load_image(g, "srcs/gfx/image/nourriture-R2D2.bmp", 0xFFFFFF);
+	g->textures[1] = load_image(g, "srcs/gfx/image/linemate_RD.bmp", 0xFFFFFF);
+	g->textures[2] = load_image(g, "srcs/gfx/image/emeraude.bmp", 0xFFFFFF);
+	g->textures[3] = load_image(g, "srcs/gfx/image/rubis.bmp", 0xFFFFFF);
+	g->textures[4] = load_image(g, "srcs/gfx/image/diamant.bmp", 0xFFFFFF);
+	g->textures[5] = load_image(g, "srcs/gfx/image/saphir.bmp",  0xFFFFFF);
+	g->textures[6] = load_image(g, "srcs/gfx/image/amethyste.bmp",  0xFFFFFF);
+	g->textures[7] = load_image(g, "srcs/gfx/image/RD_NORD.bmp", 0x929292);
+	g->textures[8] = load_image(g, "srcs/gfx/image/RD_SUD.bmp", 0x929292);
+	g->textures[9] = load_image(g, "srcs/gfx/image/RD_EST.bmp", 0x929292);
+	g->textures[10] = load_image(g, "srcs/gfx/image/RD_OUEST.bmp", 0x929292);
+	g->textures[11] = load_image(g, "srcs/gfx/image/mapRD.bmp", -1);
+	g->textures[12] = load_image(g, "srcs/gfx/image/egg.bmp", -1);
+	g->textures[13] = NULL;
+}
+
 
 void		init_sdl(t_game *game)
 {

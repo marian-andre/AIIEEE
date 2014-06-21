@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/18 21:07:36 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/18 21:15:21 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/21 16:08:49 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,10 @@ void		ft_graph_bct(t_game *game, char *line)
 	game->map[y][x].mendiane = ft_atoi(tab[7]);
 	game->map[y][x].phiras = ft_atoi(tab[8]);
 	game->map[y][x].thystame = ft_atoi(tab[9]);
+	ft_putstr("bct ");
+	ft_putnbr(x);
+	ft_putchar(' ');
+	ft_putnbr(y);
+	ft_putchar('\n');
 	ft_strdel2(&tab);
 }

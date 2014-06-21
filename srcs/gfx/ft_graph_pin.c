@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:00:25 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/17 15:25:24 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/21 16:12:37 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ void		ft_graph_pin(t_game *game, char *line)
 	game->client[i].resource.mendiane = ft_atoi(tab[8]);
 	game->client[i].resource.phiras = ft_atoi(tab[9]);
 	game->client[i].resource.thystame = ft_atoi(tab[10]);
+	ft_putstr("pin ");
+	ft_putnbr(ft_atoi(tab[1]));
+	ft_putchar('\n');
 	ft_strdel2(&tab);
 }

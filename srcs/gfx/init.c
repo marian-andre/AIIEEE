@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 15:21:04 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/21 16:07:36 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		init_map(t_game *game)
 	game->map = (t_map**)malloc(sizeof(t_map*) * ft_atoi(array[2]));
 	while (++i < ft_atoi(array[2]))
 		game->map[i] = (t_map*)malloc(sizeof(t_map) * ft_atoi(array[1]));
+	ft_putendl("msz");
 	ft_strdel2(&array);
 }
 
@@ -88,7 +89,7 @@ void		init_textures(t_game *g)
 	g->textures[8] = load_image(g, "srcs/gfx/image/RD_SUD.bmp", 0x929292);
 	g->textures[9] = load_image(g, "srcs/gfx/image/RD_EST.bmp", 0x929292);
 	g->textures[10] = load_image(g, "srcs/gfx/image/RD_OUEST.bmp", 0x929292);
-	g->textures[11] = load_image(g, "srcs/gfx/image/mapRD.bmp", -1);
+	g->textures[11] = load_image(g, "srcs/gfx/image/mapRD_white.bmp", -1);
 	g->textures[12] = load_image(g, "srcs/gfx/image/egg.bmp", -1);
 	g->textures[13] = NULL;
 }

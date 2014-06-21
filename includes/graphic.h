@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 17:26:41 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/21 17:44:11 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,7 @@ void				ft_graph_pdi(t_game *game, char *line);
 ** ft_graph_enw.c
 */
 
+void				init_egg(t_game *game);
 void				ft_graph_enw(t_game *game, char *line);
 
 /*

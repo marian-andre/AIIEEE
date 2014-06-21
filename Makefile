@@ -6,7 +6,7 @@
 #    By: jgranet <jgranet@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/08 16:48:39 by jgranet           #+#    #+#              #
-#    Updated: 2014/06/18 15:22:10 by mlemort          ###   ########.fr        #
+#    Updated: 2014/06/21 02:58:31 by cchauvie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ CC = gcc $(FLAGS)
 
 RM = /bin/rm -f
 
-all: $(SDL2) $(PHP) $(LIB_NAME) $(BIN_DIR)$(NAME_SER) $(BIN_DIR)$(NAME_GFX)
+all: $(SDL2) $(PHP) LIB_NAME $(BIN_DIR)$(NAME_SER) $(BIN_DIR)$(NAME_GFX)
 
 $(PHP):
 	cd php-5.5.13 && ./configure --enable-sockets --enable-pcntl \
@@ -50,10 +50,10 @@ $(PHP):
 $(SDL2):
 	cd SDL2-2.0.3 && ./configure CC=clang && make
 
-$(LIB_NAME):
-	@make -C $(LIBFT) re
+LIB_NAME:
+	@make -C $(LIBFT)
 
-$(BIN_DIR)$(NAME_SER): $(OBJS_SER)
+$(BIN_DIR)$(NAME_SER): $(OBJS_SER) $(LIB_NAME)
 	@echo "Objects [$(NAME_SER)]:\033[1;33m DONE !\033[m"
 	@$(CC) -o $@ $^ $(LIBFLAGS)
 	@echo "Program [$(NAME_SER)] :\033[1;33m DONE !\033[m"
@@ -61,7 +61,7 @@ $(BIN_DIR)$(NAME_SER): $(OBJS_SER)
 $(OBJ_DIR_SER)/%.o: $(SRC_DIR_SER)/%.c ./includes/serveur.h
 	@$(CC) -c -o $@ $< -I$(INC_DIR)
 
-$(BIN_DIR)$(NAME_GFX): $(OBJS_GFX)
+$(BIN_DIR)$(NAME_GFX): $(OBJS_GFX) $(LIB_NAME)
 	@echo "Objects [$(NAME_GFX)]:\033[1;33m DONE !\033[m"
 	@$(CC) -o $@ $^ $(LIBFLAGS) -L SDL2-2.0.3/build/.libs -l SDL2
 	@echo "Program [$(NAME_GFX)] :\033[1;33m DONE !\033[m"

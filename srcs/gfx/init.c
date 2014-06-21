@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 17:44:48 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/21 19:35:41 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		init_time(t_game *game)
 	free(line);
 	ft_strdel2(&array);
 }
-/*
+
 void		init_textures(t_game *g)
 {
 	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
@@ -63,16 +63,16 @@ void		init_textures(t_game *g)
 	g->textures[4] = load_image(g, "srcs/gfx/image/mendiane.bmp", 0xFFFFFF);
 	g->textures[5] = load_image(g, "srcs/gfx/image/phiras.bmp",  0xFFFFFF);
 	g->textures[6] = load_image(g, "srcs/gfx/image/thystame.bmp",  0xFFFFFF);
-	g->textures[7] = load_image(g, "srcs/gfx/image/goron_N.bmp", 0x929292);
-	g->textures[8] = load_image(g, "srcs/gfx/image/goron_S.bmp", 0x929292);
-	g->textures[9] = load_image(g, "srcs/gfx/image/goron_E.bmp", 0x929292);
-	g->textures[10] = load_image(g, "srcs/gfx/image/goron_W.bmp", 0x929292);
+	g->textures[7] = load_image(g, "srcs/gfx/image/goron_N.bmp", 0xFFFFFF);
+	g->textures[8] = load_image(g, "srcs/gfx/image/goron_S.bmp", 0xFFFFFF);
+	g->textures[9] = load_image(g, "srcs/gfx/image/goron_E.bmp", 0xFFFFFF);
+	g->textures[10] = load_image(g, "srcs/gfx/image/goron_W.bmp", 0xFFFFFF);
 	g->textures[11] = load_image(g, "srcs/gfx/image/map.bmp", -1);
 	g->textures[12] = load_image(g, "srcs/gfx/image/egg.bmp", -1);
 	g->textures[13] = load_image(g, "srcs/gfx/image/lvlup.bmp", 0xFFFFFF);
 	g->textures[14] = NULL;
 }
-*/
+/*
 void		init_textures(t_game *g)
 {
 	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
@@ -94,7 +94,7 @@ void		init_textures(t_game *g)
 	g->textures[13] = load_image(g, "srcs/gfx/image/lvl_up.bmp", 0xFFFFFF);
 	g->textures[14] = NULL;
 }
-
+*/
 void		init_sdl(t_game *game)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)

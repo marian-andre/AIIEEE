@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 15:34:08 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/21 15:12:16 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/21 16:40:10 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,27 @@ void				cleanup(void)
 	t_game		*game;
 	int			i;
 
-
+	ft_putendl("tata");
 	game = singleton(NULL);
+	ft_putendl("tata");
 	ft_strdel2(&game->team);
+	ft_putendl("titi");
 	i = -1;
 	while (++i < game->height)
 		free(game->map[i]);
+	ft_putendl("titi");
 	free(game->map);
+	ft_putendl("toto");
 	i = -1;
 	while (game->textures[++i])
 		SDL_DestroyTexture(game->textures[i]);
+	ft_putendl("toto");
 	free(game->textures);
+	ft_putendl("tete");
 	SDL_DestroyRenderer(game->renderer);
+	ft_putendl("tete");
 	SDL_DestroyWindow(game->window);
+	ft_putendl("trtr");
 	SDL_Quit();
 }
 

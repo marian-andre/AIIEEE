@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 14:40:41 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/21 16:54:14 by rkorimba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,40 @@ int					main(int argc, char **argv)
 
 	if (argc != 3)
 		ft_graphic_usage();
+	ft_putendl("test");
 	singleton(&game);
+	ft_putendl("test");
 	game.sock = ft_connect(argv[1], ft_atoi(argv[2]));
+	ft_putendl("test");
 	init_map(&game);
+	ft_putendl("test");
 	init_time(&game);
+	ft_putendl("test");
 	init_sdl(&game);
+	ft_putendl("test");
 	atexit(cleanup);
+	ft_putendl("test");
 	signal(SIGINT, exit);
 	nb_case = game.width * game.height;
+	ft_putendl("test2");
 	while (nb_case-- && get_next_line(game.sock, &line))
 	{
 		ft_graph_bct(&game, line);
 		free(line);
 	}
+	ft_putendl("test2");
 	init_client(&game);
+	init_egg(&game);
+	ft_putendl("test2");
 	while (get_next_line(game.sock, &line) > 0)
 	{
+		ft_putendl("tyty");
 //		ft_putendl(line);
 		if (line != NULL)
 			ft_check_msg(&game, line);
+		ft_putendl("tutu");
 		draw_render(&game);
+		ft_putendl("tptp");
 		free(line);
 		line = NULL;
 	}

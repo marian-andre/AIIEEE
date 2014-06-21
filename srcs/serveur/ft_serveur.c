@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/20 14:25:44 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/21 19:52:19 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ static void		ft_save_fd_cli(t_client *cls, t_fd *fd)
 {
 	int			i;
 
-	i = 0;
-	while (i < fd->nb_cli)
+	i = -1;
+	while (++i < fd->nb_cli)
 	{
 		if (cls[i].cs != MORT)
 			FD_SET(cls[i].cs, &fd->rdfs);
-		i++;
 	}
 }
 
@@ -52,24 +51,24 @@ static int		ft_win(t_game *g)
 	int			j;
 	int			nb;
 
-	i = 0;
+	i = -1;
 	nb = 0;
-	while (g->team[i])
+	while (g->team[++i])
 	{
-		j = 0;
+		j = -1;
 		nb = 0;
-		while (j < MAX_CLI && g->cls[j].cs)
+		while (++j < MAX_CLI && g->cls[j].cs)
 		{
-			if (g->cls[j].num_team == i && g->cls[j].lvl == 3)
+			if (g->cls[j].num_team == i && g->cls[j].lvl == 8)
 				nb++;
-			j++;
 		}
-		if (nb >= 2)
+		if (nb >= 6)
 		{
+			ft_putstr("Fin de partie, l'equipe qui gagne est : ");
+			ft_putendl(g->team[i]);
 			ft_graph_seg(g, g->team[i]);
 			return (1);
 		}
-		i++;
 	}
 	return (0);
 }
@@ -98,6 +97,5 @@ void			ft_serveur(t_game *game)
 		else
 			ft_save_request(game, &fd);
 	}
-	ft_putendl("Fin de partie !");
 	exit(EXIT_SUCCESS);
 }

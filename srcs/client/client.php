@@ -60,7 +60,7 @@ function	run_client($ia, $serveur, $argv)
 		$serveur->send_msg("connect_nbr");
 		$ia->connect_nbr = $serveur->receive_msg();
 		if ($ia->connect_nbr > 0)
-			$ia->client_fork("./bin/client", $argv);
+			$ia->client_fork("./php-5.5.13/sapi/cli/php", $argv);
 		if ($ia->stuff === NULL)
 			$cmd_to_send = "inventaire";
 		else if ($ia->client_canlevelup())

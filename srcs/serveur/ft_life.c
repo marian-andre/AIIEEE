@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/22 16:58:38 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/22 18:00:42 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static void		ft_drop_all(t_game *g, int num_cli)
 
 static void		ft_death(t_cmd *cmd, t_game *g)
 {
-	int		num_team;
-
 	ft_drop_all(g, cmd->num_cli);
 	g->map[g->cls[cmd->num_cli].y][g->cls[cmd->num_cli].x].nb_player--;
 	ft_putstr("\033[31;01mClient ");
@@ -44,8 +42,6 @@ static void		ft_death(t_cmd *cmd, t_game *g)
 	close(g->cls[cmd->num_cli].cs);
 	g->cls[cmd->num_cli].cs = MORT;
 	g->cls[cmd->num_cli].num_team = MORT;
-	num_team = g->cls[cmd->num_cli].num_team;
-	g->max_cli[num_team]--;
 }
 
 void			ft_life(t_cmd *cmd, t_game *g)

@@ -36,13 +36,15 @@ class			ia
 	}
 
 	public function		client_fork($file, $argv)
-	{
+    {
 		array_shift($argv);
+        $arg = $argv;
+        array_unshift($arg, "srcs/client/client.php");
 		$pid = @pcntl_fork();
 		if ($pid == -1)
 			echo "ERROR : Duplication impossible\n";
 		else if (!$pid)
-			pcntl_exec($file, $argv);
+			pcntl_exec($file, $arg);
 	}
 
 	private function	get_nb_player_on_my_case()

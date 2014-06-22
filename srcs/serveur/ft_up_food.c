@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 18:25:02 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/19 15:57:59 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/22 14:12:09 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_up_food(t_game *game)
 	int			y;
 	int			x;
 	int			food;
-	static int	food_base = 0;	
+	static int	food_base = 0;
 
 	y = -1;
 	food = 0;

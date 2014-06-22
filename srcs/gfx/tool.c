@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 15:34:08 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/21 18:36:18 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/22 14:26:26 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,35 +63,4 @@ SDL_Texture			*load_image(t_game *game, char *path, int rgb)
 	else
 		ft_graphic_error("img can't be load.");
 	return (NULL);
-}
-
-void				display(t_game *game)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while (++i < game->height)
-	{
-		j = -1;
-		while (++j < game->width)
-		{
-			ft_putnbr(game->map[i][j].food);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].linemate);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].deraumere);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].sibur);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].mendiane);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].phiras);
-			ft_putchar(' ');
-			ft_putnbr(game->map[i][j].thystame);
-			ft_putchar(' ');
-			ft_putchar('\n');
-		}
-		ft_putchar('\n');
-	}
 }

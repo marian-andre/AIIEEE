@@ -6,7 +6,7 @@
 /*   By: yoreal <yoreal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:37:50 by yoreal            #+#    #+#             */
-/*   Updated: 2014/06/19 18:29:24 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/22 14:10:42 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		ft_check_ret(t_game *game, int *q, int *ret, int i)
 
 	tmp = ft_rand_stone(q, i, game);
 	*ret += tmp;
-	return (tmp); 
+	return (tmp);
 }
 
 static void		ft_dispatch(t_game *g, int *q, int ret, int y)
@@ -55,7 +55,7 @@ void			ft_dispatch_stone(t_game *g, int cli)
 	int				ret;
 
 	ret = 0;
-	if (g->cls[cli].lvl == 1 || g->cls[cli].lvl == 2) 
+	if (g->cls[cli].lvl == 1 || g->cls[cli].lvl == 2)
 		ft_disp_lvl_1_to_2(q, g, g->cls[cli].lvl, cli);
 	if (g->cls[cli].lvl == 4 || g->cls[cli].lvl == 3)
 		ft_disp_lvl_3_to_4(q, g, g->cls[cli].lvl, cli);

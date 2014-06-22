@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 16:03:30 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 19:06:27 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/22 14:14:14 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void			ft_add_egg(t_game *game, char **tab)
 void				init_egg(t_game *game)
 {
 	int				i;
+
 	i = -1;
 	while (++i < MAX_CLI)
 	{
@@ -42,4 +43,3 @@ void				ft_graph_enw(t_game *game, char *line)
 	ft_add_egg(game, tab);
 	ft_strdel2(&tab);
 }
-

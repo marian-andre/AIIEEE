@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 17:44:11 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/22 14:36:10 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void				display(t_game *game);
 ** draw_case.c
 */
 
-void			draw_case(t_game *game, int x, int y);
+void				draw_case(t_game *game, int x, int y);
 
 /*
 ** init.c
@@ -194,7 +194,6 @@ void				ft_graph_pdr(t_game *game, char *line);
 
 void				ft_graph_pgt(t_game *game, char *line);
 
-
 /*
 ** ft_graph_pdi.c
 */
@@ -231,7 +230,6 @@ void				ft_graph_edi(t_game *game, char *line);
 */
 
 void				ft_graph_sgt(t_game *game, char *line);
-
 
 /*
 ** ft_graph_seg.c

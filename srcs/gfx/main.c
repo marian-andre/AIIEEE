@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/21 18:37:23 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/22 14:31:24 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,21 @@ static int			ft_connect(char *addr, int port)
 	return (sock);
 }
 
+static void			ft_game(t_game *game)
+{
+	char	*line;
+
+	while (get_next_line(game->sock, &line) > 0)
+	{
+//		ft_putendl(line);
+		if (line != NULL)
+			ft_check_msg(game, line);
+		draw_render(game);
+		free(line);
+		line = NULL;
+	}
+}
+
 int					main(int argc, char **argv)
 {
 	t_game			game;
@@ -65,16 +80,8 @@ int					main(int argc, char **argv)
 	}
 	init_client(&game);
 	init_egg(&game);
-	while (get_next_line(game.sock, &line) > 0)
-	{
-//		ft_putendl(line);
-		if (line != NULL)
-			ft_check_msg(&game, line);
-		draw_render(&game);
-		free(line);
-		line = NULL;
-	}
+	ft_game(&game);
 	exit(EXIT_SUCCESS);
-	return(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 

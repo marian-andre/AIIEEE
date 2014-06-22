@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/11 15:12:45 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/22 14:49:13 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/22 16:58:38 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ static void		ft_drop_all(t_game *g, int num_cli)
 	g->map[y][x].mendiane += g->cls[num_cli].resource.mendiane;
 	g->map[y][x].phiras += g->cls[num_cli].resource.phiras;
 	g->map[y][x].thystame += g->cls[num_cli].resource.thystame;
-	g->cls[num_cli].resource.linemate = 0;
-	g->cls[num_cli].resource.deraumere = 0;
-	g->cls[num_cli].resource.sibur = 0;
-	g->cls[num_cli].resource.mendiane = 0;
-	g->cls[num_cli].resource.phiras = 0;
-	g->cls[num_cli].resource.thystame = 0;
+	ft_graph_bct(g, 0, x, y);
 }
 
 static void		ft_death(t_cmd *cmd, t_game *g)

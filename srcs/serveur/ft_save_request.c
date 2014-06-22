@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 15:55:30 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/21 15:38:00 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/22 16:50:40 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	ft_recep_message(int i, t_game *g)
 	{
 		close(g->cls[i].cs);
 		g->max_cli[g->cls[i].num_team]--;
+		g->map[g->cls[i].y][g->cls[i].x].nb_player--;
 		g->cls[i].cs = MORT;
 		g->cls[i].num_team = MORT;
 	}
@@ -59,7 +60,7 @@ void		ft_save_request(t_game *g, t_fd *fd)
 	int			i;
 
 	i = 0;
-	while (i < fd->nb_cli)
+	while (i < MAX_CLI && g->cls[i].cs)
 	{
 		if (FD_ISSET(g->cls[i].cs, &fd->rdfs))
 		{

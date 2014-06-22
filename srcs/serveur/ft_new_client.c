@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/05 17:06:42 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/17 17:26:11 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/22 16:39:46 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static void		ft_send(t_game *g, t_fd *fd)
 	free(line);
 	if (g->cls[fd->nb_cli].cs > fd->max)
 		fd->max = g->cls[fd->nb_cli].cs;
-	FD_SET(g->cls[fd->nb_cli].cs, &fd->rdfs);
-	fd->nb_cli++;
+//	FD_SET(g->cls[fd->nb_cli].cs, &fd->rdfs);
 }
 
 static void		ft_init_cli(t_game *g, t_fd *fd, int cs)
@@ -79,8 +78,7 @@ static void		ft_init_egg(t_game *g, t_fd *fd, int i, int cs)
 	free(line);
 	if (g->cls[fd->nb_cli].cs > fd->max)
 		fd->max = g->cls[fd->nb_cli].cs;
-	FD_SET(g->cls[fd->nb_cli].cs, &fd->rdfs);
-	fd->nb_cli++;
+//	FD_SET(g->cls[fd->nb_cli].cs, &fd->rdfs);
 }
 
 void			ft_new_client(t_game *g, t_fd *fd, char *line, int cs)

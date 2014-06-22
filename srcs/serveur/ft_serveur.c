@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/23 11:07:12 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/21 20:11:38 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/22 16:36:59 by jgranet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,22 @@
 
 static void		ft_new_connection(t_game *g, t_fd *fd)
 {
+	int					i;
 	int					cs;
 	char				*line;
 	unsigned int		cslen;
 	struct sockaddr_in	*csin;
 
+	i = 0;
 	line = NULL;
 	cs = accept(g->sock, (struct sockaddr*)&csin, &cslen);
 	if (cs < 0)
 		ft_error("ERROR socket.");
 	ft_putendl_fd("BIENVENUE", cs);
 	get_next_line(cs, &line);
+	while (i < MAX_CLI && g->cls[i].cs != MORT && g->cls[i].cs != 0)
+		i++;
+	fd->nb_cli = i;
 	ft_new_client(g, fd, line, cs);
 	free(line);
 }
@@ -38,7 +43,7 @@ static void		ft_save_fd_cli(t_client *cls, t_fd *fd)
 	int			i;
 
 	i = -1;
-	while (++i < fd->nb_cli)
+	while (++i < MAX_CLI && cls[i].cs)
 	{
 		if (cls[i].cs != MORT)
 			FD_SET(cls[i].cs, &fd->rdfs);

@@ -6,7 +6,7 @@
 #    By: jgranet <jgranet@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/08 16:48:39 by jgranet           #+#    #+#              #
-#    Updated: 2014/06/21 20:42:08 by mlemort          ###   ########.fr        #
+#    Updated: 2014/06/22 14:54:45 by mlemort          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ CC = gcc $(FLAGS)
 
 RM = /bin/rm -f
 
-all: $(SDL2) $(PHP) LIB_NAME $(BIN_DIR)$(NAME_SER) $(BIN_DIR)$(NAME_GFX)
+all: $(SDL2) $(PHP) $(LIB_NAME) $(BIN_DIR)$(NAME_SER) $(BIN_DIR)$(NAME_GFX)
 
 $(PHP):
 	cd php-5.5.13 && ./configure CC=clang --enable-sockets --enable-pcntl \
@@ -50,7 +50,7 @@ $(PHP):
 $(SDL2):
 	cd SDL2-2.0.3 && ./configure CC=clang && make
 
-LIB_NAME:
+$(LIB_NAME):
 	@make -C $(LIBFT)
 
 $(BIN_DIR)$(NAME_SER): $(OBJS_SER) $(LIB_NAME)
@@ -76,12 +76,16 @@ clean:
 	@echo "Make clean :\033[1;33m DONE !\033[m"
 
 fclean : clean
-	@make -C php-5.5.13 clean
-	@make -C SDL2-2.0.3 clean
 	@make -C libft fclean
 	@$(RM) $(BIN_DIR)$(NAME_SER)
 	@$(RM) $(BIN_DIR)$(NAME_GFX)
 	@echo "Make fclean :\033[1;33m DONE !\033[m"
+
+phpfc :
+	@make -C php-5.5.13 clean
+
+sdlfc :
+	@make -C SDL2-2.0.3 clean
 
 re: fclean all
 

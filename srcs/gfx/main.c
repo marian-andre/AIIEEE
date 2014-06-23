@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/22 14:31:24 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/23 20:02:05 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,15 @@ static int			ft_connect(char *addr, int port)
 
 static void			ft_game(t_game *game)
 {
-	char	*line;
+	char		*line;
+	SDL_Event	event;
 
 	while (get_next_line(game->sock, &line) > 0)
 	{
-//		ft_putendl(line);
+		SDL_PollEvent(&event);
+		if ((event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
+			|| (event.window.event == SDL_WINDOWEVENT_CLOSE))
+			exit(0);
 		if (line != NULL)
 			ft_check_msg(game, line);
 		draw_render(game);

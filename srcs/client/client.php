@@ -38,6 +38,9 @@ function init_client($argc, $argv, &$ia, &$serveur)
 	$serveur = new connection();
 	$ia = new ia();
 
+	connection::$verbose_debug = TRUE;
+	connection::$verbose_send = TRUE;
+	connection::$verbose_read = TRUE;
 	$ia->serveur = $serveur;
 	$serveur->set_host(isset($argv[6]) ? gethostbyname($argv[6]) : "127.0.0.1");
 	$serveur->set_port($argv[4]);
@@ -59,6 +62,7 @@ function	run_client($ia, $serveur, $argv)
 	{
 		$serveur->send_msg("connect_nbr");
 		$ia->connect_nbr = $serveur->receive_msg();
+		$ia->client_get_nourriture();
 		if ($ia->connect_nbr > 0)
 			$ia->client_fork("./php-5.5.13/sapi/cli/php", $argv);
 		if ($ia->stuff === NULL)

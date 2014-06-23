@@ -11,12 +11,14 @@ class			ia
 	public		$serveur;
 	public		$last_action;
 	public		$last_action_receive;
+	private		$_tab_action;
 
 	public function		__construct()
 	{
 		$this->stuff = NULL;
 		$this->level = 1;
 		$this->last_action = NULL;
+		$this->client_move_ultraintelligent_reset();
 	}
 
 	public function		get_inventaire($receive)
@@ -36,10 +38,10 @@ class			ia
 	}
 
 	public function		client_fork($file, $argv)
-    {
+	{
 		array_shift($argv);
-        $arg = $argv;
-        array_unshift($arg, "srcs/client/client.php");
+		$arg = $argv;
+		array_unshift($arg, "srcs/client/client.php");
 		$pid = @pcntl_fork();
 		if ($pid == -1)
 			echo "ERROR : Duplication impossible\n";
@@ -64,16 +66,36 @@ class			ia
 		$count = 0;
 		while (isset($map[$index]))
 		{
-			if ($map[$index] == "nourriture")
-			{
-				$this->serveur->send_msg("prend nourriture");
-				$this->serveur->receive_msg();
-			}
 			if ($map[$index] == "joueur")
 				$count++;
 			$index++;
 		}
 		return ($count);
+	}
+
+	public function		client_get_nourriture()
+	{
+		if ($this->last_action != "voir")
+		{
+			$this->last_action = "voir";
+			$this->serveur->send_msg($this->last_action);
+			$this->last_action_receive = $this->serveur->receive_msg();
+		}
+		$receive = str_replace('{', '', $this->last_action_receive);
+		$receive = str_replace('}', '', $receive);
+		$map = array();
+		$map = explode(',', $receive);
+		$map = explode(' ', $map[0]);
+		$index = 0;
+		while (isset($map[$index]))
+		{
+			if ($map[$index] == "nourriture")
+			{
+				$this->serveur->send_msg("prend nourriture");
+				$this->serveur->receive_msg();
+			}
+			$index++;
+		}
 	}
 
 	private function	client_pose_item()
@@ -178,7 +200,9 @@ class			ia
 			$map[$index] = explode(' ', trim($map[$index]));
 			$index++;
 		}
-		if ($this->last_action == "gauche" || $this->last_action == "droite")
+		$this->client_get_nourriture();
+		if (($this->last_action == "gauche" || $this->last_action == "droite")
+			&& $this->client_move_ultraintelligent_isused() === false)
 			return ("avance");
 		$index = 0;
 		while (isset($search[$index]))
@@ -191,10 +215,11 @@ class			ia
 				{
 					if ($map[$index_case][$index_object] == $search[$index])
 					{
+						$this->client_move_ultraintelligent_reset();
 						if ($index_case == 0)
 						{
 							if ($search[$index] !== "nourriture")
-								$this->stuff = NULL;
+								$this->stuff[$search[$index]]++;
 							return ("prend " . $search[$index]);
 						}
 						else if ($index_case == 2
@@ -207,13 +232,13 @@ class			ia
 							|| $index_case == 72)
 							return ("avance");
 						else if ($index_case == 3
-							|| ($index_case  > 6 && $index_case < 9)
-							|| ($index_case  > 12 && $index_case < 16)
-							|| ($index_case  > 20 && $index_case < 25)
-							|| ($index_case  > 30 && $index_case < 36)
-							|| ($index_case  > 42 && $index_case < 49)
-							|| ($index_case  > 56 && $index_case < 64)
-							|| ($index_case  > 72 && $index_case < 81))
+							|| ($index_case > 6 && $index_case < 9)
+							|| ($index_case > 12 && $index_case < 16)
+							|| ($index_case > 20 && $index_case < 25)
+							|| ($index_case > 30 && $index_case < 36)
+							|| ($index_case > 42 && $index_case < 49)
+							|| ($index_case > 56 && $index_case < 64)
+							|| ($index_case > 72 && $index_case < 81))
 							return ("droite");
 						return ("gauche");
 					}
@@ -223,7 +248,133 @@ class			ia
 			}
 			$index++;
 		}
-		return ("avance");
+		return ($this->client_move_ultraintelligent());
+	}
+
+	private	function	client_move_ultraintelligent_isused()
+	{
+		if ($this->_tab_action["avance"] === 0)
+			if ($this->_tab_action["droite"] === 0)
+				if ($this->_tab_action["gauche"] === 0)
+					if ($this->_tab_action["mode"] === 0)
+						return (false);
+		return (true);
+	}
+
+	private	function	client_move_ultraintelligent_reset()
+	{
+		$this->_tab_action = array(
+			'avance' => 0,
+			'droite' => 0,
+			'gauche' => 0,
+			'mode' => 0
+		);
+	}
+
+	private function	client_move_ultraintelligent()
+	{
+		$map = explode(' ', $this->mapsize);
+		$map_x = $map[0];
+		$map_y = $map[1];
+		if ($this->_tab_action["mode"] === 0)
+		{
+			if ($this->_tab_action["avance"] < $map_y)
+			{
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else
+			{
+				$this->_tab_action["mode"] = 1;
+				$this->_tab_action["avance"] = 0;
+				$this->_tab_action["droite"] = 1;
+				return ("droite");
+			}
+		}
+		else if ($this->_tab_action["mode"] === 1)
+		{
+			if ($this->_tab_action["droite"] === 1)
+			{
+				$this->_tab_action["droite"] = 0;
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else if ($this->_tab_action["avance"] < 3)
+			{
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else if ($this->_tab_action["avance"] === 3)
+			{
+				$this->_tab_action["mode"] = 2;
+				$this->_tab_action["avance"] = 0;
+				$this->_tab_action["droite"] = 1;
+				return ("droite");
+			}
+		}
+		else if ($this->_tab_action["mode"] === 2)
+		{
+			if ($this->_tab_action["droite"] === 1)
+			{
+				$this->_tab_action["droite"] = 0;
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else if ($this->_tab_action["avance"] < $map_y)
+			{
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else
+			{
+				$this->_tab_action["mode"] = 3;
+				$this->_tab_action["avance"] = 0;
+				$this->_tab_action["gauche"] = 1;
+				return ("gauche");
+			}
+		}
+		else if ($this->_tab_action["mode"] === 3)
+		{
+			if ($this->_tab_action["gauche"] === 1)
+			{
+				$this->_tab_action["gauche"] = 0;
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else if ($this->_tab_action["avance"] < 3)
+			{
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else if ($this->_tab_action["avance"] === 3)
+			{
+				$this->_tab_action["mode"] = 4;
+				$this->_tab_action["avance"] = 0;
+				$this->_tab_action["gauche"] = 1;
+				return ("gauche");
+			}
+		}
+		else if ($this->_tab_action["mode"] === 4)
+		{
+			if ($this->_tab_action["gauche"] === 1)
+			{
+				$this->_tab_action["gauche"] = 0;
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else if ($this->_tab_action["avance"] < $map_y)
+			{
+				$this->_tab_action["avance"]++;
+				return ("avance");
+			}
+			else
+			{
+				$this->_tab_action["mode"] = 1;
+				$this->_tab_action["avance"] = 0;
+				$this->_tab_action["droite"] = 1;
+				return ("droite");
+			}
+		}
 	}
 
 	public function		search_what_missing()

@@ -6,7 +6,7 @@
 /*   By: jgranet <jgranet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/04 16:34:22 by jgranet           #+#    #+#             */
-/*   Updated: 2014/06/20 15:52:43 by jgranet          ###   ########.fr       */
+/*   Updated: 2014/06/23 17:10:25 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,21 @@ static int	ft_co_wizards(t_cmd *cmd, t_game *g, int lvl_up)
 			&& g->cls[i].y == g->cls[cmd->num_cli].y
 			&& g->cls[i].lvl == lvl
 			&& g->cls[i].cs != MORT)
-		{
 			nb++;
-			if (lvl_up > 0)
-				g->cls[i].lvl++;
-		}
 	}
-	if (lvl_up > 1)
+	if (lvl_up > 0)
+	{
+		g->cls[cmd->num_cli].lvl++;
 		ft_print_lvl(g, cmd);
+	}
 	return (nb);
 }
 
 static void	ft_end_of_spell(t_game *g, t_cmd *cmd)
 {
-	int		i;
-
-	i = 0;
 	ft_co_wizards(cmd, g, g->cls[cmd->num_cli].lvl);
 	ft_graph_pie(g, cmd->num_cli, g->cls[cmd->num_cli].lvl);
-	while (g->cls[i].cs)
-	{
-		if (g->cls[i].x == g->cls[cmd->num_cli].x
-			&& g->cls[i].y == g->cls[cmd->num_cli].y
-			&& g->cls[i].lvl == g->cls[cmd->num_cli].lvl)
-			ft_graph_plv(g, i);
-		i++;
-	}
+	ft_graph_plv(g, cmd->num_cli);
 	ft_dispatch_stone(g, cmd->num_cli);
 }
 

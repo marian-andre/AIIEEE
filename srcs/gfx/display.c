@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 16:48:28 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/17 14:13:30 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/23 16:59:27 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,28 @@ static void		ft_dir_goron(t_game *game, SDL_Rect *s, SDL_Rect *d, int i)
 		SDL_RenderCopy(game->renderer, game->textures[9], s, d);
 	if (game->client[i].dir == WEST)
 		SDL_RenderCopy(game->renderer, game->textures[10], s, d);
+	s->w = LVL_SIZE_W;
+	s->h = LVL_SIZE_H;
+	d->x += ((TILES_SIZE_W - LVL_SIZE_W) / 2);
+	d->y -= LVL_SIZE_H;
+	d->h = LVL_SIZE_H;
+	d->w = LVL_SIZE_W;
+	if (game->client[i].lvl == 1)
+		SDL_RenderCopy(game->renderer, game->textures[14], s, d);
+	else if (game->client[i].lvl == 2)
+		SDL_RenderCopy(game->renderer, game->textures[15], s, d);
+	else if (game->client[i].lvl == 3)
+		SDL_RenderCopy(game->renderer, game->textures[16], s, d);
+	else if (game->client[i].lvl == 4)
+		SDL_RenderCopy(game->renderer, game->textures[17], s, d);
+	else if (game->client[i].lvl == 5)
+		SDL_RenderCopy(game->renderer, game->textures[18], s, d);
+	else if (game->client[i].lvl == 6)
+		SDL_RenderCopy(game->renderer, game->textures[19], s, d);
+	else if (game->client[i].lvl == 7)
+		SDL_RenderCopy(game->renderer, game->textures[20], s, d);
+	else if (game->client[i].lvl == 8)
+		SDL_RenderCopy(game->renderer, game->textures[21], s, d);
 }
 
 static void		ft_draw_goron(t_game *game, int i)
@@ -74,9 +96,7 @@ static void		ft_gorimbakus(t_game *game)
 	while (i < MAX_CLI)
 	{
 		if (game->client[i].num_team != -1)
-		{
 			ft_draw_goron(game, i);
-		}
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/22 19:34:56 by rkorimba         ###   ########.fr       */
+/*   Updated: 2014/06/23 16:46:08 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ void		init_time(t_game *game)
 	free(line);
 	ft_strdel2(&array);
 }
-/*
+
 void		init_textures(t_game *g)
 {
-	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
-		* (NB_TEXTURES + 1));
+	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*) * (NB_TXT + 1));
 	g->textures[0] = load_image(g, "srcs/gfx/image/food.bmp", 0xFFFFFF);
 	g->textures[1] = load_image(g, "srcs/gfx/image/linemate.bmp", 0xFFFFFF);
 	g->textures[2] = load_image(g, "srcs/gfx/image/deraumere.bmp", 0xFFFFFF);
@@ -70,13 +69,20 @@ void		init_textures(t_game *g)
 	g->textures[11] = load_image(g, "srcs/gfx/image/map.bmp", -1);
 	g->textures[12] = load_image(g, "srcs/gfx/image/oeuf.bmp", -1);
 	g->textures[13] = load_image(g, "srcs/gfx/image/lvlup.bmp", 0xFFFFFF);
-	g->textures[14] = NULL;
+	g->textures[14] = load_image(g, "srcs/gfx/image/1.bmp", 0xFFFFFF);
+	g->textures[15] = load_image(g, "srcs/gfx/image/2.bmp", 0xFFFFFF);
+	g->textures[16] = load_image(g, "srcs/gfx/image/3.bmp", 0xFFFFFF);
+	g->textures[17] = load_image(g, "srcs/gfx/image/4.bmp", 0xFFFFFF);
+	g->textures[18] = load_image(g, "srcs/gfx/image/5.bmp", 0xFFFFFF);
+	g->textures[19] = load_image(g, "srcs/gfx/image/6.bmp", 0xFFFFFF);
+	g->textures[20] = load_image(g, "srcs/gfx/image/7.bmp", 0xFFFFFF);
+	g->textures[21] = load_image(g, "srcs/gfx/image/8.bmp", 0xFFFFFF);
+	g->textures[22] = NULL;
 }
-*/
+/*
 void		init_textures(t_game *g)
 {
-	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*)
-		* (NB_TEXTURES + 1));
+	g->textures = (SDL_Texture**)malloc(sizeof(SDL_Texture*) * (NB_TXT + 1));
 	g->textures[0] = load_image(g, "srcs/gfx/image/food-R2D2.bmp", 0xFFFFFF);
 	g->textures[1] = load_image(g, "srcs/gfx/image/linemate_RD.bmp", 0xFFFFFF);
 	g->textures[2] = load_image(g, "srcs/gfx/image/emeraude.bmp", 0xFFFFFF);
@@ -91,9 +97,17 @@ void		init_textures(t_game *g)
 	g->textures[11] = load_image(g, "srcs/gfx/image/till.bmp", -1);
 	g->textures[12] = load_image(g, "srcs/gfx/image/oeuf_RD.bmp", -1);
 	g->textures[13] = load_image(g, "srcs/gfx/image/lvl_up.bmp", 0xFFFFFF);
-	g->textures[14] = NULL;
+	g->textures[14] = load_image(g, "srcs/gfx/image/1.bmp", 0xFFFFFF);
+	g->textures[15] = load_image(g, "srcs/gfx/image/2.bmp", 0xFFFFFF);
+	g->textures[16] = load_image(g, "srcs/gfx/image/3.bmp", 0xFFFFFF);
+	g->textures[17] = load_image(g, "srcs/gfx/image/4.bmp", 0xFFFFFF);
+	g->textures[18] = load_image(g, "srcs/gfx/image/5.bmp", 0xFFFFFF);
+	g->textures[19] = load_image(g, "srcs/gfx/image/6.bmp", 0xFFFFFF);
+	g->textures[20] = load_image(g, "srcs/gfx/image/7.bmp", 0xFFFFFF);
+	g->textures[21] = load_image(g, "srcs/gfx/image/8.bmp", 0xFFFFFF);
+	g->textures[22] = NULL;
 }
-
+*/
 void		init_sdl(t_game *game)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)

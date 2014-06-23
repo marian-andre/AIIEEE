@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/22 14:36:10 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/23 16:52:23 by mlemort          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # define MAP_SIZE_H 64
 # define TILES_SIZE_H 16
 # define TILES_SIZE_W 16
-# define NB_TEXTURES 14
+# define LVL_SIZE_W 8
+# define LVL_SIZE_H 8
+# define NB_TXT 22
 # define MAX_CLI 1000
 # define NORTH 1
 # define EAST 2

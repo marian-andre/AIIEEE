@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:59:24 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/24 10:22:54 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/24 11:09:38 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static void			ft_game(t_game *game)
 		if ((event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
 			|| (event.window.event == SDL_WINDOWEVENT_CLOSE))
 			exit(0);
+		if (event.type == SDL_MOUSEBUTTONUP)
+			ft_show_resources(game, event);
 		if (line != NULL)
 			ft_check_msg(game, line);
 		draw_render(game);

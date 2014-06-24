@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/15 16:48:28 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/24 10:27:39 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/24 11:33:48 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void			draw_render(t_game *game)
 	int			j;
 
 	i = -1;
+	SDL_RenderClear(game->renderer);
 	while (++i < game->height)
 	{
 		j = -1;

@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/24 10:11:53 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/24 11:29:48 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void		init_textures(t_game *g)
 	g->textures[20] = load_image(g, "srcs/gfx/image/7.bmp", 0xFFFFFF);
 	g->textures[21] = load_image(g, "srcs/gfx/image/8.bmp", 0xFFFFFF);
 	g->textures[22] = load_image(g, "srcs/gfx/image/case.bmp", 0xFFFFFF);
-	g->textures[23] = NULL;
+	g->textures[23] = load_image(g, "srcs/gfx/image/fill.bmp", 0xFFFFFF);
+	g->textures[24] = NULL;
 }
 /*
 void		init_textures(t_game *g)

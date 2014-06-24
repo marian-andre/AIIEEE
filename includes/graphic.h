@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/24 10:31:06 by yoreal           ###   ########.fr       */
+/*   Updated: 2014/06/24 13:15:26 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define TILES_SIZE_W 16
 # define LVL_SIZE_W 8
 # define LVL_SIZE_H 8
-# define NB_TXT 23
+# define NB_TXT 24
 # define MAX_CLI 1000
 # define NORTH 1
 # define EAST 2
@@ -79,7 +79,8 @@ typedef struct		s_game
 ** ft_show_resources.c
 */
 
-void			ft_show_resources(SDL_Rect *src, SDL_Rect *dst, t_game *g);
+void				ft_show_resources(t_game *g, SDL_Event event);
+void				ft_show_case(t_game *g);
 
 /*
 ** ft_graphic_error.c

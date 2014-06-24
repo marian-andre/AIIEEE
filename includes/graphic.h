@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/10 13:57:23 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/23 16:52:23 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/24 10:31:06 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define TILES_SIZE_W 16
 # define LVL_SIZE_W 8
 # define LVL_SIZE_H 8
-# define NB_TXT 22
+# define NB_TXT 23
 # define MAX_CLI 1000
 # define NORTH 1
 # define EAST 2
@@ -74,6 +74,12 @@ typedef struct		s_game
 	t_egg			egg[MAX_CLI];
 	int				sock;
 }					t_game;
+
+/*
+** ft_show_resources.c
+*/
+
+void			ft_show_resources(SDL_Rect *src, SDL_Rect *dst, t_game *g);
 
 /*
 ** ft_graphic_error.c

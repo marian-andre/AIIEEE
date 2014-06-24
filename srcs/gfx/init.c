@@ -6,7 +6,7 @@
 /*   By: rkorimba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/12 12:13:05 by rkorimba          #+#    #+#             */
-/*   Updated: 2014/06/23 19:52:25 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/24 10:11:53 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void		init_textures(t_game *g)
 	g->textures[19] = load_image(g, "srcs/gfx/image/6.bmp", 0xFFFFFF);
 	g->textures[20] = load_image(g, "srcs/gfx/image/7.bmp", 0xFFFFFF);
 	g->textures[21] = load_image(g, "srcs/gfx/image/8.bmp", 0xFFFFFF);
-	g->textures[22] = NULL;
+	g->textures[22] = load_image(g, "srcs/gfx/image/case.bmp", 0xFFFFFF);
+	g->textures[23] = NULL;
 }
 /*
 void		init_textures(t_game *g)
@@ -114,7 +115,7 @@ void		init_sdl(t_game *game)
 		ft_graphic_error("SDL initialization has failed.");
 	game->window = SDL_CreateWindow("Zappy", SDL_WINDOWPOS_CENTERED,
 									SDL_WINDOWPOS_CENTERED,
-									game->width * MAP_SIZE_W,
+									game->width * MAP_SIZE_W + 240,
 									game->height * MAP_SIZE_H,
 									SDL_WINDOW_SHOWN);
 	game->renderer = SDL_CreateRenderer(game->window, -1,

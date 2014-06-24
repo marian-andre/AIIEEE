@@ -6,7 +6,7 @@
 /*   By: mlemort <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/06/16 16:33:51 by mlemort           #+#    #+#             */
-/*   Updated: 2014/06/16 17:15:13 by mlemort          ###   ########.fr       */
+/*   Updated: 2014/06/24 10:31:29 by yoreal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void		draw_case2(SDL_Rect src, SDL_Rect dst, int x, int y)
 	dst.y = (y * MAP_SIZE_H) + (1.5 * TILES_SIZE_H);
 	if (game->map[y][x].food > 0)
 		SDL_RenderCopy(game->renderer, game->textures[0], &src, &dst);
+	ft_show_resources(&src, &dst, game);
 }
 
 void			draw_case(t_game *game, int x, int y)
